@@ -620,10 +620,9 @@
                 <div class="category-list">
                     <label><input type="radio" name="cat" value="all" checked onclick="filterProducts()"> Barchasi</label>
                     <label><input type="radio" name="cat" value="fan" onclick="filterProducts()"> Sanoat Ventilyatorlari</label>
-                    <label><input type="radio" name="cat" value="pad" onclick="filterProducts()"> Sovutish Panellari (Cooling Pad)</label>
-                    <label><input type="radio" name="cat" value="radiator" onclick="filterProducts()"> Radiator & Kaloriferlar</label>
-                    <label><input type="radio" name="cat" value="cooler" onclick="filterProducts()"> Bug'lanishli Coolerlar</label>
-                    <label><input type="radio" name="cat" value="smart" onclick="filterProducts()"> Smart Rekuperatorlar</label>
+                    <label><input type="radio" name="cat" value="radiator" onclick="filterProducts()"> Отопительные агрегаты</label>
+                    <label><input type="radio" name="cat" value="pad" onclick="filterProducts()"> Гофра охладительные панели</label>
+                    <label><input type="radio" name="cat" value="cooler" onclick="filterProducts()"> Био-охладители AIRFAN</label>
                 </div>
             </div>
 
@@ -668,16 +667,16 @@
             <!-- Products Grid -->
             <div class="products-grid" id="productsGrid">
                 
-                <!-- Product Item 1 -->
-                <div class="product-card" data-category="fan" data-price="3450000" data-name="Sanoat Devoriy Ventilyatori Heavy-Duty 1380">
+                <!-- Product 1: Промышленные вентиляторы -->
+                <div class="product-card" data-category="fan" data-price="3450000" data-name="Промышленные вентиляторы AIRFAN 1380 Pro">
                     <div class="product-img">
                         <span class="product-badge">Sanoat</span>
-                        <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=400&q=80" alt="Sanoat Ventilyatori">
+                        <img src="https://airfan.uz/thumb/2/yzc3Lm7g6vigUG7zDn1mhw/1200r/d/image11380_1_0.png" alt="Промышленные вентиляторы">
                     </div>
                     <div class="product-body">
                         <div>
                             <div class="product-category">Sanoat Ventilyatorlari</div>
-                            <h4 class="product-title">Heavy-Duty Fan 1380 Pro</h4>
+                            <h4 class="product-title">Промышленные вентиляторы</h4>
                             <div class="product-specs">
                                 <span><i class="fa-solid fa-bolt"></i> Quvvat: 1.1 kW / 380V</span>
                                 <span><i class="fa-solid fa-wind"></i> Havo oqimi: 44,000 m³/soat</span>
@@ -685,43 +684,21 @@
                         </div>
                         <div class="product-footer">
                             <span class="product-price">3,450,000 so'm</span>
-                            <button class="btn btn-primary" onclick="openModal('Heavy-Duty Fan 1380 Pro', '3,450,000 so\'m')">Sotib olish</button>
+                            <button class="btn btn-primary" onclick="openModal('Промышленные вентиляторы', '3,450,000 so\'m')">Sotib olish</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Product Item 2 -->
-                <div class="product-card" data-category="pad" data-price="1200000" data-name="Evaporative Cooling Pad Sellyuloza 7090">
+                <!-- Product 2: Отопительные агрегаты -->
+                <div class="product-card" data-category="radiator" data-price="4800000" data-name="Отопительные агрегаты HX-1510">
                     <div class="product-img">
-                        <span class="product-badge" style="background: var(--success);">Namlantirish</span>
-                        <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=400&q=80" alt="Cooling Pad">
+                        <span class="product-badge" style="background: #e11d48;">Isitish Tizimi</span>
+                        <img src="https://airfan.uz/thumb/2/qO_2CHLSrfEQ4OkXnjct5g/1200r/d/image1510.png" alt="Отопительные агрегаты">
                     </div>
                     <div class="product-body">
                         <div>
-                            <div class="product-category">Sovutish Panellari</div>
-                            <h4 class="product-title">Cooling Pad 7090 Premium</h4>
-                            <div class="product-specs">
-                                <span><i class="fa-solid fa-ruler-combined"></i> O'lcham: 1500x600x150 mm</span>
-                                <span><i class="fa-solid fa-droplet"></i> Samaradorlik: 85% sovutish</span>
-                            </div>
-                        </div>
-                        <div class="product-footer">
-                            <span class="product-price">1,200,000 so'm</span>
-                            <button class="btn btn-primary" onclick="openModal('Cooling Pad 7090 Premium', '1,200,000 so\'m')">Sotib olish</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product Item 3 -->
-                <div class="product-card" data-category="radiator" data-price="4800000" data-name="Sanoat Kalorifer Radiator Blok HX-40">
-                    <div class="product-img">
-                        <span class="product-badge" style="background: #e11d48;">Issiqlik/Sovuq</span>
-                        <img src="https://images.unsplash.com/photo-1581094288338-2314dddb7ece?auto=format&fit=crop&w=400&q=80" alt="Radiator Blok">
-                    </div>
-                    <div class="product-body">
-                        <div>
-                            <div class="product-category">Radiator & Kaloriferlar</div>
-                            <h4 class="product-title">Radiator Block Heat-Ex HX-40</h4>
+                            <div class="product-category">Otoпительные агрегаты</div>
+                            <h4 class="product-title">Отопительные агрегаты</h4>
                             <div class="product-specs">
                                 <span><i class="fa-solid fa-fire"></i> Issiqlik quvvati: 45 kW</span>
                                 <span><i class="fa-solid fa-layer-group"></i> Mis quvurlar, Alyumin qobirga</span>
@@ -729,21 +706,43 @@
                         </div>
                         <div class="product-footer">
                             <span class="product-price">4,800,000 so'm</span>
-                            <button class="btn btn-primary" onclick="openModal('Radiator Block HX-40', '4,800,000 so\'m')">Sotib olish</button>
+                            <button class="btn btn-primary" onclick="openModal('Отопительные агрегаты', '4,800,000 so\'m')">Sotib olish</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Product Item 4 -->
-                <div class="product-card" data-category="cooler" data-price="5200000" data-name="Evaporative Industrial Air Cooler Eco-18">
+                <!-- Product 3: Гофра охладительные панели -->
+                <div class="product-card" data-category="pad" data-price="1200000" data-name="Гофра охладительные панели 7090 Premium">
                     <div class="product-img">
-                        <span class="product-badge" style="background: var(--accent);">Portativ</span>
-                        <img src="https://images.unsplash.com/photo-1541888946425-d0fbb18f86f8?auto=format&fit=crop&w=400&q=80" alt="Air Cooler">
+                        <span class="product-badge" style="background: var(--success);">Namlantirish</span>
+                        <img src="https://airfan.uz/thumb/2/AAYMvPB7iBwS2VazG23t9Q/1200r/d/image1222.png" alt="Гофра охладительные панели">
                     </div>
                     <div class="product-body">
                         <div>
-                            <div class="product-category">Bug'lanishli Coolerlar</div>
-                            <h4 class="product-title">Industrial Air Cooler Eco-18</h4>
+                            <div class="product-category">Гофра охладительные панели</div>
+                            <h4 class="product-title">Гофра охладительные панели</h4>
+                            <div class="product-specs">
+                                <span><i class="fa-solid fa-ruler-combined"></i> O'lcham: 1500x600x150 mm</span>
+                                <span><i class="fa-solid fa-droplet"></i> Samaradorlik: 85% sovutish</span>
+                            </div>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">1,200,000 so'm</span>
+                            <button class="btn btn-primary" onclick="openModal('Гофра охладительные панели', '1,200,000 so\'m')">Sotib olish</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4: Био-охладители AIRFAN -->
+                <div class="product-card" data-category="cooler" data-price="5200000" data-name="Био-охладители AIRFAN Eco-18">
+                    <div class="product-img">
+                        <span class="product-badge" style="background: var(--accent);">Portativ</span>
+                        <img src="https://airfan.uz/thumb/2/eXtdmy30UKRVJftBgFwacw/1200r/d/image1.png" alt="Био-охладители AIRFAN">
+                    </div>
+                    <div class="product-body">
+                        <div>
+                            <div class="product-category">Био-охладители AIRFAN</div>
+                            <h4 class="product-title">Био-охладители AIRFAN</h4>
                             <div class="product-specs">
                                 <span><i class="fa-solid fa-faucet-drip"></i> Suv bak: 40 Litr</span>
                                 <span><i class="fa-solid fa-expand"></i> Maydon: 100-150 m² uchun</span>
@@ -751,29 +750,7 @@
                         </div>
                         <div class="product-footer">
                             <span class="product-price">5,200,000 so'm</span>
-                            <button class="btn btn-primary" onclick="openModal('Industrial Air Cooler Eco-18', '5,200,000 so\'m')">Sotib olish</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product Item 5 -->
-                <div class="product-card" data-category="smart" data-price="2850000" data-name="AIR Smart Wall Purifier Recup S2">
-                    <div class="product-img">
-                        <span class="product-badge" style="background: #8b5cf6;">Smart Home</span>
-                        <img src="https://images.unsplash.com/photo-1541888946425-d0fbb18f86f8?auto=format&fit=crop&w=400&q=80" alt="Smart Wall Purifier">
-                    </div>
-                    <div class="product-body">
-                        <div>
-                            <div class="product-category">Smart Rekuperatorlar</div>
-                            <h4 class="product-title">AIR Smart Wall Purifier S2</h4>
-                            <div class="product-specs">
-                                <span><i class="fa-solid fa-wifi"></i> Wi-Fi & App Boshqaruv</span>
-                                <span><i class="fa-solid fa-filter"></i> HEPA H13 Filter + CO2 Sensor</span>
-                            </div>
-                        </div>
-                        <div class="product-footer">
-                            <span class="product-price">2,850,000 so'm</span>
-                            <button class="btn btn-primary" onclick="openModal('AIR Smart Wall Purifier S2', '2,850,000 so\'m')">Sotib olish</button>
+                            <button class="btn btn-primary" onclick="openModal('Био-охладители AIRFAN', '5,200,000 so\'m')">Sotib olish</button>
                         </div>
                     </div>
                 </div>
@@ -828,9 +805,9 @@
                 <h4>Kategoriyalar</h4>
                 <ul>
                     <li><a href="#">Sanoat Ventilyatorlari</a></li>
-                    <li><a href="#">Sovutish Panellari</a></li>
-                    <li><a href="#">Radiator Bloklari</a></li>
-                    <li><a href="#">Smart Rekuperatorlar</a></li>
+                    <li><a href="#">Отопительные агрегаты</a></li>
+                    <li><a href="#">Гофра охладительные панели</a></li>
+                    <li><a href="#">Био-охладители AIRFAN</a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -886,9 +863,9 @@
             });
         }
 
-        // Telegram Integration (User ID: 5973007672)[cite: 1]
+        // Telegram Integration (User ID: 5973007672)
         const BOT_TOKEN = '8870087140:AAGhmm0WlIbp60iE2nBXagUrgWWs0n7otF0';
-        const CHAT_ID = '5973007672';[cite: 1]
+        const CHAT_ID = '5973007672';
 
         async function sendToTelegram(event) {
             event.preventDefault();
