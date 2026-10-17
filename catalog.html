@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIR — Mahsulotlar Katalogi | Sanoat va Maishiy Iqlim Tizimlari</title>
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #0f172a;
+            --primary-light: #1e293b;
+            --accent: #0284c7;
+            --accent-hover: #0369a1;
+            --success: #10b981;
+            --text-main: #334155;
+            --text-light: #64748b;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --border: #e2e8f0;
+            --shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background: var(--primary);
+            color: var(--white);
+            font-size: 13px;
+            padding: 10px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .top-bar-left, .top-bar-right {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .top-bar i {
+            color: var(--accent);
+            margin-right: 6px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: var(--white);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 18px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            font-size: 15px;
+            color: var(--text-main);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--accent);
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(2, 132, 199, 0.3);
+        }
+
+        /* Page Banner */
+        .page-banner {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: var(--white);
+            padding: 60px 5%;
+            text-align: center;
+        }
+
+        .page-banner h1 {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .page-banner p {
+            color: #94a3b8;
+            font-size: 16px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Catalog Layout */
+        .catalog-container {
+            max-width: 1400px;
+            margin: 40px auto 80px;
+            padding: 0 5%;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 40px;
+        }
+
+        /* Filters Sidebar */
+        .sidebar {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid var(--border);
+            height: fit-content;
+            box-shadow: var(--shadow);
+        }
+
+        .filter-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .filter-group {
+            margin-bottom: 28px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 20px;
+        }
+
+        .filter-group:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+
+        .filter-group h4 {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 14px;
+        }
+
+        .category-list label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            color: var(--text-main);
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .category-list label:hover {
+            color: var(--accent);
+        }
+
+        .category-list input[type="checkbox"], .category-list input[type="radio"] {
+            accent-color: var(--accent);
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+        }
+
+        .price-inputs {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .price-inputs input {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 13px;
+        }
+
+        /* Main Catalog Content */
+        .catalog-content {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .toolbar {
+            background: var(--white);
+            padding: 16px 24px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+        }
+
+        .search-box {
+            position: relative;
+            width: 320px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 10px 16px 10px 40px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+        }
+
+        .sort-box select {
+            padding: 10px 16px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+            background: var(--white);
+            cursor: pointer;
+        }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: var(--transition);
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+            border-color: var(--accent);
+        }
+
+        .product-img {
+            height: 220px;
+            position: relative;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .product-img img {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: var(--primary);
+            color: var(--white);
+            padding: 4px 10px;
+            font-size: 11px;
+            font-weight: 700;
+            border-radius: 6px;
+        }
+
+        .product-body {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-category {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+
+        .product-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .product-specs {
+            font-size: 12px;
+            color: var(--text-light);
+            margin-bottom: 16px;
+        }
+
+        .product-specs span {
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 12px;
+            border-top: 1px solid var(--border);
+        }
+
+        .product-price {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        /* Order Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background: var(--white);
+            width: 100%;
+            max-width: 500px;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            transform: scale(0.9);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .modal-overlay.active .modal {
+            transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--bg-light);
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 16px;
+            cursor: pointer;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal h3 {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .modal p {
+            color: var(--text-light);
+            font-size: 14px;
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 6px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 14px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .form-control:focus {
+            border-color: var(--accent);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: var(--white);
+            padding: 80px 5% 30px;
+        }
+
+        .footer-grid {
+            max-width: 1400px;
+            margin: 0 auto 60px;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+        }
+
+        .footer-col h4 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .footer-col p {
+            color: #94a3b8;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a {
+            color: #94a3b8;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #94a3b8;
+            font-size: 14px;
+        }
+
+        @media (max-width: 1024px) {
+            .catalog-container {
+                grid-template-columns: 1fr;
+            }
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            .toolbar {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .search-box {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-left">
+            <span><i class="fa-solid fa-location-dot"></i> Toshkent shahri, Sergeli industrial zonasi</span>
+            <span><i class="fa-solid fa-clock"></i> Dush - Shan: 09:00 - 18:00</span>
+        </div>
+        <div class="top-bar-right">
+            <span><i class="fa-solid fa-phone"></i> +998 (71) 200-00-00</span>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="navbar">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-wind" style="color: var(--accent);"></i> AI<span>R</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Bosh sahifa</a></li>
+                <li><a href="catalog.html" class="active">Katalog</a></li>
+                <li><a href="product-detail.html">Mahsulot Tahlili</a></li>
+                <li><a href="contact.html">Aloqa & Buyurtma</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Page Banner -->
+    <section class="page-banner">
+        <h1>Mahsulotlar Katalogi</h1>
+        <p>Sanoat va maishiy obyektlar uchun barcha turdagi yuqori unumdorlikdagi ventilyatsiya, sovutish va havo tozalash uskunalarini tanlang.</p>
+    </section>
+
+    <!-- Main Catalog Container -->
+    <div class="catalog-container">
+        
+        <!-- Sidebar Filters -->
+        <aside class="sidebar">
+            <div class="filter-title">
+                <span>Filtrlar</span>
+                <i class="fa-solid fa-sliders" style="color: var(--accent);"></i>
+            </div>
+
+            <!-- Category Filter -->
+            <div class="filter-group">
+                <h4>Kategoriyalar</h4>
+                <div class="category-list">
+                    <label><input type="radio" name="cat" value="all" checked onclick="filterProducts()"> Barchasi</label>
+                    <label><input type="radio" name="cat" value="fan" onclick="filterProducts()"> Sanoat Ventilyatorlari</label>
+                    <label><input type="radio" name="cat" value="pad" onclick="filterProducts()"> Sovutish Panellari (Cooling Pad)</label>
+                    <label><input type="radio" name="cat" value="radiator" onclick="filterProducts()"> Radiator & Kaloriferlar</label>
+                    <label><input type="radio" name="cat" value="cooler" onclick="filterProducts()"> Bug'lanishli Coolerlar</label>
+                    <label><input type="radio" name="cat" value="smart" onclick="filterProducts()"> Smart Rekuperatorlar</label>
+                </div>
+            </div>
+
+            <!-- Price Filter -->
+            <div class="filter-group">
+                <h4>Narx oralig'i (so'm)</h4>
+                <div class="price-inputs">
+                    <input type="number" id="minPrice" placeholder="Dan" onkeyup="filterProducts()">
+                    <span>-</span>
+                    <input type="number" id="maxPrice" placeholder="Gacha" onkeyup="filterProducts()">
+                </div>
+            </div>
+
+            <!-- Availability -->
+            <div class="filter-group">
+                <h4>Mavjudligi</h4>
+                <div class="category-list">
+                    <label><input type="checkbox" checked> Omborxonada bor</label>
+                    <label><input type="checkbox"> Buyurtma asosida</label>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Catalog Main Area -->
+        <main class="catalog-content">
+            
+            <!-- Toolbar -->
+            <div class="toolbar">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="searchInput" placeholder="Mahsulot nomini qidiring..." onkeyup="filterProducts()">
+                </div>
+                <div class="sort-box">
+                    <select id="sortSelect" onchange="filterProducts()">
+                        <option value="default">Saralash: Standart</option>
+                        <option value="low-high">Narx: Arzondan qimmatga</option>
+                        <option value="high-low">Narx: Qimmatdan arzonga</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="products-grid" id="productsGrid">
+                
+                <!-- Product Item 1 -->
+                <div class="product-card" data-category="fan" data-price="3450000" data-name="Sanoat Devoriy Ventilyatori Heavy-Duty 1380">
+                    <div class="product-img">
+                        <span class="product-badge">Sanoat</span>
+                        <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=400&q=80" alt="Sanoat Ventilyatori">
+                    </div>
+                    <div class="product-body">
+                        <div>
+                            <div class="product-category">Sanoat Ventilyatorlari</div>
+                            <h4 class="product-title">Heavy-Duty Fan 1380 Pro</h4>
+                            <div class="product-specs">
+                                <span><i class="fa-solid fa-bolt"></i> Quvvat: 1.1 kW / 380V</span>
+                                <span><i class="fa-solid fa-wind"></i> Havo oqimi: 44,000 m³/soat</span>
+                            </div>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">3,450,000 so'm</span>
+                            <button class="btn btn-primary" onclick="openModal('Heavy-Duty Fan 1380 Pro', '3,450,000 so\'m')">Sotib olish</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Item 2 -->
+                <div class="product-card" data-category="pad" data-price="1200000" data-name="Evaporative Cooling Pad Sellyuloza 7090">
+                    <div class="product-img">
+                        <span class="product-badge" style="background: var(--success);">Namlantirish</span>
+                        <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=400&q=80" alt="Cooling Pad">
+                    </div>
+                    <div class="product-body">
+                        <div>
+                            <div class="product-category">Sovutish Panellari</div>
+                            <h4 class="product-title">Cooling Pad 7090 Premium</h4>
+                            <div class="product-specs">
+                                <span><i class="fa-solid fa-ruler-combined"></i> O'lcham: 1500x600x150 mm</span>
+                                <span><i class="fa-solid fa-droplet"></i> Samaradorlik: 85% sovutish</span>
+                            </div>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">1,200,000 so'm</span>
+                            <button class="btn btn-primary" onclick="openModal('Cooling Pad 7090 Premium', '1,200,000 so\'m')">Sotib olish</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Item 3 -->
+                <div class="product-card" data-category="radiator" data-price="4800000" data-name="Sanoat Kalorifer Radiator Blok HX-40">
+                    <div class="product-img">
+                        <span class="product-badge" style="background: #e11d48;">Issiqlik/Sovuq</span>
+                        <img src="https://images.unsplash.com/photo-1581094288338-2314dddb7ece?auto=format&fit=crop&w=400&q=80" alt="Radiator Blok">
+                    </div>
+                    <div class="product-body">
+                        <div>
+                            <div class="product-category">Radiator & Kaloriferlar</div>
+                            <h4 class="product-title">Radiator Block Heat-Ex HX-40</h4>
+                            <div class="product-specs">
+                                <span><i class="fa-solid fa-fire"></i> Issiqlik quvvati: 45 kW</span>
+                                <span><i class="fa-solid fa-layer-group"></i> Mis quvurlar, Alyumin qobirga</span>
+                            </div>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">4,800,000 so'm</span>
+                            <button class="btn btn-primary" onclick="openModal('Radiator Block HX-40', '4,800,000 so\'m')">Sotib olish</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Item 4 -->
+                <div class="product-card" data-category="cooler" data-price="5200000" data-name="Evaporative Industrial Air Cooler Eco-18">
+                    <div class="product-img">
+                        <span class="product-badge" style="background: var(--accent);">Portativ</span>
+                        <img src="https://images.unsplash.com/photo-1541888946425-d0fbb18f86f8?auto=format&fit=crop&w=400&q=80" alt="Air Cooler">
+                    </div>
+                    <div class="product-body">
+                        <div>
+                            <div class="product-category">Bug'lanishli Coolerlar</div>
+                            <h4 class="product-title">Industrial Air Cooler Eco-18</h4>
+                            <div class="product-specs">
+                                <span><i class="fa-solid fa-faucet-drip"></i> Suv bak: 40 Litr</span>
+                                <span><i class="fa-solid fa-expand"></i> Maydon: 100-150 m² uchun</span>
+                            </div>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">5,200,000 so'm</span>
+                            <button class="btn btn-primary" onclick="openModal('Industrial Air Cooler Eco-18', '5,200,000 so\'m')">Sotib olish</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Item 5 -->
+                <div class="product-card" data-category="smart" data-price="2850000" data-name="AIR Smart Wall Purifier Recup S2">
+                    <div class="product-img">
+                        <span class="product-badge" style="background: #8b5cf6;">Smart Home</span>
+                        <img src="https://images.unsplash.com/photo-1541888946425-d0fbb18f86f8?auto=format&fit=crop&w=400&q=80" alt="Smart Wall Purifier">
+                    </div>
+                    <div class="product-body">
+                        <div>
+                            <div class="product-category">Smart Rekuperatorlar</div>
+                            <h4 class="product-title">AIR Smart Wall Purifier S2</h4>
+                            <div class="product-specs">
+                                <span><i class="fa-solid fa-wifi"></i> Wi-Fi & App Boshqaruv</span>
+                                <span><i class="fa-solid fa-filter"></i> HEPA H13 Filter + CO2 Sensor</span>
+                            </div>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">2,850,000 so'm</span>
+                            <button class="btn btn-primary" onclick="openModal('AIR Smart Wall Purifier S2', '2,850,000 so\'m')">Sotib olish</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Order Modal -->
+    <div class="modal-overlay" id="orderModal">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+            <h3>Buyurtma Rasmiylashtirish</h3>
+            <p id="modalProductInfo">Mahsulot tanlandi</p>
+            <form id="telegramForm" onsubmit="sendToTelegram(event)">
+                <div class="form-group">
+                    <label>Ismingiz va Familiyangiz</label>
+                    <input type="text" class="form-control" id="clientName" placeholder="Masalan: Jamshid Aliyev" required>
+                </div>
+                <div class="form-group">
+                    <label>Telefon raqamingiz</label>
+                    <input type="tel" class="form-control" id="clientPhone" placeholder="+998 90 123 45 67" required>
+                </div>
+                <div class="form-group">
+                    <label>Yetkazib berish manzili va Izoh</label>
+                    <textarea class="form-control" id="clientAddress" rows="3" placeholder="Shahar, tuman, ko'cha..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Telegram Orqali Tasdiqlash</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="logo" style="color: white; margin-bottom: 20px;">
+                    <i class="fa-solid fa-wind" style="color: var(--accent);"></i> AI<span>R</span>
+                </div>
+                <p>Sanoat va maishiy obyektlar uchun shamollatish va sovutish uskunalarining eng keng tanlovi.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Sahifalar</h4>
+                <ul>
+                    <li><a href="index.html">Bosh sahifa</a></li>
+                    <li><a href="catalog.html">Katalog</a></li>
+                    <li><a href="product-detail.html">Mahsulot Tahlili</a></li>
+                    <li><a href="contact.html">Aloqa</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Kategoriyalar</h4>
+                <ul>
+                    <li><a href="#">Sanoat Ventilyatorlari</a></li>
+                    <li><a href="#">Sovutish Panellari</a></li>
+                    <li><a href="#">Radiator Bloklari</a></li>
+                    <li><a href="#">Smart Rekuperatorlar</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Bog'lanish</h4>
+                <p><i class="fa-solid fa-phone"></i> +998 (71) 200-00-00</p>
+                <p><i class="fa-solid fa-envelope"></i> info@air-climate.uz</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 AIR Climate. Barcha huquqlar himoyalangan.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Filtering & Telegram API -->
+    <script>
+        let selectedProduct = '';
+        let selectedPrice = '';
+
+        function openModal(productName, productPrice) {
+            selectedProduct = productName;
+            selectedPrice = productPrice;
+            document.getElementById('modalProductInfo').innerText = `Tanlangan: ${productName} — ${productPrice}`;
+            document.getElementById('orderModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('orderModal').classList.remove('active');
+        }
+
+        // Filtering logic
+        function filterProducts() {
+            const searchVal = document.getElementById('searchInput').value.toLowerCase();
+            const minPrice = parseFloat(document.getElementById('minPrice').value) || 0;
+            const maxPrice = parseFloat(document.getElementById('maxPrice').value) || Infinity;
+            const categoryRadio = document.querySelector('input[name="cat"]:checked').value;
+
+            const cards = document.querySelectorAll('.product-card');
+
+            cards.forEach(card => {
+                const name = card.getAttribute('data-name').toLowerCase();
+                const category = card.getAttribute('data-category');
+                const price = parseFloat(card.getAttribute('data-price'));
+
+                const matchesSearch = name.includes(searchVal);
+                const matchesCategory = (categoryRadio === 'all' || category === categoryRadio);
+                const matchesPrice = (price >= minPrice && price <= maxPrice);
+
+                if (matchesSearch && matchesCategory && matchesPrice) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Telegram Integration (User ID: 5973007672)[cite: 1]
+        const BOT_TOKEN = '8870087140:AAGhmm0WlIbp60iE2nBXagUrgWWs0n7otF0';
+        const CHAT_ID = '5973007672';[cite: 1]
+
+        async function sendToTelegram(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('clientName').value;
+            const phone = document.getElementById('clientPhone').value;
+            const address = document.getElementById('clientAddress').value;
+
+            const message = `🛍 *Katalogdan Yangi Buyurtma - AIR*\n\n` +
+                            `📦 *Mahsulot:* ${selectedProduct}\n` +
+                            `💰 *Narxi:* ${selectedPrice}\n` +
+                            `👤 *Mijoz:* ${name}\n` +
+                            `📞 *Telefon:* ${phone}\n` +
+                            `📍 *Manzil:* ${address}\n` +
+                            `⏰ *Vaqt:* ${new Date().toLocaleString()}`;
+
+            const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        chat_id: CHAT_ID,
+                        text: message,
+                        parse_mode: 'Markdown'
+                    })
+                });
+
+                const data = await response.json();
+                if (data.ok) {
+                    alert('Buyurtmangiz muvaffaqiyatli Telegram botga yuborildi! Tez orada siz bilan bog\'lanamiz.');
+                    closeModal();
+                    document.getElementById('telegramForm').reset();
+                } else {
+                    alert('Xatolik yuz berdi. Iltimos qaytadan urinib ko\'ring.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Tarmoqda xatolik yuz berdi.');
+            }
+        }
+    </script>
+</body>
+</html>

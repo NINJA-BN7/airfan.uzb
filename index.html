@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIR — Sanoat va Maishiy Ventilyatsiya, Sovutish Tizimlari</title>
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #0f172a;
+            --primary-light: #1e293b;
+            --accent: #0284c7;
+            --accent-hover: #0369a1;
+            --success: #10b981;
+            --text-main: #334155;
+            --text-light: #64748b;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --border: #e2e8f0;
+            --shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background: var(--primary);
+            color: var(--white);
+            font-size: 13px;
+            padding: 10px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .top-bar-left, .top-bar-right {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .top-bar i {
+            color: var(--accent);
+            margin-right: 6px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: var(--white);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 18px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            font-size: 15px;
+            color: var(--text-main);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--accent);
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(2, 132, 199, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--border);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: var(--white);
+            padding: 100px 5%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 24px;
+        }
+
+        .hero-content h1 span {
+            color: var(--accent);
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            color: #94a3b8;
+            margin-bottom: 36px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+        }
+
+        .hero-image-wrapper img {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Features Bar */
+        .features-bar {
+            max-width: 1400px;
+            margin: -50px auto 0;
+            padding: 0 5%;
+            position: relative;
+            z-index: 10;
+        }
+
+        .features-grid {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 18px;
+            align-items: center;
+        }
+
+        .feature-icon {
+            width: 55px;
+            height: 55px;
+            background: rgba(2, 132, 199, 0.1);
+            color: var(--accent);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .feature-text h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        .feature-text p {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        /* Categories Section */
+        .section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 100px 5%;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+
+        .section-header h2 {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            font-size: 16px;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .category-card {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--border);
+        }
+
+        .category-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 30px -10px rgba(0,0,0,0.1);
+        }
+
+        .category-img {
+            height: 240px;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .category-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .category-card:hover .category-img img {
+            transform: scale(1.05);
+        }
+
+        .category-content {
+            padding: 24px;
+        }
+
+        .category-content h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .category-content p {
+            color: var(--text-light);
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .link-arrow {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: var(--transition);
+        }
+
+        .link-arrow:hover {
+            gap: 10px;
+        }
+
+        /* Products Showcase */
+        .products-section {
+            background: #f1f5f9;
+            padding: 100px 5%;
+        }
+
+        .products-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: var(--transition);
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--accent);
+            color: var(--white);
+            padding: 5px 12px;
+            font-size: 12px;
+            font-weight: 700;
+            border-radius: 6px;
+            z-index: 2;
+        }
+
+        .product-img {
+            height: 260px;
+            position: relative;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .product-img img {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        .product-body {
+            padding: 24px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .product-desc {
+            font-size: 13px;
+            color: var(--text-light);
+            margin-bottom: 16px;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        .product-price {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        /* Order Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background: var(--white);
+            width: 100%;
+            max-width: 500px;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            transform: scale(0.9);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .modal-overlay.active .modal {
+            transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--bg-light);
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 16px;
+            cursor: pointer;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            background: var(--border);
+        }
+
+        .modal h3 {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .modal p {
+            color: var(--text-light);
+            font-size: 14px;
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-size: 15px;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--accent);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: var(--white);
+            padding: 80px 5% 30px;
+        }
+
+        .footer-grid {
+            max-width: 1400px;
+            margin: 0 auto 60px;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+        }
+
+        .footer-col h4 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .footer-col p {
+            color: #94a3b8;
+            font-size: 14px;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a {
+            color: #94a3b8;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #94a3b8;
+            font-size: 14px;
+        }
+
+        @media (max-width: 1024px) {
+            .hero-container, .features-grid, .categories-grid, .products-grid, .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-left">
+            <span><i class="fa-solid fa-location-dot"></i> Toshkent shahri, Sergeli industrial zonasi</span>
+            <span><i class="fa-solid fa-clock"></i> Dush - Shan: 09:00 - 18:00</span>
+        </div>
+        <div class="top-bar-right">
+            <span><i class="fa-solid fa-phone"></i> +998 (71) 200-00-00</span>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="navbar">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-wind" style="color: var(--accent);"></i> AI<span>R</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Bosh sahifa</a></li>
+                <li><a href="catalog.html">Katalog</a></li>
+                <li><a href="product-detail.html">Mahsulot Tahlili</a></li>
+                <li><a href="contact.html">Aloqa & Buyurtma</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="catalog.html" class="btn btn-outline"><i class="fa-solid fa-boxes-stacked"></i> Katalogga o'tish</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Sanoat va Maishiy <span>Iqlim Tizimlari</span></h1>
+                <p>Obyektlaringiz uchun yuqori samarali ventilyatsiya, sovutish panellari, havo tozalagichlar va zamonaviy rekuperatorlar. Professional yechimlar va to'g'ridan-to'g'ri kafolat.</p>
+                <div class="hero-buttons">
+                    <a href="catalog.html" class="btn btn-primary">Mahsulotlarni ko'rish <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="contact.html" class="btn btn-outline" style="color: white; border-color: rgba(255,255,255,0.3);">Bog'lanish</a>
+                </div>
+            </div>
+            <div class="hero-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1581094288338-2314dddb7ece?auto=format&fit=crop&w=800&q=80" alt="Industrial Ventilation AIR">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Bar -->
+    <div class="features-bar">
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <div class="feature-text">
+                    <h4>Rasmiy Kafolat</h4>
+                    <p>Barcha uskunalarga 3 yilgacha kafolat</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon"><i class="fa-solid fa-truck-fast"></i></div>
+                <div class="feature-text">
+                    <h4>Tezkor yetkazish</h4>
+                    <p>O'zbekiston bo'ylab o'rnatish va servis</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon"><i class="fa-solid fa-headset"></i></div>
+                <div class="feature-text">
+                    <h4>24/7 Muhandislik</h4>
+                    <p>Professional texnik yordam va maslahat</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon"><i class="fa-solid fa-award"></i></div>
+                <div class="feature-text">
+                    <h4>Sifat Standarti</h4>
+                    <p>Xalqaro ISO sertifikatiga ega mahsulotlar</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Categories Section -->
+    <section class="section">
+        <div class="section-header">
+            <h2>Asosiy Mahsulot Yo'nalishlari</h2>
+            <p>Sanoat korxonalari, omborxonalar va maishiy binolar uchun eng so'nggi texnologik uskunalar</p>
+        </div>
+        <div class="categories-grid">
+            <div class="category-card">
+                <div class="category-img">
+                    <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=600&q=80" alt="Sanoat Ventilyatorlari">
+                </div>
+                <div class="category-content">
+                    <h3>Sanoat Ventilyatorlari</h3>
+                    <p>Katta hajmdagi binolar uchun yuqori unumdorlikdagi devoriy va kanalli ventilyatorlar[cite: 1].</p>
+                    <a href="catalog.html" class="link-arrow">Katalogdan ko'rish <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="category-card">
+                <div class="category-img">
+                    <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80" alt="Sovutish Panellari">
+                </div>
+                <div class="category-content">
+                    <h3>Sovutish Panellari (Cooling Pads)</h3>
+                    <p>Issiqxona va sexlar uchun bug'lanish usulida sovutish va namlantirish panellari[cite: 1].</p>
+                    <a href="catalog.html" class="link-arrow">Katalogdan ko'rish <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="category-card">
+                <div class="category-img">
+                    <img src="https://images.unsplash.com/photo-1541888946425-d0fbb18f86f8?auto=format&fit=crop&w=600&q=80" alt="Smart Havo Tizimlari">
+                </div>
+                <div class="category-content">
+                    <h3>Smart Rekuperatorlar & Havo</h3>
+                    <p>Mobil ilova orqali boshqariladigan zamonaviy maishiy va ofis havo tozalash tizimlari[cite: 1].</p>
+                    <a href="catalog.html" class="link-arrow">Katalogdan ko'rish <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Showcase -->
+    <section class="products-section">
+        <div class="section-header" style="margin-bottom: 50px;">
+            <h2>Ommabop Uskunalar</h2>
+            <p>Hozirgi kunda eng ko'p talab yuqori bo'lgan professional modellar</p>
+        </div>
+        <div class="products-grid">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <div class="product-img">
+                    <span class="product-badge">Top Sotuv</span>
+                    <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=400&q=80" alt="Air Industrial Fan">
+                </div>
+                <div class="product-body">
+                    <div>
+                        <h4 class="product-title">AIR-Industrial Pro Fan X1</h4>
+                        <p class="product-desc">Sanoat uchun yuqori quvvatli devoriy ventilyator. Kam quvvat sarfi va jim ish rejimi.</p>
+                    </div>
+                    <div class="product-footer">
+                        <span class="product-price">3,450,000 so'm</span>
+                        <button class="btn btn-primary" onclick="openModal('AIR-Industrial Pro Fan X1', '3,450,000 so\'m')">Buyurtma</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Product 2 -->
+            <div class="product-card">
+                <div class="product-img">
+                    <span class="product-badge" style="background: var(--success);">Aksiya</span>
+                    <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=400&q=80" alt="Cooling Pad">
+                </div>
+                <div class="product-body">
+                    <div>
+                        <h4 class="product-title">Cellular Cooling Pad CP-50</h4>
+                        <p class="product-desc">Issiqxona va qushxonalar uchun yuqori samarali namlantiruvchi sellyuloza paneli.</p>
+                    </div>
+                    <div class="product-footer">
+                        <span class="product-price">1,200,000 so'm</span>
+                        <button class="btn btn-primary" onclick="openModal('Cellular Cooling Pad CP-50', '1,200,000 so\'m')">Buyurtma</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Product 3 -->
+            <div class="product-card">
+                <div class="product-img">
+                    <span class="product-badge" style="background: var(--primary);">Smart</span>
+                    <img src="https://images.unsplash.com/photo-1541888946425-d0fbb18f86f8?auto=format&fit=crop&w=400&q=80" alt="Smart Wall Air">
+                </div>
+                <div class="product-body">
+                    <div>
+                        <h4 class="product-title">AIR Smart Wall Purifier S2</h4>
+                        <p class="product-desc">Wi-Fi va mobil ilova boshqaruviga ega devoriy havo tozalagich va rekuperator.</p>
+                    </div>
+                    <div class="product-footer">
+                        <span class="product-price">2,850,000 so'm</span>
+                        <button class="btn btn-primary" onclick="openModal('AIR Smart Wall Purifier S2', '2,850,000 so\'m')">Buyurtma</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Modal -->
+    <div class="modal-overlay" id="orderModal">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+            <h3>Tezkor Buyurtma Berish</h3>
+            <p id="modalProductInfo">Mahsulot tanlandi</p>
+            <form id="telegramForm" onsubmit="sendToTelegram(event)">
+                <div class="form-group">
+                    <label>Ismingiz</label>
+                    <input type="text" class="form-control" id="clientName" placeholder="Masalan: Anvar Karimov" required>
+                </div>
+                <div class="form-group">
+                    <label>Telefon raqamingiz</label>
+                    <input type="tel" class="form-control" id="clientPhone" placeholder="+998 90 123 45 67" required>
+                </div>
+                <div class="form-group">
+                    <label>Yetkazish manzili yoki Izoh</label>
+                    <textarea class="form-control" id="clientAddress" rows="3" placeholder="Shahar, tuman, ko'cha yoki mo'ljal..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Buyurtmani Yuborish</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="logo" style="color: white; margin-bottom: 20px;">
+                    <i class="fa-solid fa-wind" style="color: var(--accent);"></i> AI<span>R</span>
+                </div>
+                <p>O'zbekistonda sanoat va maishiy iqlim texnologiyalari bo'yicha yetakchi internet-magazin. Barcha turdagi ventilyatsiya va sovutish tizimlari.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Sahifalar</h4>
+                <ul>
+                    <li><a href="index.html">Bosh sahifa</a></li>
+                    <li><a href="catalog.html">Katalog</a></li>
+                    <li><a href="product-detail.html">Mahsulot Tahlili</a></li>
+                    <li><a href="contact.html">Aloqa</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Kategoriyalar</h4>
+                <ul>
+                    <li><a href="catalog.html">Sanoat Ventilyatorlari</a></li>
+                    <li><a href="catalog.html">Sovutish Panellari</a></li>
+                    <li><a href="catalog.html">Radiator Bloklari</a></li>
+                    <li><a href="catalog.html">Smart Rekuperatorlar</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Bog'lanish</h4>
+                <p><i class="fa-solid fa-phone"></i> +998 (71) 200-00-00</p>
+                <p><i class="fa-solid fa-envelope"></i> info@air-climate.uz</p>
+                <p><i class="fa-solid fa-location-dot"></i> Toshkent, Sergeli tumani</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 AIR Climate. Barcha huquqlar himoyalangan.</p>
+            <p>Senior PM & Full-Stack Architecture</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Telegram API Integration -->
+    <script>
+        let selectedProduct = '';
+        let selectedPrice = '';
+
+        function openModal(productName, productPrice) {
+            selectedProduct = productName;
+            selectedPrice = productPrice;
+            document.getElementById('modalProductInfo').innerText = `Tanlangan: ${productName} — ${productPrice}`;
+            document.getElementById('orderModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('orderModal').classList.remove('active');
+        }
+
+        // Telegram Bot API Integratsiyasi (User ID: 5973007672[cite: 1])
+        const BOT_TOKEN = '8870087140:AAGhmm0WlIbp60iE2nBXagUrgWWs0n7otF0';
+        const CHAT_ID = '5973007672'; //[cite: 1]
+
+        async function sendToTelegram(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('clientName').value;
+            const phone = document.getElementById('clientPhone').value;
+            const address = document.getElementById('clientAddress').value;
+
+            const message = `🚨 *Yangi Buyurtma - AIR Magazin*\n\n` +
+                            `📦 *Mahsulot:* ${selectedProduct}\n` +
+                            `💰 *Narxi:* ${selectedPrice}\n` +
+                            `👤 *Mijoz:* ${name}\n` +
+                            `📞 *Telefon:* ${phone}\n` +
+                            `📍 *Manzil:* ${address}\n` +
+                            `⏰ *Vaqt:* ${new Date().toLocaleString()}`;
+
+            const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        chat_id: CHAT_ID,
+                        text: message,
+                        parse_mode: 'Markdown'
+                    })
+                });
+
+                const data = await response.json();
+                if (data.ok) {
+                    alert('Buyurtmangiz muvaffaqiyatli qabul qilindi! Tez orada operatorlarimiz siz bilan bog\'lanishadi va buyurtma Telegram botga yuborildi.');
+                    closeModal();
+                    document.getElementById('telegramForm').reset();
+                } else {
+                    alert('Xatolik yuz berdi. Iltimos qaytadan urinib ko\'ring.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Tarmoqda xatolik yuz berdi.');
+            }
+        }
+    </script>
+</body>
+</html>
