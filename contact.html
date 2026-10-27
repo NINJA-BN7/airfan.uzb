@@ -5,8 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AIR — Aloqa va Buyurtma Rasmiylashtirish | Sanoat Iqlim Tizimlari</title>
     <!-- Google Fonts & FontAwesome -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="shared-theme.css">
+    
+    <script>
+        (function() {
+            const theme = localStorage.getItem('airfan_theme') || 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
     
     <style>
         :root {
@@ -439,8 +447,8 @@
     <!-- Top Bar -->
     <div class="top-bar">
         <div class="top-bar-left">
-            <span><i class="fa-solid fa-location-dot"></i> Toshkent shahri, Sergeli industrial zonasi</span>
-            <span><i class="fa-solid fa-clock"></i> Dush - Shan: 09:00 - 18:00</span>
+            <span><i class="fa-solid fa-location-dot"></i> <span data-i18n="top_address">Toshkent shahri, Sergeli industrial zonasi</span></span>
+            <span><i class="fa-solid fa-clock"></i> <span data-i18n="top_hours">Dush - Shan: 09:00 - 18:00</span></span>
         </div>
         <div class="top-bar-right">
             <span><i class="fa-solid fa-phone"></i> +998 (71) 200-00-00</span>
@@ -451,21 +459,38 @@
     <header>
         <div class="navbar">
             <a href="index.html" class="logo">
-                <i class="fa-solid fa-wind" style="color: var(--accent);"></i> AI<span>R</span>
+                <span class="logo-icon-wrap"><i class="fa-solid fa-wind"></i></span>
+                <span class="logo-text">AIR<span class="logo-highlight">FAN</span></span>
             </a>
             <ul class="nav-links">
-                <li><a href="index.html">Bosh sahifa</a></li>
-                <li><a href="catalog.html">Katalog</a></li>
-                <li><a href="product-detail.html">Mahsulot Tahlili</a></li>
-                <li><a href="contact.html" class="active">Aloqa & Buyurtma</a></li>
+                <li><a href="index.html" data-i18n="nav_home">Bosh sahifa</a></li>
+                <li><a href="catalog.html" data-i18n="nav_catalog">Katalog</a></li>
+                <li><a href="product-detail.html" data-i18n="nav_detail">Mahsulot Tahlili</a></li>
+                <li><a href="contact.html" class="active" data-i18n="nav_contact">Aloqa & Buyurtma</a></li>
             </ul>
+            <div class="header-controls">
+                <!-- 3 Languages Switcher: UZ | RU | EN -->
+                <div class="lang-switcher">
+                    <button type="button" class="lang-btn active" data-lang="uz" onclick="setLanguage('uz')">UZ</button>
+                    <button type="button" class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
+                    <button type="button" class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
+                </div>
+                <!-- Dark / Light Theme Toggle -->
+                <button type="button" class="theme-toggle-btn" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle theme">
+                    <i class="fa-solid fa-moon"></i>
+                    <span class="theme-label" data-i18n="theme_dark">Tungi</span>
+                </button>
+            </div>
         </div>
     </header>
 
     <!-- Page Banner -->
     <section class="page-banner">
-        <h1>Aloqa va Bepul Konsultatsiya</h1>
-        <p>Biz bilan bog'laning yoki obyektingiz uchun zarur bo'lgan ventilyatsiya va sovutish quvvatini onlayn hisoblang.</p>
+        <div class="airfan-brand-emblem">
+            <i class="fa-solid fa-wind"></i> AIRFAN DIRECT CONTACT
+        </div>
+        <h1><span class="airfan-gradient-title" data-i18n="contact_banner_title">Biz bilan Bog'laning</span></h1>
+        <p data-i18n="contact_banner_desc">AIRFAN mutaxassislari loyihangiz uchun eng optimal ventilyatsiya, isitish va sovutish yechimlarini tanlab berishadi.</p>
     </section>
 
     <!-- Contact Container -->
@@ -619,36 +644,38 @@
         <div class="footer-grid">
             <div class="footer-col">
                 <div class="logo" style="color: white; margin-bottom: 20px;">
-                    <i class="fa-solid fa-wind" style="color: var(--accent);"></i> AI<span>R</span>
+                    <span class="logo-icon-wrap"><i class="fa-solid fa-wind"></i></span>
+                    <span class="logo-text">AIR<span class="logo-highlight">FAN</span></span>
                 </div>
-                <p>Sanoat va maishiy obyektlar uchun shamollatish va sovutish uskunalarining eng keng tanlovi.</p>
+                <p data-i18n="footer_about">O'zbekistonda sanoat va maishiy iqlim texnologiyalari bo'yicha yetakchi internet-magazin. Barcha turdagi ventilyatsiya va sovutish tizimlari.</p>
             </div>
             <div class="footer-col">
-                <h4>Sahifalar</h4>
+                <h4 data-i18n="footer_pages">Sahifalar</h4>
                 <ul>
-                    <li><a href="index.html">Bosh sahifa</a></li>
-                    <li><a href="catalog.html">Katalog</a></li>
-                    <li><a href="product-detail.html">Mahsulot Tahlili</a></li>
-                    <li><a href="contact.html">Aloqa</a></li>
+                    <li><a href="index.html" data-i18n="nav_home">Bosh sahifa</a></li>
+                    <li><a href="catalog.html" data-i18n="nav_catalog">Katalog</a></li>
+                    <li><a href="product-detail.html" data-i18n="nav_detail">Mahsulot Tahlili</a></li>
+                    <li><a href="contact.html" data-i18n="nav_contact">Aloqa</a></li>
                 </ul>
             </div>
             <div class="footer-col">
-                <h4>Kategoriyalar</h4>
+                <h4 data-i18n="filter_categories">Kategoriyalar</h4>
                 <ul>
-                    <li><a href="#">Sanoat Ventilyatorlari</a></li>
-                    <li><a href="#">Sovutish Panellari</a></li>
-                    <li><a href="#">Radiator Bloklari</a></li>
-                    <li><a href="#">Smart Rekuperatorlar</a></li>
+                    <li><a href="catalog.html" data-i18n="cat_fan_label">Промышленные вентиляторы</a></li>
+                    <li><a href="catalog.html" data-i18n="cat_heating_label">Отопительные агрегаты</a></li>
+                    <li><a href="catalog.html" data-i18n="cat_pad_label">Гофра охладительные панели</a></li>
+                    <li><a href="catalog.html" data-i18n="cat_cooler_label">Био-охладители AIRFAN</a></li>
                 </ul>
             </div>
             <div class="footer-col">
-                <h4>Bog'lanish</h4>
+                <h4 data-i18n="footer_contact">Bog'lanish</h4>
                 <p><i class="fa-solid fa-phone"></i> +998 (71) 200-00-00</p>
                 <p><i class="fa-solid fa-envelope"></i> info@air-climate.uz</p>
+                <p><i class="fa-solid fa-location-dot"></i> <span data-i18n="top_address">Toshkent, Sergeli tumani</span></p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 AIR Climate. Barcha huquqlar himoyalangan.</p>
+            <p>&copy; 2026 AIRFAN Climate. <span data-i18n="footer_rights">Barcha huquqlar himoyalangan.</span></p>
         </div>
     </footer>
 
@@ -717,5 +744,7 @@
             }
         }
     </script>
+    <!-- Shared Theme & Language Controller -->
+    <script src="theme-lang.js"></script>
 </body>
 </html>

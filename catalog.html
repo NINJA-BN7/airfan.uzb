@@ -5,8 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AIRFAN — Mahsulotlar Katalogi | Sanoat va Maishiy Iqlim Tizimlari</title>
     <!-- Google Fonts & FontAwesome -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="shared-theme.css">
+    
+    <script>
+        (function() {
+            const theme = localStorage.getItem('airfan_theme') || 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
     
     <style>
         :root {
@@ -575,8 +583,8 @@
     <!-- Top Bar -->
     <div class="top-bar">
         <div class="top-bar-left">
-            <span><i class="fa-solid fa-location-dot"></i> Toshkent shahri, Sergeli industrial zonasi</span>
-            <span><i class="fa-solid fa-clock"></i> Dush - Shan: 09:00 - 18:00</span>
+            <span><i class="fa-solid fa-location-dot"></i> <span data-i18n="top_address">Toshkent shahri, Sergeli industrial zonasi</span></span>
+            <span><i class="fa-solid fa-clock"></i> <span data-i18n="top_hours">Dush - Shan: 09:00 - 18:00</span></span>
         </div>
         <div class="top-bar-right">
             <span><i class="fa-solid fa-phone"></i> +998 (71) 200-00-00</span>
@@ -587,21 +595,38 @@
     <header>
         <div class="navbar">
             <a href="index.html" class="logo">
-                <i class="fa-solid fa-wind" style="color: var(--accent);"></i> AIR<span>FAN</span>
+                <span class="logo-icon-wrap"><i class="fa-solid fa-wind"></i></span>
+                <span class="logo-text">AIR<span class="logo-highlight">FAN</span></span>
             </a>
             <ul class="nav-links">
-                <li><a href="index.html">Bosh sahifa</a></li>
-                <li><a href="catalog.html" class="active">Katalog</a></li>
-                <li><a href="product-detail.html">Mahsulot Tahlili</a></li>
-                <li><a href="contact.html">Aloqa & Buyurtma</a></li>
+                <li><a href="index.html" data-i18n="nav_home">Bosh sahifa</a></li>
+                <li><a href="catalog.html" class="active" data-i18n="nav_catalog">Katalog</a></li>
+                <li><a href="product-detail.html" data-i18n="nav_detail">Mahsulot Tahlili</a></li>
+                <li><a href="contact.html" data-i18n="nav_contact">Aloqa & Buyurtma</a></li>
             </ul>
+            <div class="header-controls">
+                <!-- 3 Languages Switcher: UZ | RU | EN -->
+                <div class="lang-switcher">
+                    <button type="button" class="lang-btn active" data-lang="uz" onclick="setLanguage('uz')">UZ</button>
+                    <button type="button" class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
+                    <button type="button" class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
+                </div>
+                <!-- Dark / Light Theme Toggle -->
+                <button type="button" class="theme-toggle-btn" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle theme">
+                    <i class="fa-solid fa-moon"></i>
+                    <span class="theme-label" data-i18n="theme_dark">Tungi</span>
+                </button>
+            </div>
         </div>
     </header>
 
     <!-- Page Banner -->
     <section class="page-banner">
-        <h1>AIRFAN Mahsulotlar Katalogi</h1>
-        <p>Sanoat va maishiy obyektlar uchun barcha turdagi ventilyatsiya, isitish, sovutish va havo tozalash uskunalarini tanlang.</p>
+        <div class="airfan-brand-emblem">
+            <i class="fa-solid fa-wind"></i> AIRFAN PRODUCTS CATALOG
+        </div>
+        <h1><span class="airfan-gradient-title" data-i18n="cat_banner_title">AIRFAN Mahsulotlar Katalogi</span></h1>
+        <p data-i18n="cat_banner_desc">Sanoat va maishiy obyektlar uchun barcha turdagi ventilyatsiya, isitish, sovutish va havo tozalash uskunalarini tanlang.</p>
     </section>
 
     <!-- Main Catalog Container -->
@@ -610,39 +635,39 @@
         <!-- Sidebar Filters -->
         <aside class="sidebar">
             <div class="filter-title">
-                <span>Filtrlar</span>
+                <span data-i18n="filter_title">Filtrlar</span>
                 <i class="fa-solid fa-sliders" style="color: var(--accent);"></i>
             </div>
 
             <!-- Category Filter -->
             <div class="filter-group">
-                <h4>Kategoriyalar</h4>
+                <h4 data-i18n="filter_categories">Kategoriyalar</h4>
                 <div class="category-list">
-                    <label><input type="radio" name="cat" value="all" checked onclick="filterProducts()"> Barchasi</label>
-                    <label><input type="radio" name="cat" value="heating" onclick="filterProducts()"> Отопительные агрегаты</label>
-                    <label><input type="radio" name="cat" value="fan" onclick="filterProducts()"> Вытяжные вентиляторы</label>
-                    <label><input type="radio" name="cat" value="filter" onclick="filterProducts()"> Воздушные фильтры</label>
-                    <label><input type="radio" name="cat" value="pad" onclick="filterProducts()"> Гофра охладительные панели</label>
-                    <label><input type="radio" name="cat" value="cooler" onclick="filterProducts()"> Био-охладители AIRFAN</label>
+                    <label><input type="radio" name="cat" value="all" checked onclick="filterProducts()"> <span data-i18n="cat_all">Barchasi</span></label>
+                    <label><input type="radio" name="cat" value="heating" onclick="filterProducts()"> <span data-i18n="cat_heating_label">Отопительные агрегаты</span></label>
+                    <label><input type="radio" name="cat" value="fan" onclick="filterProducts()"> <span data-i18n="cat_fan_label">Вытяжные вентиляторы</span></label>
+                    <label><input type="radio" name="cat" value="filter" onclick="filterProducts()"> <span data-i18n="cat_filter_label">Воздушные фильтры</span></label>
+                    <label><input type="radio" name="cat" value="pad" onclick="filterProducts()"> <span data-i18n="cat_pad_label">Гофра охладительные панели</span></label>
+                    <label><input type="radio" name="cat" value="cooler" onclick="filterProducts()"> <span data-i18n="cat_cooler_label">Био-охладители AIRFAN</span></label>
                 </div>
             </div>
 
             <!-- Price Filter -->
             <div class="filter-group">
-                <h4>Narx oralig'i (so'm)</h4>
+                <h4 data-i18n="filter_price_title">Narx oralig'i (so'm)</h4>
                 <div class="price-inputs">
-                    <input type="number" id="minPrice" placeholder="Dan" onkeyup="filterProducts()">
+                    <input type="number" id="minPrice" placeholder="Dan" data-i18n-ph="price_from" onkeyup="filterProducts()">
                     <span>-</span>
-                    <input type="number" id="maxPrice" placeholder="Gacha" onkeyup="filterProducts()">
+                    <input type="number" id="maxPrice" placeholder="Gacha" data-i18n-ph="price_to" onkeyup="filterProducts()">
                 </div>
             </div>
 
             <!-- Availability -->
             <div class="filter-group">
-                <h4>Mavjudligi</h4>
+                <h4 data-i18n="filter_avail_title">Mavjudligi</h4>
                 <div class="category-list">
-                    <label><input type="checkbox" checked> Omborxonada bor</label>
-                    <label><input type="checkbox"> Buyurtma asosida</label>
+                    <label><input type="checkbox" checked> <span data-i18n="avail_in_stock">Omborxonada bor</span></label>
+                    <label><input type="checkbox"> <span data-i18n="avail_on_order">Buyurtma asosida</span></label>
                 </div>
             </div>
         </aside>
@@ -654,13 +679,13 @@
             <div class="toolbar">
                 <div class="search-box">
                     <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" id="searchInput" placeholder="Mahsulot nomini qidiring..." onkeyup="filterProducts()">
+                    <input type="text" id="searchInput" placeholder="Mahsulot nomini qidiring..." data-i18n-ph="search_ph" onkeyup="filterProducts()">
                 </div>
                 <div class="sort-box">
                     <select id="sortSelect" onchange="filterProducts()">
-                        <option value="default">Saralash: Standart</option>
-                        <option value="low-high">Narx: Arzondan qimmatga</option>
-                        <option value="high-low">Narx: Qimmatdan arzonga</option>
+                        <option value="default" data-i18n="sort_default">Saralash: Standart</option>
+                        <option value="low-high" data-i18n="sort_low_high">Narx: Arzondan qimmatga</option>
+                        <option value="high-low" data-i18n="sort_high_low">Narx: Qimmatdan arzonga</option>
                     </select>
                 </div>
             </div>
@@ -818,6 +843,106 @@
                     </div>
                 </div>
 
+                <!-- Item 7: Промышленные вентиляторы 1380 -->
+                <div class="product-card" data-category="fan" data-price="3500000" data-name="Промышленные вентиляторы 1380 AIRFAN">
+                    <div class="product-img">
+                        <span class="product-badge">Вентиляция</span>
+                        <img src="https://airfan.uz/thumb/2/yzc3Lm7g6vigUG7zDn1mhw/1200r/d/image11380_1_0.png" alt="Промышленные вентиляторы 1380">
+                    </div>
+                    <div class="product-body">
+                        <div>
+                            <div class="product-category">Вытяжные вентиляторы</div>
+                            <h4 class="product-title">Промышленные вентиляторы</h4>
+                            <div class="product-specs">
+                                <span><i class="fa-solid fa-wind"></i> 44,500 m³/soat rekord unumdorlik</span>
+                                <span><i class="fa-solid fa-shield-halved"></i> Santrifugal ochilishli jalyuzi</span>
+                            </div>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">3,500,000 so'm</span>
+                            <div style="display: flex; gap: 8px;">
+                                <a href="product-detail.html?product=7" class="btn btn-outline" style="padding: 9px 12px; font-size: 13px;" title="Texnik tahlil"><i class="fa-solid fa-chart-simple"></i> Tahlil</a>
+                                <button class="btn btn-primary" onclick="openModal('Промышленные вентиляторы', '3,500,000 so\'m')">Sotib olish</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 8: Отопительные агрегаты -->
+                <div class="product-card" data-category="heating" data-price="2900000" data-name="Отопительные агрегаты AIRFAN 510">
+                    <div class="product-img">
+                        <span class="product-badge" style="background: #e11d48;">Isitish</span>
+                        <img src="https://airfan.uz/thumb/2/qO_2CHLSrfEQ4OkXnjct5g/1200r/d/image1510.png" alt="Отопительные агрегаты">
+                    </div>
+                    <div class="product-body">
+                        <div>
+                            <div class="product-category">Отопительные агрегаты</div>
+                            <h4 class="product-title">Отопительные агрегаты</h4>
+                            <div class="product-specs">
+                                <span><i class="fa-solid fa-fire"></i> 25 - 35 kW suvli isitish quvvati</span>
+                                <span><i class="fa-solid fa-compress"></i> Ixcham 510 mm, 5,100 m³/soat</span>
+                            </div>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">2,900,000 so'm</span>
+                            <div style="display: flex; gap: 8px;">
+                                <a href="product-detail.html?product=8" class="btn btn-outline" style="padding: 9px 12px; font-size: 13px;" title="Texnik tahlil"><i class="fa-solid fa-chart-simple"></i> Tahlil</a>
+                                <button class="btn btn-primary" onclick="openModal('Отопительные агрегаты', '2,900,000 so\'m')">Sotib olish</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 9: Гофра охладительные панели -->
+                <div class="product-card" data-category="pad" data-price="1450000" data-name="Гофра охладительные панели с кассетой AIRFAN">
+                    <div class="product-img">
+                        <span class="product-badge" style="background: var(--success);">Kasseta Tizimi</span>
+                        <img src="https://airfan.uz/thumb/2/AAYMvPB7iBwS2VazG23t9Q/1200r/d/image1222.png" alt="Гофра охладительные панели">
+                    </div>
+                    <div class="product-body">
+                        <div>
+                            <div class="product-category">Гофра охладительные панели</div>
+                            <h4 class="product-title">Гофра охладительные панели</h4>
+                            <div class="product-specs">
+                                <span><i class="fa-solid fa-border-all"></i> Alyuminiy karkas va nav tizimi</span>
+                                <span><i class="fa-solid fa-temperature-arrow-down"></i> 8-12°C tabiiy sovutish</span>
+                            </div>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">1,450,000 so'm</span>
+                            <div style="display: flex; gap: 8px;">
+                                <a href="product-detail.html?product=9" class="btn btn-outline" style="padding: 9px 12px; font-size: 13px;" title="Texnik tahlil"><i class="fa-solid fa-chart-simple"></i> Tahlil</a>
+                                <button class="btn btn-primary" onclick="openModal('Гофра охладительные панели', '1,450,000 so\'m')">Sotib olish</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 10: Био-охладители AIRFAN -->
+                <div class="product-card" data-category="cooler" data-price="6800000" data-name="Био-охладители AIRFAN Стационарный">
+                    <div class="product-img">
+                        <span class="product-badge" style="background: var(--accent);">Statsionar</span>
+                        <img src="https://airfan.uz/thumb/2/eXtdmy30UKRVJftBgFwacw/1200r/d/image1.png" alt="Био-охладители AIRFAN">
+                    </div>
+                    <div class="product-body">
+                        <div>
+                            <div class="product-category">Био-охладители AIRFAN</div>
+                            <h4 class="product-title">Био-охладители AIRFAN</h4>
+                            <div class="product-specs">
+                                <span><i class="fa-solid fa-wind"></i> 22,000 m³/soat toza sovitilgan havo</span>
+                                <span><i class="fa-solid fa-bolt"></i> Tom/devor montaji, 85% tejamkor</span>
+                            </div>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">6,800,000 so'm</span>
+                            <div style="display: flex; gap: 8px;">
+                                <a href="product-detail.html?product=10" class="btn btn-outline" style="padding: 9px 12px; font-size: 13px;" title="Texnik tahlil"><i class="fa-solid fa-chart-simple"></i> Tahlil</a>
+                                <button class="btn btn-primary" onclick="openModal('Био-охладители AIRFAN', '6,800,000 so\'m')">Sotib olish</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </main>
     </div>
@@ -847,40 +972,43 @@
     </div>
 
     <!-- Footer -->
+    <!-- Footer -->
     <footer>
         <div class="footer-grid">
             <div class="footer-col">
                 <div class="logo" style="color: white; margin-bottom: 20px;">
-                    <i class="fa-solid fa-wind" style="color: var(--accent);"></i> AIR<span>FAN</span>
+                    <span class="logo-icon-wrap"><i class="fa-solid fa-wind"></i></span>
+                    <span class="logo-text">AIR<span class="logo-highlight">FAN</span></span>
                 </div>
-                <p>Sanoat va maishiy obyektlar uchun shamollatish va sovutish uskunalarining eng keng tanlovi.</p>
+                <p data-i18n="footer_about">Sanoat va maishiy obyektlar uchun shamollatish va sovutish uskunalarining eng keng tanlovi.</p>
             </div>
             <div class="footer-col">
-                <h4>Sahifalar</h4>
+                <h4 data-i18n="footer_pages">Sahifalar</h4>
                 <ul>
-                    <li><a href="index.html">Bosh sahifa</a></li>
-                    <li><a href="catalog.html">Katalog</a></li>
-                    <li><a href="product-detail.html">Mahsulot Tahlili</a></li>
-                    <li><a href="contact.html">Aloqa</a></li>
+                    <li><a href="index.html" data-i18n="nav_home">Bosh sahifa</a></li>
+                    <li><a href="catalog.html" data-i18n="nav_catalog">Katalog</a></li>
+                    <li><a href="product-detail.html" data-i18n="nav_detail">Mahsulot Tahlili</a></li>
+                    <li><a href="contact.html" data-i18n="nav_contact">Aloqa</a></li>
                 </ul>
             </div>
             <div class="footer-col">
-                <h4>Kategoriyalar</h4>
+                <h4 data-i18n="filter_categories">Kategoriyalar</h4>
                 <ul>
-                    <li><a href="#">Отопительные агрегаты</a></li>
-                    <li><a href="#">Вытяжные вентиляторы</a></li>
-                    <li><a href="#">Воздушные фильтры AURA</a></li>
-                    <li><a href="#">Био-охладители AIRFAN</a></li>
+                    <li><a href="catalog.html" data-i18n="cat_heating_label">Отопительные агрегаты</a></li>
+                    <li><a href="catalog.html" data-i18n="cat_fan_label">Вытяжные вентиляторы</a></li>
+                    <li><a href="catalog.html" data-i18n="cat_filter_label">Воздушные фильтры</a></li>
+                    <li><a href="catalog.html" data-i18n="cat_pad_label">Гофра охладительные панели</a></li>
+                    <li><a href="catalog.html" data-i18n="cat_cooler_label">Био-охладители AIRFAN</a></li>
                 </ul>
             </div>
             <div class="footer-col">
-                <h4>Bog'lanish</h4>
+                <h4 data-i18n="footer_contact">Bog'lanish</h4>
                 <p><i class="fa-solid fa-phone"></i> +998 (71) 200-00-00</p>
                 <p><i class="fa-solid fa-envelope"></i> info@air-climate.uz</p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 AIRFAN Climate. Barcha huquqlar himoyalangan.</p>
+            <p>&copy; 2026 AIRFAN Climate. <span data-i18n="footer_rights">Barcha huquqlar himoyalangan.</span></p>
         </div>
     </footer>
 
@@ -900,16 +1028,25 @@
             document.getElementById('orderModal').classList.remove('active');
         }
 
-        // Filtering logic
+        // Filtering and sorting logic
         function filterProducts() {
             const searchVal = document.getElementById('searchInput').value.toLowerCase();
             const minPrice = parseFloat(document.getElementById('minPrice').value) || 0;
             const maxPrice = parseFloat(document.getElementById('maxPrice').value) || Infinity;
             const categoryRadio = document.querySelector('input[name="cat"]:checked').value;
+            const sortVal = document.getElementById('sortSelect').value;
 
-            const cards = document.querySelectorAll('.product-card');
+            const grid = document.getElementById('productsGrid');
+            const cards = Array.from(document.querySelectorAll('.product-card'));
+
+            if (sortVal === 'low-high') {
+                cards.sort((a, b) => parseFloat(a.getAttribute('data-price')) - parseFloat(b.getAttribute('data-price')));
+            } else if (sortVal === 'high-low') {
+                cards.sort((a, b) => parseFloat(b.getAttribute('data-price')) - parseFloat(a.getAttribute('data-price')));
+            }
 
             cards.forEach(card => {
+                grid.appendChild(card);
                 const name = card.getAttribute('data-name').toLowerCase();
                 const category = card.getAttribute('data-category');
                 const price = parseFloat(card.getAttribute('data-price'));
@@ -972,5 +1109,7 @@
             }
         }
     </script>
+    <!-- Shared Theme & Language Controller -->
+    <script src="theme-lang.js"></script>
 </body>
 </html>

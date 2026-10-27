@@ -5,8 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AIRFAN — Sanoat va Maishiy Ventilyatsiya, Sovutish Tizimlari</title>
     <!-- Google Fonts & FontAwesome -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="shared-theme.css">
+    
+    <script>
+        (function() {
+            const theme = localStorage.getItem('airfan_theme') || 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
     
     <style>
         :root {
@@ -685,8 +693,8 @@
     <!-- Top Bar -->
     <div class="top-bar">
         <div class="top-bar-left">
-            <span><i class="fa-solid fa-location-dot"></i> Toshkent shahri, Sergeli industrial zonasi</span>
-            <span><i class="fa-solid fa-clock"></i> Dush - Shan: 09:00 - 18:00</span>
+            <span><i class="fa-solid fa-location-dot"></i> <span data-i18n="top_address">Toshkent shahri, Sergeli industrial zonasi</span></span>
+            <span><i class="fa-solid fa-clock"></i> <span data-i18n="top_hours">Dush - Shan: 09:00 - 18:00</span></span>
         </div>
         <div class="top-bar-right">
             <span><i class="fa-solid fa-phone"></i> +998 (71) 200-00-00</span>
@@ -697,33 +705,141 @@
     <header>
         <div class="navbar">
             <a href="index.html" class="logo">
-                <i class="fa-solid fa-wind" style="color: var(--accent);"></i> AIR<span>FAN</span>
+                <span class="logo-icon-wrap"><i class="fa-solid fa-wind"></i></span>
+                <span class="logo-text">AIR<span class="logo-highlight">FAN</span></span>
             </a>
             <ul class="nav-links">
-                <li><a href="index.html" class="active">Bosh sahifa</a></li>
-                <li><a href="catalog.html">Katalog</a></li>
-                <li><a href="product-detail.html">Mahsulot Tahlili</a></li>
-                <li><a href="contact.html">Aloqa & Buyurtma</a></li>
+                <li><a href="index.html" class="active" data-i18n="nav_home">Bosh sahifa</a></li>
+                <li><a href="catalog.html" data-i18n="nav_catalog">Katalog</a></li>
+                <li><a href="product-detail.html" data-i18n="nav_detail">Mahsulot Tahlili</a></li>
+                <li><a href="contact.html" data-i18n="nav_contact">Aloqa & Buyurtma</a></li>
             </ul>
-            <div class="nav-actions">
-                <a href="catalog.html" class="btn btn-outline"><i class="fa-solid fa-boxes-stacked"></i> Katalogga o'tish</a>
+            <div class="header-controls">
+                <!-- 3 Languages Switcher: UZ | RU | EN -->
+                <div class="lang-switcher">
+                    <button type="button" class="lang-btn active" data-lang="uz" onclick="setLanguage('uz')">UZ</button>
+                    <button type="button" class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
+                    <button type="button" class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
+                </div>
+                <!-- Dark / Light Theme Toggle -->
+                <button type="button" class="theme-toggle-btn" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle theme">
+                    <i class="fa-solid fa-moon"></i>
+                    <span class="theme-label" data-i18n="theme_dark">Tungi</span>
+                </button>
+                <a href="catalog.html" class="btn btn-primary" style="padding: 9px 18px; font-size: 13px;" data-i18n="btn_catalog_go">
+                    <i class="fa-solid fa-boxes-stacked"></i> Katalogga o'tish
+                </a>
             </div>
         </div>
     </header>
 
-    <!-- Hero Section (Анимированный первый слайд с новым названием AIRFAN) -->
+    <!-- Hero Section: Multi-Slide Carousel with Dedicated AIRFAN Branding -->
     <section class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1>Sanoat va Maishiy <span>AIRFAN Iqlim Tizimlari</span></h1>
-                <p>Obyektlaringiz uchun yuqori samarali AIRFAN sanoat ventilyatorlari, isitish agregatlari, sovutish panellari va bio-coolerlar. Barcha turdagi binolar uchun professional muhandislik yechimlari[cite: 1].</p>
-                <div class="hero-buttons">
-                    <a href="catalog.html" class="btn btn-primary">Mahsulotlarni ko'rish <i class="fa-solid fa-arrow-right"></i></a>
-                    <a href="contact.html" class="btn btn-outline" style="color: white; border-color: rgba(255,255,255,0.3);">Bog'lanish</a>
+        <div class="hero-slider" id="heroSlider">
+            
+            <!-- Slide 1: Sanoat Ventilyatsiyasi AIRFAN -->
+            <div class="hero-slide active">
+                <div class="hero-container">
+                    <div class="hero-content">
+                        <div class="airfan-brand-emblem" data-i18n="hero_badge_1">
+                            <i class="fa-solid fa-wind"></i> AIRFAN SANOAT VENTILYATSIYASI
+                        </div>
+                        <h1>
+                            <span data-i18n="hero_title_1">Sanoat Ventilyatsiyasi va Shamollatish Tizimlari</span>
+                            <span class="airfan-gradient-title"> AIRFAN</span>
+                        </h1>
+                        <p data-i18n="hero_desc_1">
+                            O'zbekistondagi eng quvvatli sanoat tortish ventilyatorlari. Sexlar, parrandachilik va yirik binolar uchun 44 500 m³/soatgacha rekord unumdorlik.
+                        </p>
+                        <div class="hero-buttons">
+                            <a href="catalog.html" class="btn btn-primary">
+                                <span data-i18n="hero_btn_view">Mahsulotlarni ko'rish</span> <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                            <a href="contact.html" class="btn btn-outline" style="color: white; border-color: rgba(255,255,255,0.35);" data-i18n="hero_btn_contact">
+                                Bog'lanish
+                            </a>
+                        </div>
+                    </div>
+                    <div class="hero-image-wrapper">
+                        <img src="https://airfan.uz/thumb/2/feMxRV-xUJcWnpyn7FKtiQ/1200r/d/glavnaya-4_2.jpg" alt="AIRFAN Промышленные вентиляторы">
+                    </div>
                 </div>
             </div>
-            <div class="hero-image-wrapper">
-                <img src="https://airfan.uz/thumb/2/feMxRV-xUJcWnpyn7FKtiQ/1200r/d/glavnaya-4_2.jpg" alt="Sanoat Ventilyatorlari AIRFAN">
+
+            <!-- Slide 2: Isitish Agregatlari AIRFAN -->
+            <div class="hero-slide">
+                <div class="hero-container">
+                    <div class="hero-content">
+                        <div class="airfan-brand-emblem" data-i18n="hero_badge_2">
+                            <i class="fa-solid fa-fire"></i> AIRFAN ISITISH TEXNOLOGIYALARI
+                        </div>
+                        <h1>
+                            <span data-i18n="hero_title_2">Sanoat Isitish Agregatlari va Kaloriferlar</span>
+                            <span class="airfan-gradient-title"> AIRFAN</span>
+                        </h1>
+                        <p data-i18n="hero_desc_2">
+                            Sexlar, omborxonalar va issiqxonalarni sovuq mavsumda jadal va tejamkor isituvchi zamonaviy suvli hamda elektr isitish tizimlari.
+                        </p>
+                        <div class="hero-buttons">
+                            <a href="catalog.html" class="btn btn-primary">
+                                <span data-i18n="hero_btn_view">Mahsulotlarni ko'rish</span> <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                            <a href="product-detail.html?product=1" class="btn btn-outline" style="color: white; border-color: rgba(255,255,255,0.35);" data-i18n="btn_analysis">
+                                Tahlil
+                            </a>
+                        </div>
+                    </div>
+                    <div class="hero-image-wrapper">
+                        <img src="https://airfan.uz/thumb/2/rsVzMzKHSt2SvZZminxczw/1200r/d/6_3.jpg" alt="AIRFAN Отопительные агрегаты">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3: Cooling Pad va Bio-Cooler AIRFAN -->
+            <div class="hero-slide">
+                <div class="hero-container">
+                    <div class="hero-content">
+                        <div class="airfan-brand-emblem" data-i18n="hero_badge_3">
+                            <i class="fa-solid fa-droplet"></i> AIRFAN TABIIY SOVUTISH TIZIMLARI
+                        </div>
+                        <h1>
+                            <span data-i18n="hero_title_3">Evaporativ Sovutish va Bio-Kulerlar</span>
+                            <span class="airfan-gradient-title"> AIRFAN</span>
+                        </h1>
+                        <p data-i18n="hero_desc_3">
+                            Cooling Pad sellyuloza gofra panellari va mobil hamda statsionar bio-oxladitellar. Elektrni 85% tejab haroratni 8-12°C ga pasaytiradi.
+                        </p>
+                        <div class="hero-buttons">
+                            <a href="catalog.html" class="btn btn-primary">
+                                <span data-i18n="hero_btn_view">Mahsulotlarni ko'rish</span> <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                            <a href="product-detail.html?product=6" class="btn btn-outline" style="color: white; border-color: rgba(255,255,255,0.35);" data-i18n="btn_analysis">
+                                Tahlil
+                            </a>
+                        </div>
+                    </div>
+                    <div class="hero-image-wrapper">
+                        <img src="https://airfan.uz/thumb/2/t9YoEQGkJp-bKDwk3sOXiQ/1200r/d/image2.png" alt="AIRFAN Био-охладители">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Slider Navigation Controls -->
+        <div class="slider-controls">
+            <div class="slider-dots" id="sliderDots">
+                <button type="button" class="slider-dot active" onclick="goToSlide(0)" aria-label="Slide 1"></button>
+                <button type="button" class="slider-dot" onclick="goToSlide(1)" aria-label="Slide 2"></button>
+                <button type="button" class="slider-dot" onclick="goToSlide(2)" aria-label="Slide 3"></button>
+            </div>
+            <div class="slider-arrows">
+                <button type="button" class="slider-arrow-btn" onclick="prevSlide()" aria-label="Oldingi slayd">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <button type="button" class="slider-arrow-btn" onclick="nextSlide()" aria-label="Keyingi slayd">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
             </div>
         </div>
     </section>
@@ -899,43 +1015,100 @@
         <div class="footer-grid">
             <div class="footer-col">
                 <div class="logo" style="color: white; margin-bottom: 20px;">
-                    <i class="fa-solid fa-wind" style="color: var(--accent);"></i> AIR<span>FAN</span>
+                    <span class="logo-icon-wrap"><i class="fa-solid fa-wind"></i></span>
+                    <span class="logo-text">AIR<span class="logo-highlight">FAN</span></span>
                 </div>
-                <p>O'zbekistonda sanoat va maishiy iqlim texnologiyalari bo'yicha yetakchi internet-magazin. Barcha turdagi ventilyatsiya va sovutish tizimlari.</p>
+                <p data-i18n="footer_about">O'zbekistonda sanoat va maishiy iqlim texnologiyalari bo'yicha yetakchi internet-magazin. Barcha turdagi ventilyatsiya va sovutish tizimlari.</p>
             </div>
             <div class="footer-col">
-                <h4>Sahifalar</h4>
+                <h4 data-i18n="footer_pages">Sahifalar</h4>
                 <ul>
-                    <li><a href="index.html">Bosh sahifa</a></li>
-                    <li><a href="catalog.html">Katalog</a></li>
-                    <li><a href="product-detail.html">Mahsulot Tahlili</a></li>
-                    <li><a href="contact.html">Aloqa</a></li>
+                    <li><a href="index.html" data-i18n="nav_home">Bosh sahifa</a></li>
+                    <li><a href="catalog.html" data-i18n="nav_catalog">Katalog</a></li>
+                    <li><a href="product-detail.html" data-i18n="nav_detail">Mahsulot Tahlili</a></li>
+                    <li><a href="contact.html" data-i18n="nav_contact">Aloqa</a></li>
                 </ul>
             </div>
             <div class="footer-col">
-                <h4>Kategoriyalar</h4>
+                <h4 data-i18n="filter_categories">Kategoriyalar</h4>
                 <ul>
-                    <li><a href="catalog.html">Промышленные вентиляторы</a></li>
-                    <li><a href="catalog.html">Отопительные агрегаты</a></li>
-                    <li><a href="catalog.html">Гофра охладительные панели</a></li>
-                    <li><a href="catalog.html">Био-охладители AIRFAN</a></li>
+                    <li><a href="catalog.html" data-i18n="cat_fan_label">Промышленные вентиляторы</a></li>
+                    <li><a href="catalog.html" data-i18n="cat_heating_label">Отопительные агрегаты</a></li>
+                    <li><a href="catalog.html" data-i18n="cat_pad_label">Гофра охладительные панели</a></li>
+                    <li><a href="catalog.html" data-i18n="cat_cooler_label">Био-охладители AIRFAN</a></li>
                 </ul>
             </div>
             <div class="footer-col">
-                <h4>Bog'lanish</h4>
+                <h4 data-i18n="footer_contact">Bog'lanish</h4>
                 <p><i class="fa-solid fa-phone"></i> +998 (71) 200-00-00</p>
                 <p><i class="fa-solid fa-envelope"></i> info@air-climate.uz</p>
-                <p><i class="fa-solid fa-location-dot"></i> Toshkent, Sergeli tumani</p>
+                <p><i class="fa-solid fa-location-dot"></i> <span data-i18n="top_address">Toshkent, Sergeli tumani</span></p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 AIRFAN Climate. Barcha huquqlar himoyalangan.</p>
+            <p>&copy; 2026 AIRFAN Climate. <span data-i18n="footer_rights">Barcha huquqlar himoyalangan.</span></p>
             <p>Senior PM & Full-Stack Architecture</p>
         </div>
     </footer>
 
-    <!-- JavaScript for Telegram API Integration -->
+    <!-- Shared Theme & Language Controller -->
+    <script src="theme-lang.js"></script>
+
+    <!-- Hero Slider Controller & Telegram Integration -->
     <script>
+        // Hero Slider Logic
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.hero-slide');
+        const dots = document.querySelectorAll('.slider-dot');
+        let slideInterval = null;
+
+        function showSlide(index) {
+            if (index < 0) index = slides.length - 1;
+            if (index >= slides.length) index = 0;
+            currentSlide = index;
+
+            slides.forEach((s, idx) => {
+                if (idx === currentSlide) s.classList.add('active');
+                else s.classList.remove('active');
+            });
+
+            dots.forEach((d, idx) => {
+                if (idx === currentSlide) d.classList.add('active');
+                else d.classList.remove('active');
+            });
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        function goToSlide(index) {
+            showSlide(index);
+            restartAutoSlide();
+        }
+
+        function startAutoSlide() {
+            slideInterval = setInterval(nextSlide, 5000);
+        }
+
+        function restartAutoSlide() {
+            clearInterval(slideInterval);
+            startAutoSlide();
+        }
+
+        startAutoSlide();
+
+        const sliderElem = document.getElementById('heroSlider');
+        if (sliderElem) {
+            sliderElem.addEventListener('mouseenter', () => clearInterval(slideInterval));
+            sliderElem.addEventListener('mouseleave', () => startAutoSlide());
+        }
+
+        // Order Modal & Telegram API
         let selectedProduct = '';
         let selectedPrice = '';
 
@@ -950,9 +1123,8 @@
             document.getElementById('orderModal').classList.remove('active');
         }
 
-        // Telegram Bot API Integratsiyasi (User ID: 5973007672)[cite: 1]
         const BOT_TOKEN = '8870087140:AAGhmm0WlIbp60iE2nBXagUrgWWs0n7otF0';
-        const CHAT_ID = '5973007672';[cite: 1]
+        const CHAT_ID = '5973007672';
 
         async function sendToTelegram(event) {
             event.preventDefault();
@@ -974,9 +1146,7 @@
             try {
                 const response = await fetch(url, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         chat_id: CHAT_ID,
                         text: message,

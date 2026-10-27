@@ -5,8 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AIRFAN — Mahsulot Tahlili va Texnik Xarakteristikalari</title>
     <!-- Google Fonts & FontAwesome -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="shared-theme.css">
+    
+    <script>
+        (function() {
+            const theme = localStorage.getItem('airfan_theme') || 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
     
     <style>
         :root {
@@ -235,7 +243,7 @@
 
         .selector-strip {
             display: grid;
-            grid-template-columns: repeat(6, 1fr);
+            grid-template-columns: repeat(5, 1fr);
             gap: 10px;
             background: var(--white);
             padding: 10px;
@@ -373,10 +381,10 @@
             transform: scale(1.05);
         }
 
-        /* 6 Thumbnails Grid */
+        /* 10 Thumbnails Grid */
         .thumbs-grid {
             display: grid;
-            grid-template-columns: repeat(6, 1fr);
+            grid-template-columns: repeat(5, 1fr);
             gap: 12px;
         }
 
@@ -1027,10 +1035,10 @@
         /* Responsive */
         @media (max-width: 1200px) {
             .selector-strip {
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(5, 1fr);
             }
             .thumbs-grid {
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(5, 1fr);
             }
         }
 
@@ -1103,8 +1111,8 @@
     <!-- Top Bar -->
     <div class="top-bar">
         <div class="top-bar-left">
-            <span><i class="fa-solid fa-location-dot"></i> Toshkent shahri, Sergeli industrial zonasi</span>
-            <span><i class="fa-solid fa-clock"></i> Dush - Shan: 09:00 - 18:00</span>
+            <span><i class="fa-solid fa-location-dot"></i> <span data-i18n="top_address">Toshkent shahri, Sergeli industrial zonasi</span></span>
+            <span><i class="fa-solid fa-clock"></i> <span data-i18n="top_hours">Dush - Shan: 09:00 - 18:00</span></span>
         </div>
         <div class="top-bar-right">
             <span><i class="fa-solid fa-phone"></i> +998 (71) 200-00-00</span>
@@ -1115,42 +1123,59 @@
     <header>
         <div class="navbar">
             <a href="index.html" class="logo">
-                <i class="fa-solid fa-wind" style="color: var(--accent);"></i> AIR<span>FAN</span>
+                <span class="logo-icon-wrap"><i class="fa-solid fa-wind"></i></span>
+                <span class="logo-text">AIR<span class="logo-highlight">FAN</span></span>
             </a>
             <ul class="nav-links">
-                <li><a href="index.html">Bosh sahifa</a></li>
-                <li><a href="catalog.html">Katalog</a></li>
-                <li><a href="product-detail.html" class="active">Mahsulot Tahlili</a></li>
-                <li><a href="contact.html">Aloqa & Buyurtma</a></li>
+                <li><a href="index.html" data-i18n="nav_home">Bosh sahifa</a></li>
+                <li><a href="catalog.html" data-i18n="nav_catalog">Katalog</a></li>
+                <li><a href="product-detail.html" class="active" data-i18n="nav_detail">Mahsulot Tahlili</a></li>
+                <li><a href="contact.html" data-i18n="nav_contact">Aloqa & Buyurtma</a></li>
             </ul>
+            <div class="header-controls">
+                <!-- 3 Languages Switcher: UZ | RU | EN -->
+                <div class="lang-switcher">
+                    <button type="button" class="lang-btn active" data-lang="uz" onclick="setLanguage('uz')">UZ</button>
+                    <button type="button" class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
+                    <button type="button" class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
+                </div>
+                <!-- Dark / Light Theme Toggle -->
+                <button type="button" class="theme-toggle-btn" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle theme">
+                    <i class="fa-solid fa-moon"></i>
+                    <span class="theme-label" data-i18n="theme_dark">Tungi</span>
+                </button>
+            </div>
         </div>
     </header>
 
     <!-- Page Banner -->
     <section class="page-banner">
-        <h1>Mahsulot Tahlili va Texnik Ekspertiza</h1>
-        <p>AIRFAN iqlim uskunalarining to'liq texnik xarakteristikalari, samaradorlik ko'rsatkichlari va 6 ta asosiy modelning qiyosiy tahlili.</p>
+        <div class="airfan-brand-emblem">
+            <i class="fa-solid fa-wind"></i> AIRFAN TECHNICAL EXPERTISE
+        </div>
+        <h1><span class="airfan-gradient-title" data-i18n="detail_banner_title">Mahsulot Tahlili va Texnik Ekspertiza</span></h1>
+        <p data-i18n="detail_banner_desc">AIRFAN iqlim uskunalarining to'liq texnik xarakteristikalari, samaradorlik ko'rsatkichlari va 10 ta asosiy modelning qiyosiy tahlili.</p>
     </section>
 
     <!-- Breadcrumb -->
     <div class="breadcrumb">
-        <a href="index.html">Bosh sahifa</a>
+        <a href="index.html" data-i18n="nav_home">Bosh sahifa</a>
         <span>/</span>
-        <a href="catalog.html">Katalog</a>
+        <a href="catalog.html" data-i18n="nav_catalog">Katalog</a>
         <span>/</span>
-        <a href="product-detail.html">Mahsulot Tahlili</a>
+        <a href="product-detail.html" data-i18n="nav_detail">Mahsulot Tahlili</a>
         <span>/</span>
         <span style="color: var(--primary); font-weight: 700;" id="breadcrumbTitle">Отопительный агрегат - 800</span>
     </div>
 
-    <!-- Product Selector Strip (1 to 6) -->
+    <!-- Product Selector Strip (1 to 10) -->
     <div class="selector-strip-wrapper">
         <div class="selector-strip-header">
             <span class="selector-strip-title">
-                <i class="fa-solid fa-layer-group" style="color: var(--accent);"></i> Tahlil uchun modelni tanlang (1 - 6):
+                <i class="fa-solid fa-layer-group" style="color: var(--accent);"></i> <span data-i18n="selector_title">Tahlil uchun modelni tanlang (1 - 10):</span>
             </span>
             <a href="#comparisonMatrix" class="jump-matrix-btn">
-                <i class="fa-solid fa-table-columns"></i> Qiyosiy jadvalga o'tish
+                <i class="fa-solid fa-table-columns"></i> <span data-i18n="jump_matrix">Qiyosiy jadvalga o'tish</span>
             </a>
         </div>
         <div class="selector-strip" id="selectorStrip">
@@ -1172,11 +1197,27 @@
             </div>
             <div class="selector-pill" onclick="selectProduct(4)">
                 <span class="num-badge">5</span>
-                <span class="pill-text">Гофра панели</span>
+                <span class="pill-text">Гофра охладительные панели</span>
             </div>
             <div class="selector-pill" onclick="selectProduct(5)">
                 <span class="num-badge">6</span>
-                <span class="pill-text">Био-охладители</span>
+                <span class="pill-text">Био-охладители AIRFAN</span>
+            </div>
+            <div class="selector-pill" onclick="selectProduct(6)">
+                <span class="num-badge">7</span>
+                <span class="pill-text">Промышленные вентиляторы</span>
+            </div>
+            <div class="selector-pill" onclick="selectProduct(7)">
+                <span class="num-badge">8</span>
+                <span class="pill-text">Отопительные агрегаты</span>
+            </div>
+            <div class="selector-pill" onclick="selectProduct(8)">
+                <span class="num-badge">9</span>
+                <span class="pill-text">Гофра охладительные панели</span>
+            </div>
+            <div class="selector-pill" onclick="selectProduct(9)">
+                <span class="num-badge">10</span>
+                <span class="pill-text">Био-охладители AIRFAN</span>
             </div>
         </div>
     </div>
@@ -1266,12 +1307,12 @@
                         <button class="qty-btn" onclick="updateQty(1)" aria-label="Oshirish">+</button>
                     </div>
                     <button class="btn btn-primary" style="flex-grow: 1; justify-content: center; font-size: 15px;" onclick="openDetailModal()">
-                        <i class="fa-solid fa-cart-shopping"></i> Hoziroq Buyurtma Berish
+                        <i class="fa-solid fa-cart-shopping"></i> <span data-i18n="btn_order_detail">Hoziroq Buyurtma Berish</span>
                     </button>
                 </div>
                 <div style="margin-top: 14px; display: flex; justify-content: space-between; font-size: 12.5px; color: var(--text-light);">
-                    <span><i class="fa-solid fa-truck-fast" style="color: var(--accent);"></i> Butun O'zbekiston bo'ylab yetkazish</span>
-                    <span><i class="fa-solid fa-award" style="color: var(--success);"></i> ISO 9001 Sifat sertifikati</span>
+                    <span><i class="fa-solid fa-truck-fast" style="color: var(--accent);"></i> <span data-i18n="badge_delivery">Butun O'zbekiston bo'ylab yetkazish</span></span>
+                    <span><i class="fa-solid fa-award" style="color: var(--success);"></i> <span data-i18n="badge_iso">ISO 9001 Sifat sertifikati</span></span>
                 </div>
             </div>
         </div>
@@ -1281,13 +1322,13 @@
     <div class="tabs-container">
         <div class="tabs-header">
             <button class="tab-btn active" onclick="switchTab('tab-specs', this)">
-                <i class="fa-solid fa-sliders"></i> Texnik Xarakteristikalar
+                <i class="fa-solid fa-sliders"></i> <span data-i18n="tab_specs">Texnik Xarakteristikalar</span>
             </button>
             <button class="tab-btn" onclick="switchTab('tab-desc', this)">
-                <i class="fa-solid fa-circle-info"></i> Batafsil Tavsif & Tamoyil
+                <i class="fa-solid fa-circle-info"></i> <span data-i18n="tab_desc">Batafsil Tavsif & Tamoyil</span>
             </button>
             <button class="tab-btn" onclick="switchTab('tab-install', this)">
-                <i class="fa-solid fa-screwdriver-wrench"></i> O'rnatish & Servis
+                <i class="fa-solid fa-screwdriver-wrench"></i> <span data-i18n="tab_install">O'rnatish & Servis</span>
             </button>
         </div>
 
@@ -1310,12 +1351,12 @@
         </div>
     </div>
 
-    <!-- 6 Products Comparative Analysis Matrix -->
+    <!-- 10 Products Comparative Analysis Matrix -->
     <section class="comparison-section" id="comparisonMatrix">
         <div class="comparison-card">
             <div class="comparison-header">
-                <h2>6 Mahsulotning Qiyosiy Tahlil Jadvali</h2>
-                <p>Katalogdagi barcha 6 ta asosiy modelning texnik parametrlari, quvvati, havo unumdorligi va narxlarini solishtiring.</p>
+                <h2><span class="airfan-gradient-title" data-i18n="matrix_title">10 Mahsulotning Qiyosiy Tahlil Jadvali</span></h2>
+                <p data-i18n="matrix_desc">Katalogdagi barcha 10 ta asosiy modelning texnik parametrlari, quvvati, havo unumdorligi va narxlarini solishtiring.</p>
             </div>
 
             <div class="comparison-table-wrapper">
@@ -1323,13 +1364,13 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Mahsulot Modeli</th>
-                            <th>Kategoriya</th>
-                            <th>Quvvati / Xususiyati</th>
-                            <th>Havo Aylanishi</th>
-                            <th>Narxi</th>
-                            <th>Asosiy Afzalligi</th>
-                            <th>Tahlil</th>
+                            <th data-i18n="col_product">Mahsulot Modeli</th>
+                            <th data-i18n="col_cat">Kategoriya</th>
+                            <th data-i18n="col_power">Quvvati / Xususiyati</th>
+                            <th data-i18n="col_airflow">Havo Aylanishi</th>
+                            <th data-i18n="col_price">Narxi</th>
+                            <th data-i18n="col_advantage">Asosiy Afzalligi</th>
+                            <th data-i18n="col_action">Tahlil</th>
                         </tr>
                     </thead>
                     <tbody id="comparisonTableBody">
@@ -1396,7 +1437,7 @@
                 </ul>
             </div>
             <div class="footer-col">
-                <h4>6 Asosiy Yo'nalish</h4>
+                <h4>10 Asosiy Yo'nalish</h4>
                 <ul>
                     <li><a href="javascript:void(0)" onclick="selectProduct(0); window.scrollTo({top: 200, behavior: 'smooth'});">1. Отопительный агрегат - 800</a></li>
                     <li><a href="javascript:void(0)" onclick="selectProduct(1); window.scrollTo({top: 200, behavior: 'smooth'});">2. Вытяжной вентилятор-1120</a></li>
@@ -1404,6 +1445,10 @@
                     <li><a href="javascript:void(0)" onclick="selectProduct(3); window.scrollTo({top: 200, behavior: 'smooth'});">4. AURA SMART AIR</a></li>
                     <li><a href="javascript:void(0)" onclick="selectProduct(4); window.scrollTo({top: 200, behavior: 'smooth'});">5. Гофра охладительные панели</a></li>
                     <li><a href="javascript:void(0)" onclick="selectProduct(5); window.scrollTo({top: 200, behavior: 'smooth'});">6. Био-охладители AIRFAN</a></li>
+                    <li><a href="javascript:void(0)" onclick="selectProduct(6); window.scrollTo({top: 200, behavior: 'smooth'});">7. Промышленные вентиляторы</a></li>
+                    <li><a href="javascript:void(0)" onclick="selectProduct(7); window.scrollTo({top: 200, behavior: 'smooth'});">8. Отопительные агрегаты</a></li>
+                    <li><a href="javascript:void(0)" onclick="selectProduct(8); window.scrollTo({top: 200, behavior: 'smooth'});">9. Гофра охладительные панели</a></li>
+                    <li><a href="javascript:void(0)" onclick="selectProduct(9); window.scrollTo({top: 200, behavior: 'smooth'});">10. Био-охладители AIRFAN</a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -1824,6 +1869,274 @@
                     </ul>
                 `,
                 compareAdvantage: "18,000 m³/soat mobil sovitish, 100 L bak, masofadan pult, 220V da ishlash"
+            },
+            {
+                id: 7,
+                title: "Промышленные вентиляторы",
+                shortTitle: "Промышленные вентиляторы",
+                category: "Вытяжные вентиляторы",
+                categoryBadgeClass: "badge-fan",
+                badgeIcon: "fa-wind",
+                badgeText: "Sanoat Ventilyatsiyasi",
+                price: 3500000,
+                priceStr: "3,500,000 so'm",
+                oldPriceStr: "4,000,000 so'm",
+                discount: "-12% Chegirma",
+                image: "https://airfan.uz/thumb/2/yzc3Lm7g6vigUG7zDn1mhw/1200r/d/image11380_1_0.png",
+                shortSpecs: {
+                    power: "1.1 kW / 380V",
+                    powerLabel: "Dvigatel Quvvati",
+                    powerIcon: "fa-bolt",
+                    airflow: "44,500 m³/soat",
+                    airflowLabel: "Havo Aylanishi",
+                    airflowIcon: "fa-wind",
+                    warranty: "3 Yil Rasmiy",
+                    warrantyLabel: "Kafolat Muddati",
+                    warrantyIcon: "fa-shield-halved",
+                    noise: "≤ 65 dB (Past shovqin)",
+                    noiseLabel: "Shovqin Darajasi",
+                    noiseIcon: "fa-volume-high"
+                },
+                shortDesc: "AIRFAN 1380 seriyali sanoat tortish ventilyatori — eng yuqori unumdorlikka ega model. Katta parrandachilik fabrikalari, qoramolchilik fermalari, issiqxonalar va og'ir sanoat korxonalarida havoni jadal almashtirish uchun mo'ljallangan.",
+                specsTable: [
+                    ["fa-barcode", "Model Kodi", "AIRFAN Exhaust-1380 Industrial Pro"],
+                    ["fa-up-right-and-down-left-from-center", "Tashqi O'lchamlari", "1380 x 1380 x 450 mm"],
+                    ["fa-fan", "Parrak Diametri", "1270 mm (6 qanotli Krupp zanglamas po'lat)"],
+                    ["fa-wind", "Havo Yetkazish Hajmi", "44 500 m³/soat"],
+                    ["fa-gauge-high", "Dvigatel Tezligi", "1400 ob/min (100% mis o'ramli sanoat motor)"],
+                    ["fa-bolt", "Elektr Quvvati", "1.1 kW, 380V uch fazali"],
+                    ["fa-bars", "Jalyuzi Mexanizmi", "Santrifugal ochilish mexanizmiga ega galvaniz jalyuzi"],
+                    ["fa-shield", "Himoya Klassi", "IP55 (namlik va changdan to'liq himoya)"],
+                    ["fa-weight-hanging", "Uskuna Og'irligi", "68 kg"],
+                    ["fa-industry", "Qo'llanish Maydoni", "Yirik parrandachilik fermalari, issiqxonalar, sanoat korxonalari"]
+                ],
+                descContent: `
+                    <h3 style="margin-bottom: 16px; color: var(--primary);">Maksimal Quvvat va Santrifugal Ochilish Tizimi</h3>
+                    <p style="color: var(--text-light); line-height: 1.8; margin-bottom: 15px;">
+                        AIRFAN 1380 modeli o'z toifasidagi eng yirik va quvvatli tortish ventilyatori hisoblanadi. 1380x1380 mm korpus o'lchami va 1270 mm diametrli zanglamas po'lat parraklari 44 500 m³/soatgacha havoni tashqariga haydab chiqaradi.
+                    </p>
+                    <p style="color: var(--text-light); line-height: 1.8; margin-bottom: 15px;">
+                        Maxsus santrifugal (centrifugal) jalyuzi ochish mexanizmi shamol qarshiligidan qat'i nazar jalyuzilarni 90 gradus burchak ostida to'liq ochilishini ta'minlaydi. Bu esa havo oqimi yo'qotilishining oldini oladi va energiya samaradorligini 20% ga oshiradi.
+                    </p>
+                    <div style="background: var(--bg-light); padding: 18px; border-radius: 12px; border-left: 4px solid var(--accent); margin-top: 15px;">
+                        <h4 style="color: var(--primary); margin-bottom: 6px;"><i class="fa-solid fa-check-double" style="color: var(--accent);"></i> Asosiy afzalligi:</h4>
+                        <p style="color: var(--text-light); font-size: 14px;">44 500 m³/soat ulkan quvvat, santrifugal ochilish mexanizmi va 275 g/m² galvanizatsiyalangan po'lat korpus.</p>
+                    </div>
+                `,
+                installContent: `
+                    <h3 style="margin-bottom: 16px; color: var(--primary);">Montaj va Texnik Tavsiyalar</h3>
+                    <p style="color: var(--text-light); line-height: 1.8; margin-bottom: 15px;">
+                        Bino devorida 1390x1390 mm o'lchamdagi oraliq tayyorlanadi. Ventilyator karkasga qat'iy gorizontal va vertikal tekislikda anker boltlar orqali qotiriladi.
+                    </p>
+                    <ul style="color: var(--text-light); line-height: 1.8; list-style: disc; padding-left: 20px; margin-bottom: 15px;">
+                        <li>Uch fazali (380V) quvvat kabeli va avtomatik himoya relesi talab etiladi;</li>
+                        <li>Cooling pad sovutish panellari bilan eng yuqori samaradorlikka erishiladi;</li>
+                        <li>Krupp po'lat parraklari dinamik balanslangan bo'lib, tebranishni minimallashtiradi;</li>
+                        <li>3 yillik rasmiy ishlab chiqaruvchi kafolati mavjud.</li>
+                    </ul>
+                `,
+                compareAdvantage: "44,500 m³/soat rekord havo oqimi, santrifugal jalyuzi tizimi, 1.1 kW quvvat"
+            },
+            {
+                id: 8,
+                title: "Отопительные агрегаты",
+                shortTitle: "Отопительные агрегаты",
+                category: "Отопительные агрегаты",
+                categoryBadgeClass: "badge-heating",
+                badgeIcon: "fa-fire",
+                badgeText: "Isitish Tizimi",
+                price: 2900000,
+                priceStr: "2,900,000 so'm",
+                oldPriceStr: "3,300,000 so'm",
+                discount: "-12% Chegirma",
+                image: "https://airfan.uz/thumb/2/qO_2CHLSrfEQ4OkXnjct5g/1200r/d/image1510.png",
+                shortSpecs: {
+                    power: "25 - 35 kW / 220-380V",
+                    powerLabel: "Isitish Quvvati",
+                    powerIcon: "fa-fire-burner",
+                    airflow: "5,100 m³/soat",
+                    airflowLabel: "Havo Aylanishi",
+                    airflowIcon: "fa-wind",
+                    warranty: "3 Yil Rasmiy",
+                    warrantyLabel: "Kafolat Muddati",
+                    warrantyIcon: "fa-shield-halved",
+                    noise: "≤ 52 dB (Juda sokin)",
+                    noiseLabel: "Shovqin Darajasi",
+                    noiseIcon: "fa-volume-low"
+                },
+                shortDesc: "AIRFAN 510 ixcham seriyali sanoat va yarim sanoat isitish agregati. Kichik va o'rta sexlar, avtoservislar, omborlar va savdo pavilyonlarini issiq suv orqali samarali va tezkor isitish uchun moslashtirilgan.",
+                specsTable: [
+                    ["fa-barcode", "Model Kodi", "AIRFAN Warm Pro-510 Compact"],
+                    ["fa-fire", "Isitish Quvvati", "25 – 35 kW (suvli issiqlik almashtirgich)"],
+                    ["fa-wind", "Havo Yetkazish Hajmi", "5 100 m³/soat"],
+                    ["fa-up-right-and-down-left-from-center", "Tashqi O'lchamlari (H x W x D)", "510 x 510 x 480 mm"],
+                    ["fa-faucet-drip", "Issiqlik Tashuvchi", "Issiq suv (maks 120°C)"],
+                    ["fa-gauge-high", "Maksimal Bosim", "1.6 MPa (16 bar)"],
+                    ["fa-fan", "Ventilyator Dvigateli", "0.25 kW, yuqori samarali sokin motor"],
+                    ["fa-bolt", "Elektr Kuchlanishi", "220V yoki 380V / 50 Hz"],
+                    ["fa-shield", "Himoya Klassi", "IP54"],
+                    ["fa-building", "Tavsiya Etilgan Maydon", "150 - 300 m² gacha bo'lgan binolar"]
+                ],
+                descContent: `
+                    <h3 style="margin-bottom: 16px; color: var(--primary);">Ixcham O'lchamda Yuqori Issiqlik Samaradorligi</h3>
+                    <p style="color: var(--text-light); line-height: 1.8; margin-bottom: 15px;">
+                        AIRFAN 510 agregati cheklangan shift balandligi yoki kichikroq maydonga ega obyektlarda havo isitish tizimini tashkil qilish uchun eng ma'qul yechimdir. U qisqa vaqt ichida havo massalarini aralashtirib, binoda bir tekis issiq mikroiqlim yaratadi.
+                    </p>
+                    <p style="color: var(--text-light); line-height: 1.8; margin-bottom: 15px;">
+                        Mis quvurli va gofrirovka qilingan alyuminiy qanotli radiator issiqlikni maksimal darajada uzatadi. Havo yo'naltiruvchi jalyuzilar yordamida issiq havoni to'g'ridan-to'g'ri ishchi hududga yo'naltirish mumkin.
+                    </p>
+                    <div style="background: var(--bg-light); padding: 18px; border-radius: 12px; border-left: 4px solid var(--accent); margin-top: 15px;">
+                        <h4 style="color: var(--primary); margin-bottom: 6px;"><i class="fa-solid fa-check-double" style="color: var(--accent);"></i> Asosiy afzalligi:</h4>
+                        <p style="color: var(--text-light); font-size: 14px;">Kam energiya sarfi (0.25 kW), ixcham 510 mm gabarit, 5100 m³/soat tezkor issiq havo haydash.</p>
+                    </div>
+                `,
+                installContent: `
+                    <h3 style="margin-bottom: 16px; color: var(--primary);">O'rnatish va Qulay Boshqaruv</h3>
+                    <p style="color: var(--text-light); line-height: 1.8; margin-bottom: 15px;">
+                        Devorga yoki ustunlarga aylanma metall konsol orqali mahkamlanadi. Agregatni gorizontal va vertikal burchak ostida yo'naltirish imkoniyati mavjud.
+                    </p>
+                    <ul style="color: var(--text-light); line-height: 1.8; list-style: disc; padding-left: 20px; margin-bottom: 15px;">
+                        <li>3/4" rezbali truba orqali isitish qozoniga ulanadi;</li>
+                        <li>Xona termostati orqali avtomatik o'chib-yonish tizimi;</li>
+                        <li>Ixcham va yengil bo'lgani sababli tezkor montaj qilinadi;</li>
+                        <li>3 yil to'liq zavod kafolati va servis xizmati.</li>
+                    </ul>
+                `,
+                compareAdvantage: "Ixcham 510 mm o'lcham, 35 kW gacha isitish, 52 dB ultra past shovqin"
+            },
+            {
+                id: 9,
+                title: "Гофра охладительные панели",
+                shortTitle: "Гофра панели с кассетой",
+                category: "Гофра охладительные панели",
+                categoryBadgeClass: "badge-pad",
+                badgeIcon: "fa-droplet",
+                badgeText: "Kasseta Tizimi",
+                price: 1450000,
+                priceStr: "1,450,000 so'm",
+                oldPriceStr: "1,750,000 so'm",
+                discount: "-17% Chegirma",
+                image: "https://airfan.uz/thumb/2/AAYMvPB7iBwS2VazG23t9Q/1200r/d/image1222.png",
+                shortSpecs: {
+                    power: "8 - 12 °C pasaytiradi",
+                    powerLabel: "Sovutish Ko'rsatkichi",
+                    powerIcon: "fa-temperature-arrow-down",
+                    airflow: "2.8 - 3.8 L/soat m²",
+                    airflowLabel: "Suv Sarfi",
+                    airflowIcon: "fa-droplet",
+                    warranty: "3 Yil Rasmiy",
+                    warrantyLabel: "Kafolat Muddati",
+                    warrantyIcon: "fa-shield-halved",
+                    noise: "Alyuminiy Karkas",
+                    noiseLabel: "Konstruksiya",
+                    noiseIcon: "fa-border-all"
+                },
+                shortDesc: "Alyuminiy kassetali to'liq yig'ilgan gofra sovutish panellari tizimi. Suv taqsimlovchi va qaytaruvchi kanallar bilan jihozlangan bo'lib, issiqxona va sex devorlariga tez va oson montaj qilinadi.",
+                specsTable: [
+                    ["fa-barcode", "Model Kodi", "AIRFAN Frame Pad System 7090"],
+                    ["fa-up-right-and-down-left-from-center", "O'lchamlari", "1500 x 600 x 150 mm (alyuminiy ramka bilan)"],
+                    ["fa-temperature-arrow-down", "Sovutish Samarasi", "Havoni 8-12°C ga pasaytirish"],
+                    ["fa-square", "Karkas Turi", "Korroziyaga chidamli anodik alyuminiy profil"],
+                    ["fa-faucet", "Suv Taqsimoti", "Ichki teshikli PVX truba va filtrli nozullar"],
+                    ["fa-scroll", "Sellyuloza Markasi", "Gidrofil qoplamali yuqori sifatli shved texnologiyasi"],
+                    ["fa-shield-halved", "Himoya", "Tuz va mog'or to'planishiga qarshi qoplama"],
+                    ["fa-droplet", "Suv Aylanishi", "Pastki to'plash navi va nasos ulanish porti"],
+                    ["fa-hourglass-half", "Xizmat Davri", "6 - 9 yil uzluksiz foydalanish"],
+                    ["fa-leaf", "Qo'llanish Maydoni", "Zamonaviy gidroponika issiqxonalari, broyler parrandachilik"]
+                ],
+                descContent: `
+                    <h3 style="margin-bottom: 16px; color: var(--primary);">Kasseta Bilan Jihozlangan Mukammal Sovutish</h3>
+                    <p style="color: var(--text-light); line-height: 1.8; margin-bottom: 15px;">
+                        Ushbu model mustahkam alyuminiy karkas (kasseta) bilan birga yetkazib beriladi. Yuqori qismida suvni bir tekis taqsimlovchi maxsus naycha va pastki qismida sarflanmagan suvni qayta yig'ib nasosga uzatuvchi nav joylashgan.
+                    </p>
+                    <p style="color: var(--text-light); line-height: 1.8; margin-bottom: 15px;">
+                        Bu tizim o'rnatish vaqtini 3 barobarga qisqartiradi, suvning devorlarga oqib ketishining oldini oladi va panellarning xizmat muddatini sezilarli darajada uzaytiradi.
+                    </p>
+                    <div style="background: var(--bg-light); padding: 18px; border-radius: 12px; border-left: 4px solid var(--accent); margin-top: 15px;">
+                        <h4 style="color: var(--primary); margin-bottom: 6px;"><i class="fa-solid fa-check-double" style="color: var(--accent);"></i> Asosiy afzalligi:</h4>
+                        <p style="color: var(--text-light); font-size: 14px;">Tayyor alyuminiy karkas, suv oqishidan kafolat, yopiq tsiklli suv aylanmasi va oson almashtirish imkoniyati.</p>
+                    </div>
+                `,
+                installContent: `
+                    <h3 style="margin-bottom: 16px; color: var(--primary);">Montaj va Gidravlik Ulanish</h3>
+                    <p style="color: var(--text-light); line-height: 1.8; margin-bottom: 15px;">
+                        Kassetalar bino bo'ylab bir-biriga ketma-ket ulanadi va devorga maxsus qisqichlar bilan mustahkamlanadi.
+                    </p>
+                    <ul style="color: var(--text-light); line-height: 1.8; list-style: disc; padding-left: 20px; margin-bottom: 15px;">
+                        <li>Sirkulyatsiya nasosi va suv filtri bilan to'liq to'plamda montaj qilinadi;</li>
+                        <li>Avtomatik suv to'ldiruvchi float klapan bakka o'rnatiladi;</li>
+                        <li>Quyosh va shamoldan himoyalangan devorlarga o'rnatish tavsiya etiladi;</li>
+                        <li>3 yillik rasmiy kafolat bilan ta'minlangan.</li>
+                    </ul>
+                `,
+                compareAdvantage: "Tayyor alyuminiy karkas va nav tizimi, oson yig'ish, 8-12°C pasayish"
+            },
+            {
+                id: 10,
+                title: "Био-охладители AIRFAN",
+                shortTitle: "Био-охладители AIRFAN",
+                category: "Био-охладители AIRFAN",
+                categoryBadgeClass: "badge-cooler",
+                badgeIcon: "fa-fan",
+                badgeText: "Sanoat Kuler",
+                price: 6800000,
+                priceStr: "6,800,000 so'm",
+                oldPriceStr: "7,800,000 so'm",
+                discount: "-13% Chegirma",
+                image: "https://airfan.uz/thumb/2/eXtdmy30UKRVJftBgFwacw/1200r/d/image1.png",
+                shortSpecs: {
+                    power: "1.1 kW / 380V",
+                    powerLabel: "Dvigatel Quvvati",
+                    powerIcon: "fa-bolt",
+                    airflow: "22,000 m³/soat",
+                    airflowLabel: "Havo Yetkazish",
+                    airflowIcon: "fa-wind",
+                    warranty: "3 Yil Rasmiy",
+                    warrantyLabel: "Kafolat Muddati",
+                    warrantyIcon: "fa-shield-halved",
+                    noise: "150 - 250 m²",
+                    noiseLabel: "Qamrov Maydoni",
+                    noiseIcon: "fa-building"
+                },
+                shortDesc: "AIRFAN statsionar sanoat evaporativ sovutish uskunasi (Roof / Wall Industrial Cooler). Katta ishlab chiqarish sexlari, to'qimachilik fabrikalari va savdo majmualarini 100% toza va salqin havo bilan ta'minlaydi.",
+                specsTable: [
+                    ["fa-barcode", "Model Kodi", "AIRFAN Stationary Bio-Cooler 22000"],
+                    ["fa-wind", "Havo Yetkazish Hajmi", "22 000 m³/soat"],
+                    ["fa-temperature-arrow-down", "Sovutish Samaradorligi", "8 - 14 °C harorat pasayishi"],
+                    ["fa-bolt", "Elektr Quvvati", "1.1 kW (380V uch fazali yoki inverter boshqaruv)"],
+                    ["fa-up-right-and-down-left-from-center", "O'lchamlari", "1100 x 1100 x 950 mm"],
+                    ["fa-arrows-down-to-line", "Havo Chiqish Yo'nalishi", "Pastga (Down discharge) yoki Yon tomonga (Side discharge)"],
+                    ["fa-sliders", "Boshqaruv Tizimi", "Devoriy LCD pult + Inverter tezlik regulyatori (12 tezlik)"],
+                    ["fa-recycle", "Avtomatik Yuvish", "Avtomatik suv almashtirish va drenaj tizimi (Self-clean)"],
+                    ["fa-shield", "Korpus Chidamliligi", "UV nurlariga chidamli yuqori zichlikdagi polimer korpus"],
+                    ["fa-industry", "Qo'llanish Maydoni", "To'qimachilik korxonalari, omborlar, yirik restoranlar"]
+                ],
+                descContent: `
+                    <h3 style="margin-bottom: 16px; color: var(--primary);">Katta Maydonlar Uchun Kuchli Statsionar Sovutish</h3>
+                    <p style="color: var(--text-light); line-height: 1.8; margin-bottom: 15px;">
+                        AIRFAN statsionar sanoat bio-kulerlari binoning tomi yoki tashqi devoriga o'rnatiladi. U tashqi toza havoni olib, to'rt tomonlama keng maydonli sovutish panellari orqali sovutadi, changlardan tozalaydi va havo kanallari orqali bino ichiga haydab beradi.
+                    </p>
+                    <p style="color: var(--text-light); line-height: 1.8; margin-bottom: 15px;">
+                        An'anaviy markaziy chiller va konditsionerlarga qaraganda 85% kamroq elektr energiyasi sarflaydi. Freonsiz ishlaydi va binoda hech qachon dim va quruq havo hosil qilmaydi.
+                    </p>
+                    <div style="background: var(--bg-light); padding: 18px; border-radius: 12px; border-left: 4px solid var(--accent); margin-top: 15px;">
+                        <h4 style="color: var(--primary); margin-bottom: 6px;"><i class="fa-solid fa-check-double" style="color: var(--accent);"></i> Asosiy afzalligi:</h4>
+                        <p style="color: var(--text-light); font-size: 14px;">22 000 m³/soat quvvat, 12 tezlikli inverter motor, toza havo oqimi va 85% elektr tejami.</p>
+                    </div>
+                `,
+                installContent: `
+                    <h3 style="margin-bottom: 16px; color: var(--primary);">Tomga / Devorga O'rnatish va Havo Yo'llari</h3>
+                    <p style="color: var(--text-light); line-height: 1.8; margin-bottom: 15px;">
+                        Uskuna metall karkas tayanchlarga o'rnatiladi va havo kanallari (vozduxovod) yoki diffuzorlar orqali binoga ulanadi.
+                    </p>
+                    <ul style="color: var(--text-light); line-height: 1.8; list-style: disc; padding-left: 20px; margin-bottom: 15px;">
+                        <li>Suv ta'minoti va drenaj trubalariga to'liq avtomat tarzda ulanadi;</li>
+                        <li>Aqlli devoriy pult orqali avtomatik harorat va namlik nazorati;</li>
+                        <li>O'zini o'zi tozalash funksiyasi suvning aynib qolishini oldini oladi;</li>
+                        <li>3 yillik rasmiy ishlab chiqaruvchi kafolati va montaj xizmati.</li>
+                    </ul>
+                `,
+                compareAdvantage: "22,000 m³/soat toza sovitilgan havo, tom/devor montaj, 85% elektr tejami"
             }
         ];
 
@@ -1840,7 +2153,7 @@
             const prodParam = urlParams.get('product') || urlParams.get('id');
             if (prodParam) {
                 const pNum = parseInt(prodParam, 10);
-                if (pNum >= 1 && pNum <= 6) {
+                if (pNum >= 1 && pNum <= PRODUCTS.length) {
                     selectProduct(pNum - 1);
                 } else {
                     selectProduct(0);
@@ -1848,6 +2161,11 @@
             } else {
                 selectProduct(0);
             }
+        });
+
+        window.addEventListener('airfanLanguageChanged', () => {
+            selectProduct(activeIndex);
+            renderComparisonTable();
         });
 
         // 6 ta miniatyuralarni hosil qilish
@@ -1923,7 +2241,7 @@
 
             // Tag va sarlavha
             document.getElementById('productTag').innerHTML = `<i class="fa-solid ${p.badgeIcon}"></i> ${p.badgeText}`;
-            document.getElementById('productIndexPill').innerText = `Model ${index + 1} dan 6`;
+            document.getElementById('productIndexPill').innerText = `Model ${index + 1} dan ${PRODUCTS.length}`;
             document.getElementById('productTitle').innerText = p.title;
 
             // Narx
@@ -2082,5 +2400,7 @@
             }
         }
     </script>
+    <!-- Shared Theme & Language Controller -->
+    <script src="theme-lang.js"></script>
 </body>
 </html>

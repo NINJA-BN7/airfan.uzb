@@ -1,0 +1,387 @@
+/* ==========================================================================
+   AIRFAN - Premium Shared Design System: Dark/Light Mode, Branding & Switchers
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   DARK THEME VARIABLES & OVERRIDES
+   -------------------------------------------------------------------------- */
+:root {
+    --brand-glow: rgba(2, 132, 199, 0.4);
+    --brand-gradient: linear-gradient(135deg, #38bdf8 0%, #0284c7 50%, #2563eb 100%);
+    --card-surface: #ffffff;
+    --input-bg: #ffffff;
+    --table-stripe: #f8fafc;
+}
+
+[data-theme="dark"] {
+    --primary: #f8fafc;
+    --primary-light: #cbd5e1;
+    --accent: #38bdf8;
+    --accent-hover: #0ea5e9;
+    --text-main: #e2e8f0;
+    --text-light: #94a3b8;
+    --bg-light: #090e1a;
+    --white: #111a2e;
+    --border: #1e293b;
+    --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 20px 40px -10px rgba(0, 0, 0, 0.7);
+    --brand-glow: rgba(56, 189, 248, 0.4);
+    --card-surface: #111a2e;
+    --input-bg: #090e1a;
+    --table-stripe: #0d1526;
+}
+
+[data-theme="dark"] body {
+    background-color: var(--bg-light);
+    color: var(--text-main);
+}
+
+[data-theme="dark"] header {
+    background: rgba(17, 26, 46, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 4px 25px rgba(0,0,0,0.4);
+}
+
+[data-theme="dark"] .top-bar {
+    background: #060913;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+[data-theme="dark"] .card,
+[data-theme="dark"] .product-card,
+[data-theme="dark"] .category-card,
+[data-theme="dark"] .sidebar,
+[data-theme="dark"] .toolbar,
+[data-theme="dark"] .info-card,
+[data-theme="dark"] .form-card,
+[data-theme="dark"] .modal,
+[data-theme="dark"] .tab-content,
+[data-theme="dark"] .comparison-card,
+[data-theme="dark"] .features-grid {
+    background: var(--white);
+    border-color: var(--border);
+    color: var(--text-main);
+}
+
+[data-theme="dark"] .product-img,
+[data-theme="dark"] .category-img,
+[data-theme="dark"] .main-image {
+    background: #0e1628;
+    border-color: var(--border);
+}
+
+[data-theme="dark"] .form-control,
+[data-theme="dark"] .search-box input,
+[data-theme="dark"] .sort-box select,
+[data-theme="dark"] .price-inputs input {
+    background: var(--input-bg);
+    color: var(--text-main);
+    border-color: var(--border);
+}
+
+[data-theme="dark"] .form-control:focus,
+[data-theme="dark"] .search-box input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+}
+
+[data-theme="dark"] .btn-outline {
+    border-color: var(--border);
+    color: var(--text-main);
+}
+
+[data-theme="dark"] .btn-outline:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(56, 189, 248, 0.1);
+}
+
+[data-theme="dark"] .product-price,
+[data-theme="dark"] .current-price {
+    color: #38bdf8;
+}
+
+[data-theme="dark"] .specs-table tr:nth-child(even),
+[data-theme="dark"] .comparison-table tr:nth-child(even) {
+    background: var(--table-stripe);
+}
+
+[data-theme="dark"] .specs-table td,
+[data-theme="dark"] .comparison-table td {
+    border-color: var(--border);
+    color: var(--text-main);
+}
+
+[data-theme="dark"] .comparison-table th {
+    background: #060913;
+    border-color: var(--border);
+}
+
+[data-theme="dark"] .selector-strip,
+[data-theme="dark"] .thumb-item {
+    background: var(--white);
+    border-color: var(--border);
+}
+
+[data-theme="dark"] .selector-pill {
+    background: #090e1a;
+    color: var(--text-main);
+}
+
+[data-theme="dark"] .selector-pill.active {
+    background: var(--accent);
+    color: #060913;
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+}
+
+[data-theme="dark"] footer {
+    background: #060913;
+    border-top: 1px solid var(--border);
+}
+
+/* --------------------------------------------------------------------------
+   BRAND IDENTITY STYLING: AIRFAN
+   -------------------------------------------------------------------------- */
+.logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 26px;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+    color: var(--primary);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.logo-icon-wrap {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 18px;
+    box-shadow: 0 4px 14px rgba(2, 132, 199, 0.4);
+    transition: var(--transition);
+}
+
+.logo:hover .logo-icon-wrap {
+    transform: rotate(180deg) scale(1.05);
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.7);
+}
+
+.logo-highlight {
+    color: var(--accent);
+    position: relative;
+}
+
+/* Stylized AIRFAN Brand Emblem on Slides & Banners */
+.airfan-brand-emblem {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    border-radius: 999px;
+    background: rgba(2, 132, 199, 0.14);
+    border: 1px solid rgba(56, 189, 248, 0.4);
+    backdrop-filter: blur(10px);
+    color: #38bdf8;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    box-shadow: 0 0 20px rgba(2, 132, 199, 0.25);
+    margin-bottom: 16px;
+    animation: pulseBadge 3s infinite alternate ease-in-out;
+}
+
+@keyframes pulseBadge {
+    0% { transform: translateY(0); box-shadow: 0 0 15px rgba(2, 132, 199, 0.2); }
+    100% { transform: translateY(-2px); box-shadow: 0 0 25px rgba(56, 189, 248, 0.5); }
+}
+
+.airfan-gradient-title {
+    background: linear-gradient(135deg, #ffffff 30%, #38bdf8 80%, #60a5fa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline;
+}
+
+/* --------------------------------------------------------------------------
+   SWITCHERS: LANGUAGE & THEME IN HEADER / TOP-BAR
+   -------------------------------------------------------------------------- */
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Language Switcher Segmented Control */
+.lang-switcher {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(15, 23, 42, 0.08);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 3px;
+    gap: 2px;
+}
+
+[data-theme="dark"] .lang-switcher {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+.lang-btn {
+    border: none;
+    background: transparent;
+    padding: 5px 12px;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 999px;
+    cursor: pointer;
+    color: var(--text-light);
+    transition: var(--transition);
+}
+
+.lang-btn:hover {
+    color: var(--accent);
+}
+
+.lang-btn.active {
+    background: var(--accent);
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(2, 132, 199, 0.35);
+}
+
+[data-theme="dark"] .lang-btn.active {
+    background: var(--accent);
+    color: #060913;
+}
+
+/* Theme Toggle Button */
+.theme-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: var(--bg-light);
+    border: 1px solid var(--border);
+    padding: 7px 14px;
+    border-radius: 999px;
+    cursor: pointer;
+    color: var(--text-main);
+    font-size: 13px;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.theme-toggle-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.15);
+}
+
+.theme-toggle-btn i {
+    font-size: 14px;
+    color: var(--accent);
+    transition: transform 0.4s ease;
+}
+
+.theme-toggle-btn:hover i {
+    transform: rotate(25deg);
+}
+
+/* --------------------------------------------------------------------------
+   HERO SLIDER COMPONENT (index.html)
+   -------------------------------------------------------------------------- */
+.hero-slider {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.hero-slide {
+    display: none;
+    animation: slideFadeIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-slide.active {
+    display: grid;
+}
+
+@keyframes slideFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.slider-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1400px;
+    margin: 25px auto 0;
+    padding: 0 5%;
+    position: relative;
+    z-index: 5;
+}
+
+.slider-dots {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.slider-dot {
+    width: 32px;
+    height: 8px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.25);
+    cursor: pointer;
+    transition: var(--transition);
+    border: none;
+}
+
+.slider-dot.active {
+    width: 50px;
+    background: var(--accent);
+    box-shadow: 0 0 12px var(--accent);
+}
+
+.slider-arrows {
+    display: flex;
+    gap: 10px;
+}
+
+.slider-arrow-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    backdrop-filter: blur(8px);
+}
+
+.slider-arrow-btn:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    transform: scale(1.08);
+    box-shadow: 0 0 16px var(--accent);
+}
