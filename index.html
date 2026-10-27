@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AIR — Sanoat va Maishiy Ventilyatsiya, Sovutish Tizimlari</title>
+    <title>AIRFAN — Sanoat va Maishiy Ventilyatsiya, Sovutish Tizimlari</title>
     <!-- Google Fonts & FontAwesome -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -159,13 +159,41 @@
             color: var(--accent);
         }
 
-        /* Hero Section */
+        /* Hero Section Animation Styles */
         .hero {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
             color: var(--white);
             padding: 100px 5%;
             position: relative;
             overflow: hidden;
+        }
+
+        /* Animated Glowing Orbs Background */
+        .hero::before, .hero::after {
+            content: '';
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(2, 132, 199, 0.25) 0%, rgba(2, 132, 199, 0) 70%);
+            animation: pulseGlow 6s infinite alternate ease-in-out;
+            pointer-events: none;
+        }
+
+        .hero::before {
+            top: -50px;
+            right: 10%;
+        }
+
+        .hero::after {
+            bottom: -80px;
+            left: 5%;
+            animation-delay: 3s;
+        }
+
+        @keyframes pulseGlow {
+            0% { transform: scale(1) translateY(0); opacity: 0.5; }
+            100% { transform: scale(1.3) translateY(-20px); opacity: 0.8; }
         }
 
         .hero-container {
@@ -175,32 +203,55 @@
             grid-template-columns: 1.1fr 0.9fr;
             gap: 60px;
             align-items: center;
+            position: relative;
+            z-index: 2;
         }
 
+        /* Fade-in-up animations for content */
         .hero-content h1 {
             font-size: 48px;
             font-weight: 800;
             line-height: 1.2;
             margin-bottom: 24px;
+            animation: fadeInUp 1s ease-out forwards;
+            opacity: 0;
         }
 
         .hero-content h1 span {
             color: var(--accent);
+            display: inline-block;
         }
 
         .hero-content p {
             font-size: 18px;
             color: #94a3b8;
             margin-bottom: 36px;
+            animation: fadeInUp 1s ease-out 0.2s forwards;
+            opacity: 0;
         }
 
         .hero-buttons {
             display: flex;
             gap: 16px;
+            animation: fadeInUp 1s ease-out 0.4s forwards;
+            opacity: 0;
         }
 
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Floating Animation for Hero Image */
         .hero-image-wrapper {
             position: relative;
+            animation: floatAnimation 5s ease-in-out infinite;
         }
 
         .hero-image-wrapper img {
@@ -208,6 +259,18 @@
             border-radius: 16px;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(255,255,255,0.1);
+            transition: var(--transition);
+        }
+
+        .hero-image-wrapper:hover img {
+            transform: scale(1.02);
+            box-shadow: 0 30px 60px -10px rgba(2, 132, 199, 0.4);
+        }
+
+        @keyframes floatAnimation {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
         }
 
         /* Features Bar */
@@ -634,7 +697,7 @@
     <header>
         <div class="navbar">
             <a href="index.html" class="logo">
-                <i class="fa-solid fa-wind" style="color: var(--accent);"></i> AI<span>R</span>
+                <i class="fa-solid fa-wind" style="color: var(--accent);"></i> AIR<span>FAN</span>
             </a>
             <ul class="nav-links">
                 <li><a href="index.html" class="active">Bosh sahifa</a></li>
@@ -648,11 +711,11 @@
         </div>
     </header>
 
-    <!-- Hero Section (Фото 1) -->
+    <!-- Hero Section (Анимированный первый слайд с новым названием AIRFAN) -->
     <section class="hero">
         <div class="hero-container">
             <div class="hero-content">
-                <h1>Sanoat va Maishiy <span>Iqlim Tizimlari</span></h1>
+                <h1>Sanoat va Maishiy <span>AIRFAN Iqlim Tizimlari</span></h1>
                 <p>Obyektlaringiz uchun yuqori samarali AIRFAN sanoat ventilyatorlari, isitish agregatlari, sovutish panellari va bio-coolerlar. Barcha turdagi binolar uchun professional muhandislik yechimlari[cite: 1].</p>
                 <div class="hero-buttons">
                     <a href="catalog.html" class="btn btn-primary">Mahsulotlarni ko'rish <i class="fa-solid fa-arrow-right"></i></a>
@@ -699,7 +762,7 @@
         </div>
     </div>
 
-    <!-- Categories Section (Фото 2 и 3) -->
+    <!-- Categories Section -->
     <section class="section">
         <div class="section-header">
             <h2>Asosiy Mahsulot Yo'nalishlari</h2>
@@ -707,7 +770,7 @@
         </div>
         <div class="categories-grid">
             
-            <!-- Category 1 (Фото 2) -->
+            <!-- Category 1 -->
             <div class="category-card">
                 <div class="category-img">
                     <img src="https://airfan.uz/thumb/2/ZsX6eufhlv02a_unulOW2g/1200r/d/26.jpg" alt="Промышленные вентиляторы AIRFAN">
@@ -719,7 +782,7 @@
                 </div>
             </div>
 
-            <!-- Category 2 (Фото 3) -->
+            <!-- Category 2 -->
             <div class="category-card">
                 <div class="category-img">
                     <img src="https://airfan.uz/thumb/2/rsVzMzKHSt2SvZZminxczw/1200r/d/6_3.jpg" alt="Отопительные агрегаты AIRFAN">
@@ -836,7 +899,7 @@
         <div class="footer-grid">
             <div class="footer-col">
                 <div class="logo" style="color: white; margin-bottom: 20px;">
-                    <i class="fa-solid fa-wind" style="color: var(--accent);"></i> AI<span>R</span>
+                    <i class="fa-solid fa-wind" style="color: var(--accent);"></i> AIR<span>FAN</span>
                 </div>
                 <p>O'zbekistonda sanoat va maishiy iqlim texnologiyalari bo'yicha yetakchi internet-magazin. Barcha turdagi ventilyatsiya va sovutish tizimlari.</p>
             </div>
@@ -866,7 +929,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 AIR Climate. Barcha huquqlar himoyalangan.</p>
+            <p>&copy; 2026 AIRFAN Climate. Barcha huquqlar himoyalangan.</p>
             <p>Senior PM & Full-Stack Architecture</p>
         </div>
     </footer>
@@ -898,7 +961,7 @@
             const phone = document.getElementById('clientPhone').value;
             const address = document.getElementById('clientAddress').value;
 
-            const message = `🚨 *Yangi Buyurtma - AIR Magazin*\n\n` +
+            const message = `🚨 *Yangi Buyurtma - AIRFAN Magazin*\n\n` +
                             `📦 *Mahsulot:* ${selectedProduct}\n` +
                             `💰 *Narxi:* ${selectedPrice}\n` +
                             `👤 *Mijoz:* ${name}\n` +

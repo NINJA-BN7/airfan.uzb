@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AIR — Промышленные вентиляторы AIRFAN | Mahsulot Tahlili</title>
+    <title>AIRFAN — Mahsulot Tahlili va Texnik Xarakteristikalari</title>
     <!-- Google Fonts & FontAwesome -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -15,12 +15,15 @@
             --accent: #0284c7;
             --accent-hover: #0369a1;
             --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #e11d48;
             --text-main: #334155;
             --text-light: #64748b;
             --bg-light: #f8fafc;
             --white: #ffffff;
             --border: #e2e8f0;
             --shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08);
+            --shadow-lg: 0 20px 35px -8px rgba(15, 23, 42, 0.12);
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -35,6 +38,7 @@
             background-color: var(--bg-light);
             color: var(--text-main);
             line-height: 1.6;
+            scroll-behavior: smooth;
         }
 
         a {
@@ -141,6 +145,54 @@
             box-shadow: 0 6px 20px rgba(2, 132, 199, 0.3);
         }
 
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--border);
+            color: var(--text-main);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: rgba(2, 132, 199, 0.04);
+        }
+
+        /* Page Banner */
+        .page-banner {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: var(--white);
+            padding: 40px 5%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -20%;
+            width: 140%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(2, 132, 199, 0.15) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .page-banner h1 {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .page-banner p {
+            font-size: 15px;
+            color: #94a3b8;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+        }
+
         /* Breadcrumb */
         .breadcrumb {
             max-width: 1400px;
@@ -151,33 +203,125 @@
             display: flex;
             gap: 10px;
             align-items: center;
+            flex-wrap: wrap;
         }
 
         .breadcrumb a:hover {
             color: var(--accent);
         }
 
+        /* Product Selector Bar (1 - 6) */
+        .selector-strip-wrapper {
+            max-width: 1400px;
+            margin: 20px auto 10px;
+            padding: 0 5%;
+        }
+
+        .selector-strip-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .selector-strip-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .selector-strip {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 10px;
+            background: var(--white);
+            padding: 10px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+        }
+
+        .selector-pill {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 12px;
+            border-radius: 8px;
+            background: var(--bg-light);
+            border: 1px solid transparent;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-main);
+            text-align: left;
+            user-select: none;
+        }
+
+        .selector-pill:hover {
+            border-color: var(--accent);
+            background: rgba(2, 132, 199, 0.06);
+            color: var(--accent);
+        }
+
+        .selector-pill.active {
+            background: var(--accent);
+            color: var(--white);
+            border-color: var(--accent);
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+        }
+
+        .selector-pill .num-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: rgba(15, 23, 42, 0.1);
+            font-size: 11px;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        .selector-pill.active .num-badge {
+            background: rgba(255, 255, 255, 0.25);
+            color: var(--white);
+        }
+
+        .selector-pill .pill-text {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
         /* Product Detail Layout */
         .product-detail-container {
             max-width: 1400px;
-            margin: 30px auto 80px;
+            margin: 25px auto 60px;
             padding: 0 5%;
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            grid-template-columns: 1.05fr 1fr;
+            gap: 50px;
+            align-items: start;
         }
 
         /* Gallery */
         .gallery-wrapper {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 18px;
+            position: sticky;
+            top: 90px;
         }
 
         .main-image {
             background: var(--white);
             border: 1px solid var(--border);
-            border-radius: 16px;
+            border-radius: 18px;
             height: 480px;
             display: flex;
             align-items: center;
@@ -185,49 +329,139 @@
             padding: 30px;
             box-shadow: var(--shadow);
             position: relative;
+            overflow: hidden;
+        }
+
+        .main-image-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: var(--primary);
+            color: var(--white);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .main-image-zoom-hint {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.9);
+            color: var(--text-light);
+            font-size: 11px;
+            padding: 4px 10px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            pointer-events: none;
         }
 
         .main-image img {
             max-height: 100%;
             max-width: 100%;
             object-fit: contain;
-            transition: var(--transition);
+            transition: transform 0.4s ease;
         }
 
+        .main-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* 6 Thumbnails Grid */
         .thumbs-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 12px;
         }
 
         .thumb-item {
             background: var(--white);
             border: 2px solid var(--border);
-            border-radius: 10px;
-            height: 100px;
-            padding: 10px;
+            border-radius: 12px;
+            height: 95px;
+            padding: 8px;
             cursor: pointer;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
+            position: relative;
             transition: var(--transition);
         }
 
-        .thumb-item.active, .thumb-item:hover {
+        .thumb-item:hover {
             border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.15);
+        }
+
+        .thumb-item.active {
+            border-color: var(--accent);
+            background: rgba(2, 132, 199, 0.03);
+            box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.2);
+        }
+
+        .thumb-index {
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            background: var(--primary);
+            color: white;
+            font-size: 10px;
+            font-weight: 800;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .thumb-item.active .thumb-index {
+            background: var(--accent);
         }
 
         .thumb-item img {
-            max-height: 100%;
+            max-height: 60px;
             max-width: 100%;
             object-fit: contain;
+        }
+
+        .thumb-label {
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-top: 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+            text-align: center;
         }
 
         /* Info Section */
         .product-info {
             display: flex;
             flex-direction: column;
+            gap: 20px;
+            background: var(--white);
+            padding: 36px;
+            border-radius: 18px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        .product-tag-row {
+            display: flex;
             justify-content: space-between;
+            align-items: center;
+            gap: 10px;
         }
 
         .product-tag {
@@ -237,122 +471,193 @@
             border-radius: 20px;
             font-size: 13px;
             font-weight: 700;
-            width: fit-content;
-            margin-bottom: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .product-index-pill {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-light);
+            background: var(--bg-light);
+            padding: 5px 12px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
         }
 
         .product-info h1 {
-            font-size: 32px;
+            font-size: 30px;
             font-weight: 800;
             color: var(--primary);
-            margin-bottom: 16px;
+            line-height: 1.3;
         }
 
         .price-box {
             display: flex;
             align-items: baseline;
             gap: 16px;
-            margin-bottom: 24px;
-            background: #f1f5f9;
-            padding: 20px;
-            border-radius: 12px;
+            background: linear-gradient(to right, #f8fafc, #f1f5f9);
+            padding: 18px 24px;
+            border-radius: 14px;
+            border: 1px solid var(--border);
         }
 
         .current-price {
             font-size: 32px;
             font-weight: 800;
-            color: var(--primary);
+            color: var(--accent);
         }
 
         .old-price {
-            font-size: 20px;
+            font-size: 18px;
             color: var(--text-light);
             text-decoration: line-through;
+        }
+
+        .discount-badge {
+            background: #dcfce7;
+            color: #15803d;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 6px;
+            margin-left: auto;
         }
 
         .short-specs {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-            margin-bottom: 30px;
+            gap: 14px;
         }
 
         .spec-item {
-            background: var(--white);
-            padding: 14px;
-            border-radius: 10px;
+            background: var(--bg-light);
+            padding: 14px 16px;
+            border-radius: 12px;
             border: 1px solid var(--border);
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
+            transition: var(--transition);
+        }
+
+        .spec-item:hover {
+            border-color: var(--accent);
+            background: var(--white);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
         }
 
         .spec-item i {
-            font-size: 20px;
+            font-size: 22px;
             color: var(--accent);
+            width: 28px;
+            text-align: center;
         }
 
         .spec-item div h5 {
             font-size: 12px;
             color: var(--text-light);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .spec-item div p {
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 700;
             color: var(--primary);
+            margin-top: 2px;
+        }
+
+        .product-short-desc {
+            color: var(--text-light);
+            font-size: 14.5px;
+            line-height: 1.7;
+            border-left: 3px solid var(--accent);
+            padding-left: 14px;
+            background: rgba(2, 132, 199, 0.02);
+            padding-top: 6px;
+            padding-bottom: 6px;
+            border-radius: 0 8px 8px 0;
         }
 
         .order-action-box {
             display: flex;
             gap: 16px;
-            margin-bottom: 30px;
+            align-items: stretch;
+            padding-top: 10px;
         }
 
         .qty-selector {
             display: flex;
             align-items: center;
             border: 2px solid var(--border);
-            border-radius: 8px;
+            border-radius: 10px;
             background: var(--white);
+            overflow: hidden;
         }
 
         .qty-btn {
-            width: 44px;
-            height: 44px;
+            width: 46px;
+            height: 48px;
             border: none;
             background: transparent;
             font-size: 18px;
             cursor: pointer;
             color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .qty-btn:hover {
+            background: var(--bg-light);
+            color: var(--accent);
         }
 
         .qty-input {
-            width: 50px;
+            width: 52px;
             text-align: center;
             border: none;
             font-size: 16px;
             font-weight: 700;
             outline: none;
+            color: var(--primary);
+        }
+
+        .jump-matrix-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--accent);
+            font-weight: 600;
+            margin-top: -6px;
+            cursor: pointer;
+            width: fit-content;
+        }
+
+        .jump-matrix-btn:hover {
+            text-decoration: underline;
         }
 
         /* Tabs Section */
         .tabs-container {
             max-width: 1400px;
-            margin: 0 auto 100px;
+            margin: 0 auto 60px;
             padding: 0 5%;
         }
 
         .tabs-header {
             display: flex;
-            gap: 20px;
+            gap: 12px;
             border-bottom: 2px solid var(--border);
-            margin-bottom: 30px;
+            margin-bottom: 25px;
+            overflow-x: auto;
         }
 
         .tab-btn {
             padding: 14px 24px;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 700;
             color: var(--text-light);
             background: transparent;
@@ -360,6 +665,14 @@
             cursor: pointer;
             position: relative;
             transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+
+        .tab-btn:hover {
+            color: var(--primary);
         }
 
         .tab-btn.active {
@@ -379,14 +692,20 @@
         .tab-content {
             display: none;
             background: var(--white);
-            padding: 40px;
+            padding: 36px;
             border-radius: 16px;
             border: 1px solid var(--border);
             box-shadow: var(--shadow);
+            animation: fadeIn 0.3s ease;
         }
 
         .tab-content.active {
             display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .specs-table {
@@ -407,8 +726,130 @@
         .specs-table td:first-child {
             font-weight: 700;
             color: var(--primary);
-            width: 35%;
+            width: 38%;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
+
+        .specs-table td:first-child i {
+            color: var(--accent);
+            font-size: 14px;
+        }
+
+        /* 6 Products Comparative Matrix */
+        .comparison-section {
+            max-width: 1400px;
+            margin: 0 auto 90px;
+            padding: 0 5%;
+        }
+
+        .comparison-card {
+            background: var(--white);
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .comparison-header {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .comparison-header h2 {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .comparison-header p {
+            color: var(--text-light);
+            font-size: 15px;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .comparison-table-wrapper {
+            overflow-x: auto;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 800px;
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background: #0f172a;
+            color: white;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 16px 18px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .comparison-table td {
+            padding: 16px 18px;
+            border-bottom: 1px solid var(--border);
+            font-size: 14px;
+            vertical-align: middle;
+        }
+
+        .comparison-table tr:hover {
+            background: rgba(2, 132, 199, 0.04);
+        }
+
+        .comparison-table tr.active-row {
+            background: rgba(2, 132, 199, 0.08);
+            border-left: 4px solid var(--accent);
+        }
+
+        .comp-product-cell {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .comp-product-cell img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            background: var(--bg-light);
+            border-radius: 8px;
+            padding: 4px;
+            border: 1px solid var(--border);
+        }
+
+        .comp-product-name {
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+        }
+
+        .comp-product-cat {
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        .badge-cat {
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 12px;
+            display: inline-block;
+        }
+
+        .badge-heating { background: #ffe4e6; color: #be123c; }
+        .badge-fan { background: #e0f2fe; color: #0369a1; }
+        .badge-filter { background: #f3e8ff; color: #7e22ce; }
+        .badge-pad { background: #dcfce7; color: #15803d; }
+        .badge-cooler { background: #cffafe; color: #0e7490; }
 
         /* Modal */
         .modal-overlay {
@@ -436,13 +877,15 @@
         .modal {
             background: var(--white);
             width: 100%;
-            max-width: 500px;
+            max-width: 520px;
             border-radius: 20px;
-            padding: 40px;
+            padding: 36px;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
             transform: scale(0.9);
             transition: var(--transition);
             position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
         }
 
         .modal-overlay.active .modal {
@@ -460,15 +903,49 @@
             border-radius: 50%;
             font-size: 16px;
             cursor: pointer;
+            color: var(--text-main);
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            background: #fee2e2;
+            color: var(--danger);
+        }
+
+        .modal h3 {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .modal-product-summary-card {
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 14px 18px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .modal-product-summary-card img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            border-radius: 6px;
+            background: white;
+            padding: 4px;
         }
 
         .form-group {
-            margin-bottom: 18px;
+            margin-bottom: 16px;
         }
 
         .form-group label {
             display: block;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
             color: var(--primary);
             margin-bottom: 6px;
@@ -481,29 +958,31 @@
             border-radius: 8px;
             font-size: 14px;
             outline: none;
+            transition: var(--transition);
         }
 
         .form-control:focus {
             border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
         }
 
         /* Footer */
         footer {
             background: var(--primary);
             color: var(--white);
-            padding: 80px 5% 30px;
+            padding: 70px 5% 30px;
         }
 
         .footer-grid {
             max-width: 1400px;
-            margin: 0 auto 60px;
+            margin: 0 auto 50px;
             display: grid;
             grid-template-columns: 2fr 1fr 1fr 1fr;
             gap: 40px;
         }
 
         .footer-col h4 {
-            font-size: 18px;
+            font-size: 17px;
             font-weight: 700;
             margin-bottom: 20px;
             color: var(--white);
@@ -513,6 +992,7 @@
             color: #94a3b8;
             font-size: 14px;
             margin-bottom: 20px;
+            line-height: 1.7;
         }
 
         .footer-col ul li {
@@ -527,23 +1007,93 @@
 
         .footer-col ul li a:hover {
             color: var(--accent);
+            padding-left: 4px;
         }
 
         .footer-bottom {
             max-width: 1400px;
             margin: 0 auto;
-            padding-top: 30px;
+            padding-top: 25px;
             border-top: 1px solid rgba(255,255,255,0.1);
             display: flex;
             justify-content: space-between;
             align-items: center;
             color: #94a3b8;
             font-size: 14px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .selector-strip {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .thumbs-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
         }
 
         @media (max-width: 1024px) {
             .product-detail-container {
                 grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .gallery-wrapper {
+                position: static;
+            }
+            .main-image {
+                height: 400px;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 16px;
+            }
+            .nav-links {
+                gap: 16px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .top-bar {
+                flex-direction: column;
+                gap: 8px;
+                text-align: center;
+            }
+            .selector-strip {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .thumbs-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .short-specs {
+                grid-template-columns: 1fr;
+            }
+            .product-info {
+                padding: 24px;
+            }
+            .order-action-box {
+                flex-direction: column;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .selector-strip {
+                grid-template-columns: 1fr;
+            }
+            .thumbs-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .main-image {
+                height: 320px;
             }
         }
     </style>
@@ -565,7 +1115,7 @@
     <header>
         <div class="navbar">
             <a href="index.html" class="logo">
-                <i class="fa-solid fa-wind" style="color: var(--accent);"></i> AI<span>R</span>
+                <i class="fa-solid fa-wind" style="color: var(--accent);"></i> AIR<span>FAN</span>
             </a>
             <ul class="nav-links">
                 <li><a href="index.html">Bosh sahifa</a></li>
@@ -576,94 +1126,152 @@
         </div>
     </header>
 
+    <!-- Page Banner -->
+    <section class="page-banner">
+        <h1>Mahsulot Tahlili va Texnik Ekspertiza</h1>
+        <p>AIRFAN iqlim uskunalarining to'liq texnik xarakteristikalari, samaradorlik ko'rsatkichlari va 6 ta asosiy modelning qiyosiy tahlili.</p>
+    </section>
+
     <!-- Breadcrumb -->
     <div class="breadcrumb">
         <a href="index.html">Bosh sahifa</a>
         <span>/</span>
         <a href="catalog.html">Katalog</a>
         <span>/</span>
-        <span style="color: var(--primary); font-weight: 600;" id="productTitleBreadcrumb">Промышленные вентиляторы AIRFAN</span>
+        <a href="product-detail.html">Mahsulot Tahlili</a>
+        <span>/</span>
+        <span style="color: var(--primary); font-weight: 700;" id="breadcrumbTitle">Отопительный агрегат - 800</span>
+    </div>
+
+    <!-- Product Selector Strip (1 to 6) -->
+    <div class="selector-strip-wrapper">
+        <div class="selector-strip-header">
+            <span class="selector-strip-title">
+                <i class="fa-solid fa-layer-group" style="color: var(--accent);"></i> Tahlil uchun modelni tanlang (1 - 6):
+            </span>
+            <a href="#comparisonMatrix" class="jump-matrix-btn">
+                <i class="fa-solid fa-table-columns"></i> Qiyosiy jadvalga o'tish
+            </a>
+        </div>
+        <div class="selector-strip" id="selectorStrip">
+            <div class="selector-pill active" onclick="selectProduct(0)">
+                <span class="num-badge">1</span>
+                <span class="pill-text">Отопительный агрегат - 800</span>
+            </div>
+            <div class="selector-pill" onclick="selectProduct(1)">
+                <span class="num-badge">2</span>
+                <span class="pill-text">Вытяжной вентилятор-1120</span>
+            </div>
+            <div class="selector-pill" onclick="selectProduct(2)">
+                <span class="num-badge">3</span>
+                <span class="pill-text">Вытяжной вентилятор-600</span>
+            </div>
+            <div class="selector-pill" onclick="selectProduct(3)">
+                <span class="num-badge">4</span>
+                <span class="pill-text">AURA SMART AIR</span>
+            </div>
+            <div class="selector-pill" onclick="selectProduct(4)">
+                <span class="num-badge">5</span>
+                <span class="pill-text">Гофра панели</span>
+            </div>
+            <div class="selector-pill" onclick="selectProduct(5)">
+                <span class="num-badge">6</span>
+                <span class="pill-text">Био-охладители</span>
+            </div>
+        </div>
     </div>
 
     <!-- Product Detail Section -->
-    <div class="product-detail-container">
+    <div class="product-detail-container" id="productDetailSection">
         
         <!-- Gallery Left -->
         <div class="gallery-wrapper">
             <div class="main-image">
-                <img id="currentMainImage" src="https://airfan.uz/thumb/2/yzc3Lm7g6vigUG7zDn1mhw/1200r/d/image11380_1_0.png" alt="Промышленные вентиляторы">
+                <span class="main-image-badge" id="mainImageBadge">
+                    <i class="fa-solid fa-cube"></i> #1 Отопительные агрегаты
+                </span>
+                <img id="currentMainImage" src="https://airfan.uz/thumb/2/LMMCFATn5fV2R52I1-iVjA/1200r/d/image1810.png" alt="Отопительный агрегат - 800">
+                <span class="main-image-zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i> Kattalashtirish</span>
             </div>
-            <div class="thumbs-grid">
-                <div class="thumb-item active" onclick="switchImage('https://airfan.uz/thumb/2/yzc3Lm7g6vigUG7zDn1mhw/1200r/d/image11380_1_0.png', 'Промышленные вентиляторы AIRFAN', 'Sanoat Ventilyatorlari', '3,450,000 so\'m', this)">
-                    <img src="https://airfan.uz/thumb/2/yzc3Lm7g6vigUG7zDn1mhw/1200r/d/image11380_1_0.png" alt="Промышленные вентиляторы">
-                </div>
-                <div class="thumb-item" onclick="switchImage('https://airfan.uz/thumb/2/qO_2CHLSrfEQ4OkXnjct5g/1200r/d/image1510.png', 'Отопительные агрегаты AIRFAN', 'Isitish Tizimi', '4,800,000 so\'m', this)">
-                    <img src="https://airfan.uz/thumb/2/qO_2CHLSrfEQ4OkXnjct5g/1200r/d/image1510.png" alt="Отопительные агрегаты">
-                </div>
-                <div class="thumb-item" onclick="switchImage('https://airfan.uz/thumb/2/AAYMvPB7iBwS2VazG23t9Q/1200r/d/image1222.png', 'Гофра охладительные панели AIRFAN', 'Sovutish Panellari', '1,200,000 so\'m', this)">
-                    <img src="https://airfan.uz/thumb/2/AAYMvPB7iBwS2VazG23t9Q/1200r/d/image1222.png" alt="Гофра охладительные панели">
-                </div>
-                <div class="thumb-item" onclick="switchImage('https://airfan.uz/thumb/2/eXtdmy30UKRVJftBgFwacw/1200r/d/image1.png', 'Био-охладители AIRFAN', 'Portativ Cooler', '5,200,000 so\'m', this)">
-                    <img src="https://airfan.uz/thumb/2/eXtdmy30UKRVJftBgFwacw/1200r/d/image1.png" alt="Био-охладители AIRFAN">
-                </div>
+
+            <!-- 6 Thumbnails -->
+            <div class="thumbs-grid" id="thumbsGrid">
+                <!-- Thumbs injected by JS -->
             </div>
         </div>
 
         <!-- Info Right -->
         <div class="product-info">
             <div>
-                <span class="product-tag" id="productTag">Sanoat Ventilyatorlari</span>
-                <h1 id="productTitle">Промышленные вентиляторы AIRFAN</h1>
+                <div class="product-tag-row">
+                    <span class="product-tag" id="productTag">
+                        <i class="fa-solid fa-fire"></i> Отопительные агрегаты
+                    </span>
+                    <span class="product-index-pill" id="productIndexPill">Model 1 dan 6</span>
+                </div>
+
+                <h1 id="productTitle" style="margin-top: 10px;">Отопительный агрегат - 800</h1>
                 
-                <div class="price-box">
-                    <span class="current-price" id="unitPrice">3,450,000 so'm</span>
-                    <span class="old-price">3,900,000 so'm</span>
+                <div class="price-box" style="margin-top: 16px;">
+                    <div>
+                        <span class="current-price" id="unitPrice">3,800,000 so'm</span>
+                        <div style="font-size: 12px; color: var(--text-light); margin-top: 2px;">QQS bilan rasmiy narx</div>
+                    </div>
+                    <span class="old-price" id="oldPrice">4,300,000 so'm</span>
+                    <span class="discount-badge" id="discountBadge">-12% Chegirma</span>
                 </div>
 
-                <div class="short-specs">
+                <!-- Short Specs 4 Items -->
+                <div class="short-specs" style="margin-top: 20px;">
                     <div class="spec-item">
-                        <i class="fa-solid fa-bolt"></i>
+                        <i id="specIcon1" class="fa-solid fa-fire-burner"></i>
                         <div>
-                            <h5>Dvigatel Quvvati</h5>
-                            <p>1.1 kW / 380V</p>
+                            <h5 id="specLabel1">Isitish Quvvati</h5>
+                            <p id="specVal1">45 - 65 kW / 380V</p>
                         </div>
                     </div>
                     <div class="spec-item">
-                        <i class="fa-solid fa-wind"></i>
+                        <i id="specIcon2" class="fa-solid fa-wind"></i>
                         <div>
-                            <h5>Havo Aylanishi</h5>
-                            <p>44,000 m³/soat</p>
+                            <h5 id="specLabel2">Havo Aylanishi</h5>
+                            <p id="specVal2">8,000 m³/soat</p>
                         </div>
                     </div>
                     <div class="spec-item">
-                        <i class="fa-solid fa-shield-halved"></i>
+                        <i id="specIcon3" class="fa-solid fa-shield-halved"></i>
                         <div>
-                            <h5>Kafolat Muddati</h5>
-                            <p>3 Yil Rasmiy</p>
+                            <h5 id="specLabel3">Kafolat Muddati</h5>
+                            <p id="specVal3">3 Yil Rasmiy</p>
                         </div>
                     </div>
                     <div class="spec-item">
-                        <i class="fa-solid fa-volume-high"></i>
+                        <i id="specIcon4" class="fa-solid fa-volume-low"></i>
                         <div>
-                            <h5>Shovqin Darajasi</h5>
-                            <p>≤ 65 dB (Past)</p>
+                            <h5 id="specLabel4">Shovqin Darajasi</h5>
+                            <p id="specVal4">≤ 58 dB (Sokin)</p>
                         </div>
                     </div>
                 </div>
 
-                <p style="color: var(--text-light); margin-bottom: 24px;">AIRFAN uskunasi yirik ishlab chiqarish sexlari, parrandachilik va chorvachilik fermalari, issiqxonalar va omborxonalar uchun mo'ljallangan. Galvanizatsiyalangan zanglamaydigan korpus va korroziyaga chidamli parraklarga ega[cite: 1].</p>
+                <p class="product-short-desc" id="productShortDesc" style="margin-top: 20px;">
+                    AIRFAN 800 seriyali sanoat isitish agregati — sexlar, omborxonalar, parrandachilik va issiqxonalarni sovuq mavsumda bir tekis va jadal isitish uchun eng optimal yechim. Suvli/bug'li issiqlik almashtirgichga ega.
+                </p>
             </div>
 
             <div>
                 <div class="order-action-box">
                     <div class="qty-selector">
-                        <button class="qty-btn" onclick="updateQty(-1)">-</button>
+                        <button class="qty-btn" onclick="updateQty(-1)" aria-label="Kamaytirish">-</button>
                         <input type="number" id="itemQty" class="qty-input" value="1" readonly>
-                        <button class="qty-btn" onclick="updateQty(1)">+</button>
+                        <button class="qty-btn" onclick="updateQty(1)" aria-label="Oshirish">+</button>
                     </div>
-                    <button class="btn btn-primary" style="flex-grow: 1; justify-content: center; font-size: 16px;" onclick="openDetailModal()">
+                    <button class="btn btn-primary" style="flex-grow: 1; justify-content: center; font-size: 15px;" onclick="openDetailModal()">
                         <i class="fa-solid fa-cart-shopping"></i> Hoziroq Buyurtma Berish
                     </button>
+                </div>
+                <div style="margin-top: 14px; display: flex; justify-content: space-between; font-size: 12.5px; color: var(--text-light);">
+                    <span><i class="fa-solid fa-truck-fast" style="color: var(--accent);"></i> Butun O'zbekiston bo'ylab yetkazish</span>
+                    <span><i class="fa-solid fa-award" style="color: var(--success);"></i> ISO 9001 Sifat sertifikati</span>
                 </div>
             </div>
         </div>
@@ -672,72 +1280,99 @@
     <!-- Technical Tabs -->
     <div class="tabs-container">
         <div class="tabs-header">
-            <button class="tab-btn active" onclick="switchTab('tab-specs', this)">Texnik Xarakteristikalar</button>
-            <button class="tab-btn" onclick="switchTab('tab-desc', this)">Batafsil Tavsif</button>
-            <button class="tab-btn" onclick="switchTab('tab-install', this)">O'rnatish & Servis</button>
+            <button class="tab-btn active" onclick="switchTab('tab-specs', this)">
+                <i class="fa-solid fa-sliders"></i> Texnik Xarakteristikalar
+            </button>
+            <button class="tab-btn" onclick="switchTab('tab-desc', this)">
+                <i class="fa-solid fa-circle-info"></i> Batafsil Tavsif & Tamoyil
+            </button>
+            <button class="tab-btn" onclick="switchTab('tab-install', this)">
+                <i class="fa-solid fa-screwdriver-wrench"></i> O'rnatish & Servis
+            </button>
         </div>
 
         <div id="tab-specs" class="tab-content active">
-            <table class="specs-table">
-                <tr>
-                    <td>Model Name</td>
-                    <td>AIRFAN Climate Professional</td>
-                </tr>
-                <tr>
-                    <td>Tashqi O'lchamlari (H x W x D)</td>
-                    <td>1380 x 1380 x 450 mm</td>
-                </tr>
-                <tr>
-                    <td>Parrak Diametri</td>
-                    <td>1270 mm (Krupp Zanglamas Chelik)</td>
-                </tr>
-                <tr>
-                    <td>Dvigatel Aylanish Tezligi</td>
-                    <td>1400 ob/min (100% Mis g'altak)</td>
-                </tr>
-                <tr>
-                    <td>Himoya Darajasi</td>
-                    <td>IP55 (Chang va suvga chidamli)</td>
-                </tr>
-                <tr>
-                    <td>Jalyuzi Tizimi</td>
-                    <td>Avtomatik ochiluvchi va yopiluvchi galvaniz panjara</td>
-                </tr>
+            <table class="specs-table" id="specsTable">
+                <!-- Injected via JavaScript -->
             </table>
         </div>
 
         <div id="tab-desc" class="tab-content">
-            <h3 style="margin-bottom: 15px; color: var(--primary);">Uskunaning Ishlash Tamoyili</h3>
-            <p style="color: var(--text-light); line-height: 1.8;">Ushbu sanoat uskunasi binodagi issiq va ifloslangan havoni jadal suratda tashqariga tortib chiqarish va haroratni bir me'yorda ushlash uchun mo'ljallangan. Dvigatel yoqilganda havo bosimi hisobiga orqa jalyuzilar avtomatik ochiladi va o'chirilganda chang kirishining oldini olish uchun yopiladi[cite: 1]. Sovutish panellari bilan birga qo'llanilganda bino haroratini 8-12°C gacha pasaytirib beradi[cite: 1].</p>
+            <div id="descContent">
+                <!-- Injected via JavaScript -->
+            </div>
         </div>
 
         <div id="tab-install" class="tab-content">
-            <h3 style="margin-bottom: 15px; color: var(--primary);">O'rnatish Xizmati</h3>
-            <p style="color: var(--text-light); line-height: 1.8;">Kompaniyamiz mutaxassislari uskunani obyektga yetkazib berish, devorga montaj qilish va elektr tarmog'iga xavfsiz ulash xizmatlarini to'liq amalga oshiradi. Kafolat muddati davomida BEPUL profilaktik texnik xizmat ko'rsatiladi.</p>
+            <div id="installContent">
+                <!-- Injected via JavaScript -->
+            </div>
         </div>
     </div>
 
-    <!-- Modal Order -->
+    <!-- 6 Products Comparative Analysis Matrix -->
+    <section class="comparison-section" id="comparisonMatrix">
+        <div class="comparison-card">
+            <div class="comparison-header">
+                <h2>6 Mahsulotning Qiyosiy Tahlil Jadvali</h2>
+                <p>Katalogdagi barcha 6 ta asosiy modelning texnik parametrlari, quvvati, havo unumdorligi va narxlarini solishtiring.</p>
+            </div>
+
+            <div class="comparison-table-wrapper">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Mahsulot Modeli</th>
+                            <th>Kategoriya</th>
+                            <th>Quvvati / Xususiyati</th>
+                            <th>Havo Aylanishi</th>
+                            <th>Narxi</th>
+                            <th>Asosiy Afzalligi</th>
+                            <th>Tahlil</th>
+                        </tr>
+                    </thead>
+                    <tbody id="comparisonTableBody">
+                        <!-- Injected via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Order (Telegram Integratsiyasi) -->
     <div class="modal-overlay" id="orderModal">
         <div class="modal">
             <button class="modal-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
             <h3>Buyurtmani Rasmiylashtirish</h3>
-            <p id="modalProductSummary" style="color: var(--text-light); font-size: 14px; margin-bottom: 20px;">Tanlandi: Промышленные вентиляторы AIRFAN</p>
+            <p style="color: var(--text-light); font-size: 13.5px; margin-bottom: 16px;">
+                Tanlangan uskuna to'g'risidagi ma'lumotlar to'g'ridan-to'g'ri mas'ul mutaxassisga yuboriladi.
+            </p>
+
+            <div class="modal-product-summary-card">
+                <img id="modalProductImg" src="" alt="Mahsulot">
+                <div>
+                    <h4 id="modalProductName" style="font-size: 14px; color: var(--primary);"></h4>
+                    <p id="modalProductPriceSummary" style="font-size: 13px; font-weight: 700; color: var(--accent); margin-top: 2px;"></p>
+                </div>
+            </div>
             
             <form id="telegramForm" onsubmit="sendToTelegram(event)">
                 <div class="form-group">
-                    <label>Ismingiz</label>
-                    <input type="text" class="form-control" id="clientName" placeholder="Ismingizni kiriting" required>
+                    <label>Ismingiz va Familiyangiz *</label>
+                    <input type="text" class="form-control" id="clientName" placeholder="Masalan: Sardor Aliyev" required>
                 </div>
                 <div class="form-group">
-                    <label>Telefon raqam</label>
+                    <label>Telefon raqamingiz *</label>
                     <input type="tel" class="form-control" id="clientPhone" placeholder="+998 90 123 45 67" required>
                 </div>
                 <div class="form-group">
-                    <label>Manzil / Izoh</label>
-                    <textarea class="form-control" id="clientAddress" rows="3" placeholder="Obyekt manzili..." required></textarea>
+                    <label>Obyekt manzili yoki qo'shimcha izoh *</label>
+                    <textarea class="form-control" id="clientAddress" rows="3" placeholder="Shahar, tuman, sex yoki ferma manzili..." required></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Telegram Botga Yuborish</button>
+                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; font-size: 15px;">
+                    <i class="fa-brands fa-telegram"></i> Telegram Botga Yuborish
+                </button>
             </form>
         </div>
     </div>
@@ -747,9 +1382,9 @@
         <div class="footer-grid">
             <div class="footer-col">
                 <div class="logo" style="color: white; margin-bottom: 20px;">
-                    <i class="fa-solid fa-wind" style="color: var(--accent);"></i> AI<span>R</span>
+                    <i class="fa-solid fa-wind" style="color: var(--accent);"></i> AIR<span>FAN</span>
                 </div>
-                <p>Sanoat va maishiy obyektlar uchun shamollatish va sovutish uskunalarining eng keng tanlovi.</p>
+                <p>O'zbekistonda sanoat va maishiy iqlim texnologiyalari bo'yicha yetakchi ishlab chiqaruvchi va yetkazib beruvchi brend. Rasmiy kafolat va professional servis.</p>
             </div>
             <div class="footer-col">
                 <h4>Sahifalar</h4>
@@ -757,64 +1392,623 @@
                     <li><a href="index.html">Bosh sahifa</a></li>
                     <li><a href="catalog.html">Katalog</a></li>
                     <li><a href="product-detail.html">Mahsulot Tahlili</a></li>
-                    <li><a href="contact.html">Aloqa</a></li>
+                    <li><a href="contact.html">Aloqa & Buyurtma</a></li>
                 </ul>
             </div>
             <div class="footer-col">
-                <h4>Kategoriyalar</h4>
+                <h4>6 Asosiy Yo'nalish</h4>
                 <ul>
-                    <li><a href="#">Sanoat Ventilyatorlari</a></li>
-                    <li><a href="#">Отопительные агрегаты</a></li>
-                    <li><a href="#">Гофра охладительные панели</a></li>
-                    <li><a href="#">Био-охладители AIRFAN</a></li>
+                    <li><a href="javascript:void(0)" onclick="selectProduct(0); window.scrollTo({top: 200, behavior: 'smooth'});">1. Отопительный агрегат - 800</a></li>
+                    <li><a href="javascript:void(0)" onclick="selectProduct(1); window.scrollTo({top: 200, behavior: 'smooth'});">2. Вытяжной вентилятор-1120</a></li>
+                    <li><a href="javascript:void(0)" onclick="selectProduct(2); window.scrollTo({top: 200, behavior: 'smooth'});">3. Вытяжной вентилятор-600</a></li>
+                    <li><a href="javascript:void(0)" onclick="selectProduct(3); window.scrollTo({top: 200, behavior: 'smooth'});">4. AURA SMART AIR</a></li>
+                    <li><a href="javascript:void(0)" onclick="selectProduct(4); window.scrollTo({top: 200, behavior: 'smooth'});">5. Гофра охладительные панели</a></li>
+                    <li><a href="javascript:void(0)" onclick="selectProduct(5); window.scrollTo({top: 200, behavior: 'smooth'});">6. Био-охладители AIRFAN</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h4>Bog'lanish</h4>
                 <p><i class="fa-solid fa-phone"></i> +998 (71) 200-00-00</p>
-                <p><i class="fa-solid fa-envelope"></i> info@air-climate.uz</p>
+                <p><i class="fa-solid fa-envelope"></i> info@airfan.uz</p>
+                <p><i class="fa-solid fa-location-dot"></i> Toshkent sh., Sergeli industrial zonasi</p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 AIR Climate. Barcha huquqlar himoyalangan.</p>
+            <p>&copy; 2026 AIRFAN Climate Technologies. Barcha huquqlar himoyalangan.</p>
+            <p>Sanoat shamollatish va isitish-sovutish yechimlari</p>
         </div>
     </footer>
 
-    <!-- JavaScript -->
+    <!-- JavaScript Data and Controller -->
     <script>
-        let currentQty = 1;
-        let basePrice = 3450000;
-        let activeTitle = 'Промышленные вентиляторы AIRFAN';
+        // 6 Ta Asosiy Mahsulotlar Ro'yxati
+        const PRODUCTS = [
+            {
+                id: 1,
+                title: "Отопительный агрегат - 800",
+                shortTitle: "Отопительный агрегат - 800",
+                category: "Отопительные агрегаты",
+                categoryBadgeClass: "badge-heating",
+                badgeIcon: "fa-fire",
+                badgeText: "Isitish Tizimi",
+                price: 3800000,
+                priceStr: "3,800,000 so'm",
+                oldPriceStr: "4,300,000 so'm",
+                discount: "-12% Chegirma",
+                image: "https://airfan.uz/thumb/2/LMMCFATn5fV2R52I1-iVjA/1200r/d/image1810.png",
+                shortSpecs: {
+                    power: "45 - 65 kW / 380V",
+                    powerLabel: "Isitish Quvvati",
+                    powerIcon: "fa-fire-burner",
+                    airflow: "8,000 m³/soat",
+                    airflowLabel: "Havo Aylanishi",
+                    airflowIcon: "fa-wind",
+                    warranty: "3 Yil Rasmiy",
+                    warrantyLabel: "Kafolat Muddati",
+                    warrantyIcon: "fa-shield-halved",
+                    noise: "≤ 58 dB (Sokin)",
+                    noiseLabel: "Shovqin Darajasi",
+                    noiseIcon: "fa-volume-low"
+                },
+                shortDesc: "AIRFAN 800 seriyali sanoat isitish agregati — sexlar, omborxonalar, parrandachilik va issiqxonalarni sovuq mavsumda bir tekis va jadal isitish uchun eng optimal yechim. Suvli/bug'li issiqlik almashtirgichga ega.",
+                specsTable: [
+                    ["fa-barcode", "Model Kodi", "AIRFAN Warm Pro-800"],
+                    ["fa-fire", "Isitish Quvvati", "45 – 65 kW (90/70°C issiqlik tashuvchida)"],
+                    ["fa-wind", "Havo Unumdorligi", "8 000 m³/soat"],
+                    ["fa-up-right-and-down-left-from-center", "Tashqi O'lchamlari (H x W x D)", "800 x 800 x 620 mm"],
+                    ["fa-faucet-drip", "Issiqlik Tashuvchi Turi", "Issiq suv (maks 130°C) yoki texnologik bug'"],
+                    ["fa-gauge-high", "Maksimal Ishchi Bosim", "1.6 MPa (16 bar) sinovdan o'tgan"],
+                    ["fa-fan", "Ventilyator Dvigateli", "0.37 kW / 1400 ob/min mis g'altakli motor"],
+                    ["fa-bolt", "Elektr Ta'minoti", "220V yoki 380V / 50 Hz"],
+                    ["fa-shield", "Himoya Klassi", "IP54 (chang va namlikka chidamli)"],
+                    ["fa-industry", "Tavsiya Etilgan Maydon", "350 - 600 m² gacha bo'lgan yopiq binolar"]
+                ],
+                descContent: `
+                    <h3 style="margin-bottom: 16px; color: var(--primary);">Uskunaning Ishlash Tamoyili va Afzalliklari</h3>
+                    <p style="color: var(--text-light); line-height: 1.8; margin-bottom: 15px;">
+                        AIRFAN 800 isitish agregati sanoat, qishloq xo'jaligi va omborxonalarda katta hajmdagi xonalarni bir tekis haroratda ushlab turish uchun mo'ljallangan. Uning maxsus profilli mis quvurlar va alyuminiy plastinalardan iborat issiqlik almashtirgichi issiqlikni maksimal darajada o'tuvchi havo oqimiga uzatadi.
+                    </p>
+                    <p style="color: var(--text-light); line-height: 1.8; margin-bottom: 15px;">
+                        Avtomatik boshqaruv pulti yordamida xona haroratini belgilangan gradusda saqlash va energiya sarfini tejash mumkin. Barcha komponentlar korroziyaga chidamli bo'yoq bilan qoplangan galvanizatsiyalangan korpusda jamlangan.
+                    </p>
+                    <div style="background: var(--bg-light); padding: 18px; border-radius: 12px; border-left: 4px solid var(--accent); margin-top: 15px;">
+                        <h4 style="color: var(--primary); margin-bottom: 6px;"><i class="fa-solid fa-check-double" style="color: var(--accent);"></i> Asosiy afzalligi:</h4>
+                        <p style="color: var(--text-light); font-size: 14px;">Yuqori tejamkorlik bilan katta obyektlarni bir necha daqiqa ichida belgilangan haroratga qizdirib beradi va harorat farqini yo'qotadi.</p>
+                    </div>
+                `,
+                installContent: `
+                    <h3 style="margin-bottom: 16px; color: var(--primary);">O'rnatish, Ulanish va Kafolat Xizmati</h3>
+                    <p style="color: var(--text-light); line-height: 1.8; margin-bottom: 15px;">
+                        Uskuna maxsus aylanma kronshteynlar yordamida devorga yoki metall konstruksiyalarga o'rnatiladi. Kronshteyn agregatni turli burchaklarga burish va havo oqimini kerakli hududga yo'naltirish imkonini beradi.
+                    </p>
+                    <ul style="color: var(--text-light); line-height: 1.8; list-style: disc; padding-left: 20px; margin-bottom: 15px;">
+                        <li>Gidravlik ulanish 3/4" yoki 1" li rezbali ulanish orqali markaziy isitish qozoniga ulanadi;</li>
+                        <li>Avtomatlashtirilgan termostat va tezlik regulyatori orqali elektr boshqaruvi yo'lga qo'yiladi;</li>
+                        <li>Kompaniyamiz mutaxassislari montaj va ishga tushirish xizmatlarini to'liq amalga oshiradi;</li>
+                        <li>3 yillik rasmiy ishlab chiqaruvchi kafolati va bepul servis xizmati taqdim etiladi.</li>
+                    </ul>
+                `,
+                compareAdvantage: "Katta obyektlarni tezkor isitish, 16 bar bosimga chidamli mis radiator"
+            },
+            {
+                id: 2,
+                title: "Вытяжной вентилятор-1120",
+                shortTitle: "Вытяжной вентилятор-1120",
+                category: "Вытяжные вентиляторы",
+                categoryBadgeClass: "badge-fan",
+                badgeIcon: "fa-wind",
+                badgeText: "Sanoat Ventilyatsiyasi",
+                price: 3100000,
+                priceStr: "3,100,000 so'm",
+                oldPriceStr: "3,600,000 so'm",
+                discount: "-14% Chegirma",
+                image: "https://airfan.uz/thumb/2/qxoa4Ox1-FRtiTpZKeyb8w/1200r/d/image11120.png",
+                shortSpecs: {
+                    power: "0.75 kW / 380V",
+                    powerLabel: "Dvigatel Quvvati",
+                    powerIcon: "fa-bolt",
+                    airflow: "32,500 m³/soat",
+                    airflowLabel: "Havo Aylanishi",
+                    airflowIcon: "fa-wind",
+                    warranty: "3 Yil Rasmiy",
+                    warrantyLabel: "Kafolat Muddati",
+                    warrantyIcon: "fa-shield-halved",
+                    noise: "≤ 64 dB (Past)",
+                    noiseLabel: "Shovqin Darajasi",
+                    noiseIcon: "fa-volume-high"
+                },
+                shortDesc: "AIRFAN 1120 sanoat tortish ventilyatori — yuqori unumdorlikka ega bo'lib, sexlar, parrandachilik va chorvachilik fermalari hamda omborxonalardagi chang, tutun va ortiqcha issiqlikni tashqariga haydash uchun mo'ljallangan.",
+                specsTable: [
+                    ["fa-barcode", "Model Kodi", "AIRFAN Exhaust-1120 Heavy Duty"],
+                    ["fa-up-right-and-down-left-from-center", "Tashqi O'lchamlari", "1120 x 1120 x 400 mm"],
+                    ["fa-fan", "Parrak Diametri", "1000 mm (6 qanotli Krupp zanglamas po'lat)"],
+                    ["fa-wind", "Havo Unumdorligi", "32 500 m³/soat"],
+                    ["fa-gauge-high", "Dvigatel Aylanish Tezligi", "1400 ob/min (100% Mis o'ram)"],
+                    ["fa-bolt", "Elektr Quvvati", "0.75 kW, 380V uch fazali"],
+                    ["fa-bars", "Jalyuzi Mexanizmi", "Gravitatsion avtomatik ochiluvchi galvaniz jalyuzi"],
+                    ["fa-shield", "Himoya Klassi", "IP55 (chang va suv sachrashiga to'liq chidamli)"],
+                    ["fa-weight-hanging", "Uskuna Og'irligi", "48 kg"],
+                    ["fa-building", "Qo'llanish Maydoni", "Parrandachilik fermalari, issiqxonalar, yirik ustaxonalar"]
+                ],
+                descContent: `
+                    <h3 style="margin-bottom: 16px; color: var(--primary);">Ishlash Tamoyili va Mustahkam Konstruksiya</h3>
+                    <p style="color: var(--text-light); line-height: 1.8; margin-bottom: 15px;">
+                        AIRFAN 1120 modeli og'ir sanoat sharoitlarida uzluksiz 24/7 ishlash uchun loyihalashtirilgan. Uning korpusi qalin qatlamli issiq galvanizatsiyalangan po'latdan ishlangan bo'lib, korroziyaga va agressiv ammiakli gazlarga bardosh beradi.
+                    </p>
+                    <p style="color: var(--text-light); line-height: 1.8; margin-bottom: 15px;">
+                        Dvigatel yoqilganda havo bosimi hisobiga orqa jalyuzilar avtomatik ochiladi va o'chirilganda chang, qushlar yoki yomg'ir suvi kirishining oldini olish uchun o'z og'irligi bilan mahkam yopiladi.
+                    </p>
+                    <div style="background: var(--bg-light); padding: 18px; border-radius: 12px; border-left: 4px solid var(--accent); margin-top: 15px;">
+                        <h4 style="color: var(--primary); margin-bottom: 6px;"><i class="fa-solid fa-check-double" style="color: var(--accent);"></i> Asosiy afzalligi:</h4>
+                        <p style="color: var(--text-light); font-size: 14px;">Krupp zanglamas po'lat parraklari optimal aerodinamik shaklga ega bo'lib, kam elektr sarfi evaziga rekord darajada 32 500 m³/soat havo haydaydi.</p>
+                    </div>
+                `,
+                installContent: `
+                    <h3 style="margin-bottom: 16px; color: var(--primary);">O'rnatish va Xizmat Ko'rsatish Qoidalari</h3>
+                    <p style="color: var(--text-light); line-height: 1.8; margin-bottom: 15px;">
+                        Uskuna binoning tashqi devoriga oldindan tayyorlangan 1130x1130 mm o'lchamdagi teshikka o'rnatiladi va anker boltlar orqali mahkamlanadi.
+                    </p>
+                    <ul style="color: var(--text-light); line-height: 1.8; list-style: disc; padding-left: 20px; margin-bottom: 15px;">
+                        <li>Uch fazali (380V) elektr tarmog'iga termo-rele va avtomat orqali ulanadi;</li>
+                        <li>Sovutish panellari (Cooling Pad) bilan tandemda ishlaganda xonani 8-12°C gacha sovitadi;</li>
+                        <li>Dvigatel podshipniklari uzoq muddatli moylashga ega, maxsus kundalik parvarish talab qilmaydi;</li>
+                        <li>3 yillik rasmiy kafolat doirasida mutaxassislarimiz texnik yordam ko'rsatadi.</li>
+                    </ul>
+                `,
+                compareAdvantage: "32,500 m³/soat yuqori havo aylanishi, Krupp zanglamas po'lat parraklar"
+            },
+            {
+                id: 3,
+                title: "Вытяжной вентилятор-600",
+                shortTitle: "Вытяжной вентилятор-600",
+                category: "Вытяжные вентиляторы",
+                categoryBadgeClass: "badge-fan",
+                badgeIcon: "fa-fan",
+                badgeText: "Ixcham Ventilyator",
+                price: 2200000,
+                priceStr: "2,200,000 so'm",
+                oldPriceStr: "2,600,000 so'm",
+                discount: "-15% Chegirma",
+                image: "https://airfan.uz/thumb/2/tEx-Yv_k7bbXvwQwro-Jxg/1200r/d/image1600.png",
+                shortSpecs: {
+                    power: "0.37 kW / 220-380V",
+                    powerLabel: "Dvigatel Quvvati",
+                    powerIcon: "fa-bolt",
+                    airflow: "12,000 m³/soat",
+                    airflowLabel: "Havo Aylanishi",
+                    airflowIcon: "fa-wind",
+                    warranty: "3 Yil Rasmiy",
+                    warrantyLabel: "Kafolat Muddati",
+                    warrantyIcon: "fa-shield-halved",
+                    noise: "≤ 55 dB (Juda past)",
+                    noiseLabel: "Shovqin Darajasi",
+                    noiseIcon: "fa-volume-xmark"
+                },
+                shortDesc: "Ixcham o'lchamli, past shovqinli va energiya tejamkor tortish ventilyatori. Kichik sexlar, novvoyxonalar, laboratoriyalar, garajlar va xususiy fermalar uchun ideal tanlov.",
+                specsTable: [
+                    ["fa-barcode", "Model Kodi", "AIRFAN Exhaust-600 Compact"],
+                    ["fa-up-right-and-down-left-from-center", "Tashqi O'lchamlari", "600 x 600 x 320 mm"],
+                    ["fa-fan", "Parrak Diametri", "500 mm (muvozanatlangan alyuminiy qotishma)"],
+                    ["fa-wind", "Havo Unumdorligi", "12 000 m³/soat"],
+                    ["fa-gauge-high", "Aylanish Tezligi", "1400 ob/min"],
+                    ["fa-bolt", "Elektr Quvvati", "0.37 kW (220V bir fazali yoki 380V)"],
+                    ["fa-shield", "Himoya Panjarasi", "Old va orqa xavfsizlik po'lat panjarasi"],
+                    ["fa-shield-halved", "Himoya Klassi", "IP55"],
+                    ["fa-weight-hanging", "Og'irligi", "18 kg (yengil montaj)"],
+                    ["fa-house", "Qo'llanish Joylari", "Mini-sexlar, novvoyxonalar, kafe va restoran oshxonalari"]
+                ],
+                descContent: `
+                    <h3 style="margin-bottom: 16px; color: var(--primary);">Kichik Maydonlar Uchun Kuchli Ventilyatsiya</h3>
+                    <p style="color: var(--text-light); line-height: 1.8; margin-bottom: 15px;">
+                        AIRFAN 600 modeli cheklangan maydonga ega bo'lgan xonalarda havoni tozalash va to'xtovsiz almashtirish uchun yaratilgan. Kichik o'lchamlari uni deraza tokchalariga, ventilyatsiya shaxtalariga yoki yupqa devorlarga o'rnatish imkonini beradi.
+                    </p>
+                    <p style="color: var(--text-light); line-height: 1.8; margin-bottom: 15px;">
+                        Maxsus muvozanatlangan parraklar tebranish (vibratsiya) hosil qilmaydi va nihoyatda sokin ishlaydi. 220V kuchlanishda ishlay olishi tufayli har qanday maishiy elektr tarmog'iga ulanishi mumkin.
+                    </p>
+                    <div style="background: var(--bg-light); padding: 18px; border-radius: 12px; border-left: 4px solid var(--accent); margin-top: 15px;">
+                        <h4 style="color: var(--primary); margin-bottom: 6px;"><i class="fa-solid fa-check-double" style="color: var(--accent);"></i> Asosiy afzalligi:</h4>
+                        <p style="color: var(--text-light); font-size: 14px;">Kam elektr sarfi (atigi 0.37 kW), deyarli eshitilmas shovqin va 220V/380V universal ulanish imkoniyati.</p>
+                    </div>
+                `,
+                installContent: `
+                    <h3 style="margin-bottom: 16px; color: var(--primary);">O'rnatish Qulayligi</h3>
+                    <p style="color: var(--text-light); line-height: 1.8; margin-bottom: 15px;">
+                        Og'irligi bor-yo'g'i 18 kg bo'lgani sababli bitta usta tomonidan 30 daqiqa ichida osonlik bilan o'rnatiladi.
+                    </p>
+                    <ul style="color: var(--text-light); line-height: 1.8; list-style: disc; padding-left: 20px; margin-bottom: 15px;">
+                        <li>Devoriy teshikka yoki sendvich panellarga mahkamlash juda qulay;</li>
+                        <li>Tezlik regulyatori bilan moslashuvchan ulanadi;</li>
+                        <li>Panjara xavfsizlik talablariga to'liq javob beradi;</li>
+                        <li>3 yil rasmiy ishlab chiqaruvchi kafolati.</li>
+                    </ul>
+                `,
+                compareAdvantage: "Ixcham o'lcham, ultra sokin ishlash (55 dB), oddiy 220V ga ulanish"
+            },
+            {
+                id: 4,
+                title: "Воздушный фильтр AURA SMART AIR",
+                shortTitle: "AURA SMART AIR",
+                category: "Воздушные фильтры",
+                categoryBadgeClass: "badge-filter",
+                badgeIcon: "fa-filter",
+                badgeText: "Smart Havo Tozalash",
+                price: 2600000,
+                priceStr: "2,600,000 so'm",
+                oldPriceStr: "3,100,000 so'm",
+                discount: "-16% Chegirma",
+                image: "https://airfan.uz/thumb/2/mmygaUqTu9TQkCc9AueuhQ/1200r/d/imagesmart_air_1.png",
+                shortSpecs: {
+                    power: "150 W / 220V",
+                    powerLabel: "Quvvat Sarfi",
+                    powerIcon: "fa-leaf",
+                    airflow: "3,500 m³/soat",
+                    airflowLabel: "Havo Tozalash",
+                    airflowIcon: "fa-lungs",
+                    warranty: "2 Yil Rasmiy",
+                    warrantyLabel: "Kafolat Muddati",
+                    warrantyIcon: "fa-shield-halved",
+                    noise: "≤ 42 dB (Ultra sokin)",
+                    noiseLabel: "Shovqin Darajasi",
+                    noiseIcon: "fa-volume-off"
+                },
+                shortDesc: "AURA SMART AIR intellektual havo tozalagich va filtr tizimi. Chang, mikrob, virus, tutun va noxush hidlarni 99.97% aniqlikda ushlab qoluvchi tibbiy va sanoat darajasidagi smart filtr.",
+                specsTable: [
+                    ["fa-barcode", "Model Kodi", "AURA SMART AIR Pro Clean"],
+                    ["fa-filter", "Filtr Tizimi", "4 bosqichli: Pre-filter + HEPA H13 + Faollashtirilgan Uglerod + UV-C"],
+                    ["fa-percent", "Filtrlash Samaradorligi", "99.97% (0.3 mikron o'lchamdagi chang va bakteriyalar)"],
+                    ["fa-wind", "Havo Tozalash Hajmi", "3 500 m³/soat"],
+                    ["fa-wifi", "Aqlli Boshqaruv", "Wi-Fi ilova (iOS/Android), Tuya Smart, Sensorli displey"],
+                    ["fa-gauge", "O'rnatilgan Sensorlar", "PM2.5 lazer sensori, TVOC gazi sensori, Harorat va namlik"],
+                    ["fa-bolt", "Elektr Quvvati", "150 W (Juda tejamkor, 220V)"],
+                    ["fa-up-right-and-down-left-from-center", "O'lchamlari", "520 x 520 x 950 mm"],
+                    ["fa-shield-virus", "Dezinfeksiya", "Ichki UV-C germitsid ultrabinafsha lampasi va Ionizator"],
+                    ["fa-hospital", "Qo'llanish Maydoni", "Ofislar, tibbiyot klinikalari, toza ishlab chiqarish, mehmonxonalar"]
+                ],
+                descContent: `
+                    <h3 style="margin-bottom: 16px; color: var(--primary);">Aqlli Mikroiqlim va Chuqur Filtrlash</h3>
+                    <p style="color: var(--text-light); line-height: 1.8; margin-bottom: 15px;">
+                        AURA SMART AIR xona havosining sifatini real vaqt rejimida lazerli sensorlar orqali tahlil qiladi. Displeyda va smartfon ilovasida PM2.5 zarrachalari miqdorini rangli indikatorlar orqali ko'rsatadi va havoni ifloslanishiga qarab o'z tezligini avtomatik sozlaydi.
+                    </p>
+                    <p style="color: var(--text-light); line-height: 1.8; margin-bottom: 15px;">
+                        4 bosqichli filtrlash tizimi nafaqat chang va tuklarni, balki viruslar, allergenlar va zaharli kimyoviy birikmalarni ham to'liq neytrallashtiradi. Ichki UV-C lampasi esa filtrlarda bakteriyalar ko'payishiga yo'l qo'ymaydi.
+                    </p>
+                    <div style="background: var(--bg-light); padding: 18px; border-radius: 12px; border-left: 4px solid var(--accent); margin-top: 15px;">
+                        <h4 style="color: var(--primary); margin-bottom: 6px;"><i class="fa-solid fa-check-double" style="color: var(--accent);"></i> Asosiy afzalligi:</h4>
+                        <p style="color: var(--text-light); font-size: 14px;">Smart Wi-Fi nazorati, HEPA H13 tibbiy filtri va ultra sokin (42 dB) ishlash tartibi.</p>
+                    </div>
+                `,
+                installContent: `
+                    <h3 style="margin-bottom: 16px; color: var(--primary);">Ishlatish va Filtr Almashtirish</h3>
+                    <p style="color: var(--text-light); line-height: 1.8; margin-bottom: 15px;">
+                        Uskunani ishlatish uchun hech qanday montaj talab qilinmaydi. Shunchaki xonaning qulay joyiga qo'yiladi va 220V rozetkaga ulanadi.
+                    </p>
+                    <ul style="color: var(--text-light); line-height: 1.8; list-style: disc; padding-left: 20px; margin-bottom: 15px;">
+                        <li>Aqlli ilova filtrning qolgan xizmat muddatini foizda ko'rsatib boradi;</li>
+                        <li>Dastlabki to'r filtri oson yuviladi va qayta ishlatiladi;</li>
+                        <li>HEPA va uglerod filtri xonaning ifloslanish darajasiga qarab 6-12 oyda bir marta almashtiriladi;</li>
+                        <li>2 yillik rasmiy servis kafolati mavjud.</li>
+                    </ul>
+                `,
+                compareAdvantage: "HEPA H13 4 bosqichli tozalash, Wi-Fi smart ilova, PM2.5 monitoring"
+            },
+            {
+                id: 5,
+                title: "Гофра охладительные панели",
+                shortTitle: "Гофра охладительные панели",
+                category: "Гофра охладительные панели",
+                categoryBadgeClass: "badge-pad",
+                badgeIcon: "fa-droplet",
+                badgeText: "Cooling Pad Sovutish",
+                price: 1200000,
+                priceStr: "1,200,000 so'm",
+                oldPriceStr: "1,500,000 so'm",
+                discount: "-20% Chegirma",
+                image: "https://airfan.uz/thumb/2/y6Dq3PnL9lI1WxNCuxg6Og/1200r/d/image2222.png",
+                shortSpecs: {
+                    power: "8 - 12 °C pasaytiradi",
+                    powerLabel: "Harorat Pasayishi",
+                    powerIcon: "fa-temperature-arrow-down",
+                    airflow: "2.5 - 3.5 L/soat m²",
+                    airflowLabel: "Suv Sarfi",
+                    airflowIcon: "fa-droplet",
+                    warranty: "3 Yil Rasmiy",
+                    warrantyLabel: "Kafolat Muddati",
+                    warrantyIcon: "fa-shield-halved",
+                    noise: "Tabiiy Bug'lanish",
+                    noiseLabel: "Ishlash Tamoyili",
+                    noiseIcon: "fa-water"
+                },
+                shortDesc: "Yuqori samaradorlikka ega sellyuloza sovutish panellari (Cooling Pad). Issiqxona, parrandachilik va yirik sexlarda tortish ventilyatorlari bilan birga qo'llanilganda bino haroratini 8-12°C ga pasaytiradi.",
+                specsTable: [
+                    ["fa-barcode", "Model Turi", "AIRFAN Cooling Pad 7090 / 5090"],
+                    ["fa-up-right-and-down-left-from-center", "Standart O'lchamlari", "1500 x 600 x 150 mm (va buyurtmaga asosan 1800/2000 mm)"],
+                    ["fa-temperature-arrow-down", "Sovutish Samaradorligi", "80% - 88% evaporativ sovutish koeffitsienti"],
+                    ["fa-scroll", "Sellyuloza Materiali", "Shvetsiya texnologiyasi asosidagi maxsus qog'oz"],
+                    ["fa-shield-halved", "Himoya Qoplamasi", "Chirish, zamburug' va tuz to'planishiga qarshi antibakterial qoplama"],
+                    ["fa-wind", "Havo O'tish Tezligi", "1.0 - 1.5 m/s tavsiya etilgan optimal tezlik"],
+                    ["fa-square", "Karkas / Ramka Turi", "Alyuminiy yoki zanglamas galvaniz po'lat kassetalar"],
+                    ["fa-droplet", "Suvning Yutilishi", "4-5 litr / m² singdirish sig'imi"],
+                    ["fa-hourglass-half", "Xizmat Ko'rsatish Muddati", "5 yildan 8 yilgacha bardoshli"],
+                    ["fa-seedling", "Qo'llanish Sohasi", "Zamonaviy issiqxonalar, ferma komplekslari, sanoat angarlari"]
+                ],
+                descContent: `
+                    <h3 style="margin-bottom: 16px; color: var(--primary);">Evaporativ Tabiiy Sovutish Qanday Ishlaydi?</h3>
+                    <p style="color: var(--text-light); line-height: 1.8; margin-bottom: 15px;">
+                        Gofra sovutish panellari suvning kapillyar singishi va tabiiy bug'lanishi qonuniyatiga asoslangan. Qarama-qarshi devorga o'rnatilgan kuchli AIRFAN tortish ventilyatorlari havoni so'rib chiqarganda, tashqi havo namlangan gofra orqali ichkariga kiradi.
+                    </p>
+                    <p style="color: var(--text-light); line-height: 1.8; margin-bottom: 15px;">
+                        Issiq havo nam yuzaga tekkan zahoti suv bug'lanadi va havodagi issiqlik energiyasini yutib oladi. Natijada xonaga kiruvchi havo 8-12°C ga salqinlashgan, changsiz va toza holda bino ichiga tarqaladi. Bu an'anaviy konditsionerlarga nisbatan 90% kamroq elektr sarflaydi.
+                    </p>
+                    <div style="background: var(--bg-light); padding: 18px; border-radius: 12px; border-left: 4px solid var(--accent); margin-top: 15px;">
+                        <h4 style="color: var(--primary); margin-bottom: 6px;"><i class="fa-solid fa-check-double" style="color: var(--accent);"></i> Asosiy afzalligi:</h4>
+                        <p style="color: var(--text-light); font-size: 14px;">Freonsiz eng ekologik va arzon sovutish usuli. 1 m² paneldan olingan sovutish effekti yirik konditsioner quvvatiga teng.</p>
+                    </div>
+                `,
+                installContent: `
+                    <h3 style="margin-bottom: 16px; color: var(--primary);">Gidravlika va Kassetalar Montaji</h3>
+                    <p style="color: var(--text-light); line-height: 1.8; margin-bottom: 15px;">
+                        Gofra panellar alyuminiy kassetalar ichiga joylashtirilib, binoning quyosh kam tushadigan yoki asosiy shamol yo'nalishidagi devoriga o'rnatiladi.
+                    </p>
+                    <ul style="color: var(--text-light); line-height: 1.8; list-style: disc; padding-left: 20px; margin-bottom: 15px;">
+                        <li>Tizim suv nasosi, tarqatish quvurlari va aylanma suv baki bilan ta'minlanadi;</li>
+                        <li>Maxsus suv taqsimlovchi quvurlar gofra panelni butun kengligi bo'ylab bir tekis namlaydi;</li>
+                        <li>Qish mavsumida panellarni oson yopib qo'yish uchun himoya qopqoqlari o'rnatilishi mumkin;</li>
+                        <li>3 yillik rasmiy kafolat bilan yetkazib beriladi.</li>
+                    </ul>
+                `,
+                compareAdvantage: "Haroratni 8-12°C ga tushiradi, elektr sarfini 90% tejaydi, 5-8 yil xizmat"
+            },
+            {
+                id: 6,
+                title: "Био-охладители AIRFAN",
+                shortTitle: "Био-охладители AIRFAN",
+                category: "Био-охладители AIRFAN",
+                categoryBadgeClass: "badge-cooler",
+                badgeIcon: "fa-faucet-drip",
+                badgeText: "Portativ Bio-Cooler",
+                price: 5200000,
+                priceStr: "5,200,000 so'm",
+                oldPriceStr: "5,900,000 so'm",
+                discount: "-12% Chegirma",
+                image: "https://airfan.uz/thumb/2/t9YoEQGkJp-bKDwk3sOXiQ/1200r/d/image2.png",
+                shortSpecs: {
+                    power: "0.55 kW / 220V",
+                    powerLabel: "Dvigatel Quvvati",
+                    powerIcon: "fa-bolt",
+                    airflow: "18,000 m³/soat",
+                    airflowLabel: "Havo Aylanishi",
+                    airflowIcon: "fa-wind",
+                    warranty: "3 Yil Rasmiy",
+                    warrantyLabel: "Kafolat Muddati",
+                    warrantyIcon: "fa-shield-halved",
+                    noise: "80 - 100 Litr",
+                    noiseLabel: "Suv Baki Sig'imi",
+                    noiseIcon: "fa-glass-water"
+                },
+                shortDesc: "AIRFAN Bio-Cooler — freonsiz, ekologik toza mobil bug'latuvchi sovutgich. Ochiq terassalar, restoranlar, sport zallari va ishlab chiqarish maydonlarida konditsionerga nisbatan 80% kamroq elektr sarfi bilan kuchli salqinlik beradi.",
+                specsTable: [
+                    ["fa-barcode", "Model Kodi", "AIRFAN Mobile Bio-Cooler 18000"],
+                    ["fa-wind", "Havo Yetkazish Hajmi", "18 000 m³/soat"],
+                    ["fa-up-right-and-down-left-from-center", "O'lchamlari", "1100 x 750 x 1450 mm (mobil g'ildiraklar bilan)"],
+                    ["fa-building", "Qamrov Maydoni", "100 - 150 m² ochiq yoki yopiq hudud"],
+                    ["fa-glass-water", "Suv Baki Hajmi", "100 Litr (vodoprovod shlangiga to'g'ridan-to'g'ri ulanish imkoni)"],
+                    ["fa-bolt", "Elektr Quvvati", "0.55 kW (220V bir fazali oddiy rozetka)"],
+                    ["fa-arrows-left-right", "Havo Haydash Masofasi", "15 - 20 metrga kuchli shabada"],
+                    ["fa-sliders", "Boshqaruv Tizimi", "Masofadan boshqarish pulti (Remote), LED ekran, 3 xil tezlik"],
+                    ["fa-repeat", "Avtomatik Tebranish", "Avtomatik chapga-o'ngga aylanuvchi havo yo'naltiruvchi jalyuzilar"],
+                    ["fa-shield", "Himoya", "Suvsiz qolishdan avtomatik nasos himoyasi va IP54 korpus"]
+                ],
+                descContent: `
+                    <h3 style="margin-bottom: 16px; color: var(--primary);">Mobil va Quvvatli Salqinlik Manbai</h3>
+                    <p style="color: var(--text-light); line-height: 1.8; margin-bottom: 15px;">
+                        AIRFAN bio-oxladiteli yopiq eshiklarni talab qilmaydi. U ochiq toza havoda, to'yxona va restoranlarning yozgi ayvonlarida, ochiq sex va garajlarda xuddi dengiz shabadasidek yoqimli va salqin muhit yaratadi.
+                    </p>
+                    <p style="color: var(--text-light); line-height: 1.8; margin-bottom: 15px;">
+                        Uskunaning 3 tomonida keng maydonli cooling pad sovutish panellari joylashgan. Ichki nasos suvni doimiy aylantirib turadi, kuchli ventilyator esa salqinlangan havoni 20 metrgacha masofaga haydab beradi.
+                    </p>
+                    <div style="background: var(--bg-light); padding: 18px; border-radius: 12px; border-left: 4px solid var(--accent); margin-top: 15px;">
+                        <h4 style="color: var(--primary); margin-bottom: 6px;"><i class="fa-solid fa-check-double" style="color: var(--accent);"></i> Asosiy afzalligi:</h4>
+                        <p style="color: var(--text-light); font-size: 14px;">Montaj shart emas, istalgan joyga g'ildiraklari bilan erkin ko'chiriladi, atigi 550 Watt quvvat bilan 150 m² ni sovitadi.</p>
+                    </div>
+                `,
+                installContent: `
+                    <h3 style="margin-bottom: 16px; color: var(--primary);">Ishga Tushirish va Xizmat Ko'rsatish</h3>
+                    <p style="color: var(--text-light); line-height: 1.8; margin-bottom: 15px;">
+                        Uskunani ishlatish uchun hech qanday mutaxassis talab qilinmaydi:
+                    </p>
+                    <ul style="color: var(--text-light); line-height: 1.8; list-style: disc; padding-left: 20px; margin-bottom: 15px;">
+                        <li>G'ildiraklari orqali kerakli joyga keltiriladi va tormozlari bosiladi;</li>
+                        <li>Bakiga suv quyiladi (yoki suv shlangi ulab qo'yiladi);</li>
+                        <li>Standart 220V rozetkaga ulanadi va pultdan 'Cool' tugmasi bosiladi;</li>
+                        <li>3 yillik rasmiy kafolat va zaxira qismlar doimiy omborda mavjud.</li>
+                    </ul>
+                `,
+                compareAdvantage: "18,000 m³/soat mobil sovitish, 100 L bak, masofadan pult, 220V da ishlash"
+            }
+        ];
 
+        let activeIndex = 0;
+        let currentQty = 1;
+
+        // Sahifa yuklanganda
+        document.addEventListener('DOMContentLoaded', () => {
+            renderThumbnails();
+            renderComparisonTable();
+
+            // URL parametrini tekshirish (?product=1 yoki ?id=2)
+            const urlParams = new URLSearchParams(window.location.search);
+            const prodParam = urlParams.get('product') || urlParams.get('id');
+            if (prodParam) {
+                const pNum = parseInt(prodParam, 10);
+                if (pNum >= 1 && pNum <= 6) {
+                    selectProduct(pNum - 1);
+                } else {
+                    selectProduct(0);
+                }
+            } else {
+                selectProduct(0);
+            }
+        });
+
+        // 6 ta miniatyuralarni hosil qilish
+        function renderThumbnails() {
+            const grid = document.getElementById('thumbsGrid');
+            grid.innerHTML = '';
+
+            PRODUCTS.forEach((p, idx) => {
+                const thumb = document.createElement('div');
+                thumb.className = `thumb-item ${idx === activeIndex ? 'active' : ''}`;
+                thumb.onclick = () => selectProduct(idx);
+                thumb.title = `${idx + 1}. ${p.title}`;
+
+                thumb.innerHTML = `
+                    <span class="thumb-index">${idx + 1}</span>
+                    <img src="${p.image}" alt="${p.title}">
+                    <span class="thumb-label">${p.shortTitle}</span>
+                `;
+                grid.appendChild(thumb);
+            });
+        }
+
+        // Qiyosiy tahlil jadvalini hosil qilish
+        function renderComparisonTable() {
+            const tbody = document.getElementById('comparisonTableBody');
+            tbody.innerHTML = '';
+
+            PRODUCTS.forEach((p, idx) => {
+                const tr = document.createElement('tr');
+                tr.id = `comp-row-${idx}`;
+                if (idx === activeIndex) tr.classList.add('active-row');
+
+                tr.innerHTML = `
+                    <td><strong>#${idx + 1}</strong></td>
+                    <td>
+                        <div class="comp-product-cell">
+                            <img src="${p.image}" alt="${p.title}">
+                            <div>
+                                <span class="comp-product-name">${p.title}</span>
+                                <span class="comp-product-cat">${p.shortSpecs.warranty}</span>
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="badge-cat ${p.categoryBadgeClass}">${p.category}</span></td>
+                    <td><strong>${p.shortSpecs.power}</strong></td>
+                    <td>${p.shortSpecs.airflow}</td>
+                    <td><strong style="color: var(--accent); font-size: 15px;">${p.priceStr}</strong></td>
+                    <td style="font-size: 13px; color: var(--text-main);">${p.compareAdvantage}</td>
+                    <td>
+                        <button class="btn btn-outline" style="padding: 8px 14px; font-size: 12.5px;" onclick="selectProduct(${idx}); document.getElementById('productDetailSection').scrollIntoView({behavior: 'smooth'});">
+                            <i class="fa-solid fa-eye"></i> Tahlil
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        // Mahsulotni tanlash
+        function selectProduct(index) {
+            if (index < 0 || index >= PRODUCTS.length) return;
+            activeIndex = index;
+            const p = PRODUCTS[index];
+
+            // Breadcrumb va sarlavhalar
+            document.getElementById('breadcrumbTitle').innerText = p.title;
+            document.title = `${p.title} | Mahsulot Tahlili — AIRFAN`;
+
+            // Rasm va nishon
+            document.getElementById('currentMainImage').src = p.image;
+            document.getElementById('currentMainImage').alt = p.title;
+            document.getElementById('mainImageBadge').innerHTML = `<i class="fa-solid ${p.badgeIcon}"></i> #${index + 1} ${p.category}`;
+
+            // Tag va sarlavha
+            document.getElementById('productTag').innerHTML = `<i class="fa-solid ${p.badgeIcon}"></i> ${p.badgeText}`;
+            document.getElementById('productIndexPill').innerText = `Model ${index + 1} dan 6`;
+            document.getElementById('productTitle').innerText = p.title;
+
+            // Narx
+            currentQty = 1;
+            document.getElementById('itemQty').value = 1;
+            document.getElementById('unitPrice').innerText = p.priceStr;
+            document.getElementById('oldPrice').innerText = p.oldPriceStr;
+            document.getElementById('discountBadge').innerText = p.discount;
+
+            // Qisqa xarakteristikalar
+            document.getElementById('specLabel1').innerText = p.shortSpecs.powerLabel;
+            document.getElementById('specVal1').innerText = p.shortSpecs.power;
+            document.getElementById('specIcon1').className = `fa-solid ${p.shortSpecs.powerIcon}`;
+
+            document.getElementById('specLabel2').innerText = p.shortSpecs.airflowLabel;
+            document.getElementById('specVal2').innerText = p.shortSpecs.airflow;
+            document.getElementById('specIcon2').className = `fa-solid ${p.shortSpecs.airflowIcon}`;
+
+            document.getElementById('specLabel3').innerText = p.shortSpecs.warrantyLabel;
+            document.getElementById('specVal3').innerText = p.shortSpecs.warranty;
+            document.getElementById('specIcon3').className = `fa-solid ${p.shortSpecs.warrantyIcon}`;
+
+            document.getElementById('specLabel4').innerText = p.shortSpecs.noiseLabel;
+            document.getElementById('specVal4').innerText = p.shortSpecs.noise;
+            document.getElementById('specIcon4').className = `fa-solid ${p.shortSpecs.noiseIcon}`;
+
+            // Qisqa tavsif
+            document.getElementById('productShortDesc').innerText = p.shortDesc;
+
+            // Texnik xarakteristikalar jadvali
+            const table = document.getElementById('specsTable');
+            table.innerHTML = '';
+            p.specsTable.forEach(([icon, label, value]) => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td><i class="fa-solid ${icon}"></i> ${label}</td>
+                    <td><strong>${value}</strong></td>
+                `;
+                table.appendChild(tr);
+            });
+
+            // Batafsil tavsif va montaj tablari
+            document.getElementById('descContent').innerHTML = p.descContent;
+            document.getElementById('installContent').innerHTML = p.installContent;
+
+            // Yuqori selektor pill-lar holatini yangilash
+            const pills = document.querySelectorAll('.selector-pill');
+            pills.forEach((el, idx) => {
+                if (idx === index) el.classList.add('active');
+                else el.classList.remove('active');
+            });
+
+            // Miniatyuralar holatini yangilash
+            const thumbs = document.querySelectorAll('.thumb-item');
+            thumbs.forEach((el, idx) => {
+                if (idx === index) el.classList.add('active');
+                else el.classList.remove('active');
+            });
+
+            // Qiyosiy jadval qatorlarini yangilash
+            PRODUCTS.forEach((_, idx) => {
+                const row = document.getElementById(`comp-row-${idx}`);
+                if (row) {
+                    if (idx === index) row.classList.add('active-row');
+                    else row.classList.remove('active-row');
+                }
+            });
+
+            // URL manzilini sahifani yangilamasdan sinxronlash
+            const newUrl = `${window.location.pathname}?product=${index + 1}`;
+            window.history.replaceState({ path: newUrl }, '', newUrl);
+        }
+
+        // Miqdorni o'zgartirish
         function updateQty(change) {
             currentQty += change;
             if (currentQty < 1) currentQty = 1;
             document.getElementById('itemQty').value = currentQty;
-            const totalPrice = (currentQty * basePrice).toLocaleString('uz-UZ');
+
+            const p = PRODUCTS[activeIndex];
+            const totalPrice = (currentQty * p.price).toLocaleString('uz-UZ');
             document.getElementById('unitPrice').innerText = `${totalPrice} so'm`;
         }
 
-        function switchImage(src, title, tag, priceStr, thumbElement) {
-            document.getElementById('currentMainImage').src = src;
-            document.getElementById('productTitle').innerText = title;
-            document.getElementById('productTitleBreadcrumb').innerText = title;
-            document.getElementById('productTag').innerText = tag;
-            
-            // Raw price parsing
-            if(priceStr.includes('3,450,000')) basePrice = 3450000;
-            else if(priceStr.includes('4,800,000')) basePrice = 4800000;
-            else if(priceStr.includes('1,200,000')) basePrice = 1200000;
-            else if(priceStr.includes('5,200,000')) basePrice = 5200000;
-
-            activeTitle = title;
-            currentQty = 1;
-            document.getElementById('itemQty').value = 1;
-            document.getElementById('unitPrice').innerText = priceStr;
-
-            document.querySelectorAll('.thumb-item').forEach(el => el.classList.remove('active'));
-            thumbElement.classList.add('active');
-        }
-
+        // Tablarni almashtirish
         function switchTab(tabId, btnElement) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
@@ -822,9 +2016,15 @@
             btnElement.classList.add('active');
         }
 
+        // Modalni ochish
         function openDetailModal() {
-            const totalSum = (currentQty * basePrice).toLocaleString('uz-UZ');
-            document.getElementById('modalProductSummary').innerText = `Tanlandi: ${activeTitle} | Miqdor: ${currentQty} ta | Jami: ${totalSum} so'm`;
+            const p = PRODUCTS[activeIndex];
+            const totalSum = (currentQty * p.price).toLocaleString('uz-UZ');
+
+            document.getElementById('modalProductImg').src = p.image;
+            document.getElementById('modalProductName').innerText = p.title;
+            document.getElementById('modalProductPriceSummary').innerText = `Miqdor: ${currentQty} ta | Jami: ${totalSum} so'm`;
+
             document.getElementById('orderModal').classList.add('active');
         }
 
@@ -832,26 +2032,28 @@
             document.getElementById('orderModal').classList.remove('active');
         }
 
-        // Telegram Bot API Integratsiyasi (User ID: 5973007672)
+        // Telegram Bot API Integratsiyasi (Token va Chat ID saqlangan)
         const BOT_TOKEN = '8870087140:AAGhmm0WlIbp60iE2nBXagUrgWWs0n7otF0';
         const CHAT_ID = '5973007672';
 
         async function sendToTelegram(event) {
             event.preventDefault();
 
-            const name = document.getElementById('clientName').value;
-            const phone = document.getElementById('clientPhone').value;
-            const address = document.getElementById('clientAddress').value;
-            const totalSum = (currentQty * basePrice).toLocaleString('uz-UZ');
+            const p = PRODUCTS[activeIndex];
+            const name = document.getElementById('clientName').value.trim();
+            const phone = document.getElementById('clientPhone').value.trim();
+            const address = document.getElementById('clientAddress').value.trim();
+            const totalSum = (currentQty * p.price).toLocaleString('uz-UZ');
 
-            const message = `📋 *Mahsulot Sahifasidan Buyurtma - AIR*\n\n` +
-                            `📦 *Mahsulot:* ${activeTitle}\n` +
+            const message = `📋 *Yangi Buyurtma — Mahsulot Tahlili (AIRFAN)*\n\n` +
+                            `📦 *Mahsulot:* #${p.id} ${p.title}\n` +
+                            `🏷️ *Kategoriya:* ${p.category}\n` +
                             `🔢 *Miqdori:* ${currentQty} ta\n` +
-                            `💰 *Jami Summa:* ${totalSum} so'm\n` +
+                            `💰 *Jami Summa:* ${totalSum} so'm\n\n` +
                             `👤 *Mijoz:* ${name}\n` +
                             `📞 *Telefon:* ${phone}\n` +
-                            `📍 *Manzil:* ${address}\n` +
-                            `⏰ *Vaqt:* ${new Date().toLocaleString()}`;
+                            `📍 *Manzil / Izoh:* ${address}\n` +
+                            `⏰ *Vaqt:* ${new Date().toLocaleString('uz-UZ')}`;
 
             const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
 
@@ -868,15 +2070,15 @@
 
                 const data = await response.json();
                 if (data.ok) {
-                    alert('Buyurtmangiz muvaffaqiyatli Telegram botga yuborildi! Operatorlarimiz tez orada aloqaga chiqishadi.');
+                    alert('Rahmat! Buyurtmangiz muvaffaqiyatli qabul qilindi. Tez orada operatorimiz siz bilan bog\'lanadi.');
                     closeModal();
                     document.getElementById('telegramForm').reset();
                 } else {
-                    alert('Xatolik yuz berdi. Iltimos qaytadan urinib ko\'ring.');
+                    alert('Xatolik yuz berdi. Iltimos qaytadan urinib ko\'ring yoki to\'g\'ridan-to\'g\'ri qo\'ng'iroq qiling.');
                 }
             } catch (error) {
-                console.error('Error:', error);
-                alert('Tarmoqda xatolik yuz berdi.');
+                console.error('Telegram Error:', error);
+                alert('Tarmoqda xatolik yuz berdi. Iltimos, internet aloqangizni tekshiring.');
             }
         }
     </script>
