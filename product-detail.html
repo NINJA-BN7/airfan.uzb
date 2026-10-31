@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AIRFAN — Mahsulot Tahlili va Texnik Xarakteristikalari</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <!-- Google Fonts & FontAwesome -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -1123,7 +1124,7 @@
     <header>
         <div class="navbar">
             <a href="index.html" class="logo">
-                <span class="logo-icon-wrap"><i class="fa-solid fa-wind"></i></span>
+                <span class="logo-icon-wrap"><img src="favicon.svg" alt="AIRFAN Emblem" class="logo-emblem-img"></span>
                 <span class="logo-text">AIR<span class="logo-highlight">FAN</span></span>
             </a>
             <ul class="nav-links">
@@ -1151,7 +1152,7 @@
     <!-- Page Banner -->
     <section class="page-banner">
         <div class="airfan-brand-emblem">
-            <i class="fa-solid fa-wind"></i> AIRFAN TECHNICAL EXPERTISE
+            <img src="favicon.svg" alt="AIRFAN" style="width: 18px; height: 18px; vertical-align: middle;"> AIRFAN TECHNICAL EXPERTISE
         </div>
         <h1><span class="airfan-gradient-title" data-i18n="detail_banner_title">Mahsulot Tahlili va Texnik Ekspertiza</span></h1>
         <p data-i18n="detail_banner_desc">AIRFAN iqlim uskunalarining to'liq texnik xarakteristikalari, samaradorlik ko'rsatkichlari va 10 ta asosiy modelning qiyosiy tahlili.</p>
@@ -1165,7 +1166,7 @@
         <span>/</span>
         <a href="product-detail.html" data-i18n="nav_detail">Mahsulot Tahlili</a>
         <span>/</span>
-        <span style="color: var(--primary); font-weight: 700;" id="breadcrumbTitle">Отопительный агрегат - 800</span>
+        <span style="color: var(--primary); font-weight: 700;" id="breadcrumbTitle">Isitish agregati - 800</span>
     </div>
 
     <!-- Product Selector Strip (1 to 10) -->
@@ -1181,43 +1182,43 @@
         <div class="selector-strip" id="selectorStrip">
             <div class="selector-pill active" onclick="selectProduct(0)">
                 <span class="num-badge">1</span>
-                <span class="pill-text">Отопительный агрегат - 800</span>
+                <span class="pill-text" data-i18n="prod_title_1">Isitish agregati - 800</span>
             </div>
             <div class="selector-pill" onclick="selectProduct(1)">
                 <span class="num-badge">2</span>
-                <span class="pill-text">Вытяжной вентилятор-1120</span>
+                <span class="pill-text" data-i18n="prod_title_2">Tortish ventilyatori-1120</span>
             </div>
             <div class="selector-pill" onclick="selectProduct(2)">
                 <span class="num-badge">3</span>
-                <span class="pill-text">Вытяжной вентилятор-600</span>
+                <span class="pill-text" data-i18n="prod_title_3">Tortish ventilyatori-600</span>
             </div>
             <div class="selector-pill" onclick="selectProduct(3)">
                 <span class="num-badge">4</span>
-                <span class="pill-text">AURA SMART AIR</span>
+                <span class="pill-text" data-i18n="prod_title_4">AURA SMART AIR</span>
             </div>
             <div class="selector-pill" onclick="selectProduct(4)">
                 <span class="num-badge">5</span>
-                <span class="pill-text">Гофра охладительные панели</span>
+                <span class="pill-text" data-i18n="prod_title_5">Gofra sovutish panellari</span>
             </div>
             <div class="selector-pill" onclick="selectProduct(5)">
                 <span class="num-badge">6</span>
-                <span class="pill-text">Био-охладители AIRFAN</span>
+                <span class="pill-text" data-i18n="prod_title_6">AIRFAN Bio-sovutgichlari</span>
             </div>
             <div class="selector-pill" onclick="selectProduct(6)">
                 <span class="num-badge">7</span>
-                <span class="pill-text">Промышленные вентиляторы</span>
+                <span class="pill-text" data-i18n="prod_title_7">Sanoat ventilyatorlari</span>
             </div>
             <div class="selector-pill" onclick="selectProduct(7)">
                 <span class="num-badge">8</span>
-                <span class="pill-text">Отопительные агрегаты</span>
+                <span class="pill-text" data-i18n="prod_title_8">Isitish agregatlari</span>
             </div>
             <div class="selector-pill" onclick="selectProduct(8)">
                 <span class="num-badge">9</span>
-                <span class="pill-text">Гофра охладительные панели</span>
+                <span class="pill-text" data-i18n="prod_title_9">Kassetali gofra panellari</span>
             </div>
             <div class="selector-pill" onclick="selectProduct(9)">
                 <span class="num-badge">10</span>
-                <span class="pill-text">Био-охладители AIRFAN</span>
+                <span class="pill-text" data-i18n="prod_title_10">Statsionar bio-sovutgichlar</span>
             </div>
         </div>
     </div>
@@ -1229,13 +1230,13 @@
         <div class="gallery-wrapper">
             <div class="main-image">
                 <span class="main-image-badge" id="mainImageBadge">
-                    <i class="fa-solid fa-cube"></i> #1 Отопительные агрегаты
+                    <i class="fa-solid fa-cube"></i> #1 Isitish agregatlari
                 </span>
-                <img id="currentMainImage" src="https://airfan.uz/thumb/2/LMMCFATn5fV2R52I1-iVjA/1200r/d/image1810.png" alt="Отопительный агрегат - 800">
+                <img id="currentMainImage" src="https://airfan.uz/thumb/2/LMMCFATn5fV2R52I1-iVjA/1200r/d/image1810.png" alt="Isitish agregati - 800">
                 <span class="main-image-zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i> Kattalashtirish</span>
             </div>
 
-            <!-- 6 Thumbnails -->
+            <!-- 10 Thumbnails Grid -->
             <div class="thumbs-grid" id="thumbsGrid">
                 <!-- Thumbs injected by JS -->
             </div>
@@ -1244,14 +1245,22 @@
         <!-- Info Right -->
         <div class="product-info">
             <div>
-                <div class="product-tag-row">
+                <div class="product-tag-row" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
                     <span class="product-tag" id="productTag">
-                        <i class="fa-solid fa-fire"></i> Отопительные агрегаты
+                        <i class="fa-solid fa-fire"></i> Isitish Tizimi
                     </span>
-                    <span class="product-index-pill" id="productIndexPill">Model 1 dan 6</span>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <button type="button" class="btn btn-outline" style="padding: 4px 11px; font-size: 13px;" onclick="selectProduct(activeIndex - 1)" title="Oldingi model" aria-label="Previous product">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+                        <span class="product-index-pill" id="productIndexPill">Model 1 dan 10</span>
+                        <button type="button" class="btn btn-outline" style="padding: 4px 11px; font-size: 13px;" onclick="selectProduct(activeIndex + 1)" title="Keyingi model" aria-label="Next product">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+                    </div>
                 </div>
 
-                <h1 id="productTitle" style="margin-top: 10px;">Отопительный агрегат - 800</h1>
+                <h1 id="productTitle" style="margin-top: 10px;">Isitish agregati - 800</h1>
                 
                 <div class="price-box" style="margin-top: 16px;">
                     <div>
@@ -1423,32 +1432,32 @@
         <div class="footer-grid">
             <div class="footer-col">
                 <div class="logo" style="color: white; margin-bottom: 20px;">
-                    <i class="fa-solid fa-wind" style="color: var(--accent);"></i> AIR<span>FAN</span>
+                    <span class="logo-icon-wrap" style="width: 32px; height: 32px; display: inline-flex;"><img src="favicon.svg" alt="AIRFAN" class="logo-emblem-img"></span> AIR<span>FAN</span>
                 </div>
-                <p>O'zbekistonda sanoat va maishiy iqlim texnologiyalari bo'yicha yetakchi ishlab chiqaruvchi va yetkazib beruvchi brend. Rasmiy kafolat va professional servis.</p>
+                <p data-i18n="footer_about">O'zbekistonda sanoat va maishiy iqlim texnologiyalari bo'yicha yetakchi ishlab chiqaruvchi va yetkazib beruvchi brend. Rasmiy kafolat va professional servis.</p>
             </div>
             <div class="footer-col">
-                <h4>Sahifalar</h4>
+                <h4 data-i18n="footer_pages">Sahifalar</h4>
                 <ul>
-                    <li><a href="index.html">Bosh sahifa</a></li>
-                    <li><a href="catalog.html">Katalog</a></li>
-                    <li><a href="product-detail.html">Mahsulot Tahlili</a></li>
-                    <li><a href="contact.html">Aloqa & Buyurtma</a></li>
+                    <li><a href="index.html" data-i18n="nav_home">Bosh sahifa</a></li>
+                    <li><a href="catalog.html" data-i18n="nav_catalog">Katalog</a></li>
+                    <li><a href="product-detail.html" data-i18n="nav_detail">Mahsulot Tahlili</a></li>
+                    <li><a href="contact.html" data-i18n="nav_contact">Aloqa & Buyurtma</a></li>
                 </ul>
             </div>
             <div class="footer-col">
-                <h4>10 Asosiy Yo'nalish</h4>
+                <h4 data-i18n="footer_directions">10 Asosiy Yo'nalish</h4>
                 <ul>
-                    <li><a href="javascript:void(0)" onclick="selectProduct(0); window.scrollTo({top: 200, behavior: 'smooth'});">1. Отопительный агрегат - 800</a></li>
-                    <li><a href="javascript:void(0)" onclick="selectProduct(1); window.scrollTo({top: 200, behavior: 'smooth'});">2. Вытяжной вентилятор-1120</a></li>
-                    <li><a href="javascript:void(0)" onclick="selectProduct(2); window.scrollTo({top: 200, behavior: 'smooth'});">3. Вытяжной вентилятор-600</a></li>
-                    <li><a href="javascript:void(0)" onclick="selectProduct(3); window.scrollTo({top: 200, behavior: 'smooth'});">4. AURA SMART AIR</a></li>
-                    <li><a href="javascript:void(0)" onclick="selectProduct(4); window.scrollTo({top: 200, behavior: 'smooth'});">5. Гофра охладительные панели</a></li>
-                    <li><a href="javascript:void(0)" onclick="selectProduct(5); window.scrollTo({top: 200, behavior: 'smooth'});">6. Био-охладители AIRFAN</a></li>
-                    <li><a href="javascript:void(0)" onclick="selectProduct(6); window.scrollTo({top: 200, behavior: 'smooth'});">7. Промышленные вентиляторы</a></li>
-                    <li><a href="javascript:void(0)" onclick="selectProduct(7); window.scrollTo({top: 200, behavior: 'smooth'});">8. Отопительные агрегаты</a></li>
-                    <li><a href="javascript:void(0)" onclick="selectProduct(8); window.scrollTo({top: 200, behavior: 'smooth'});">9. Гофра охладительные панели</a></li>
-                    <li><a href="javascript:void(0)" onclick="selectProduct(9); window.scrollTo({top: 200, behavior: 'smooth'});">10. Био-охладители AIRFAN</a></li>
+                    <li><a href="javascript:void(0)" onclick="selectProduct(0); window.scrollTo({top: 200, behavior: 'smooth'});">1. <span data-i18n="prod_title_1">Isitish agregati - 800</span></a></li>
+                    <li><a href="javascript:void(0)" onclick="selectProduct(1); window.scrollTo({top: 200, behavior: 'smooth'});">2. <span data-i18n="prod_title_2">Tortish ventilyatori-1120</span></a></li>
+                    <li><a href="javascript:void(0)" onclick="selectProduct(2); window.scrollTo({top: 200, behavior: 'smooth'});">3. <span data-i18n="prod_title_3">Tortish ventilyatori-600</span></a></li>
+                    <li><a href="javascript:void(0)" onclick="selectProduct(3); window.scrollTo({top: 200, behavior: 'smooth'});">4. <span data-i18n="prod_title_4">AURA SMART AIR</span></a></li>
+                    <li><a href="javascript:void(0)" onclick="selectProduct(4); window.scrollTo({top: 200, behavior: 'smooth'});">5. <span data-i18n="prod_title_5">Gofra sovutish panellari</span></a></li>
+                    <li><a href="javascript:void(0)" onclick="selectProduct(5); window.scrollTo({top: 200, behavior: 'smooth'});">6. <span data-i18n="prod_title_6">AIRFAN Bio-sovutgichlari</span></a></li>
+                    <li><a href="javascript:void(0)" onclick="selectProduct(6); window.scrollTo({top: 200, behavior: 'smooth'});">7. <span data-i18n="prod_title_7">Sanoat ventilyatorlari</span></a></li>
+                    <li><a href="javascript:void(0)" onclick="selectProduct(7); window.scrollTo({top: 200, behavior: 'smooth'});">8. <span data-i18n="prod_title_8">Isitish agregatlari</span></a></li>
+                    <li><a href="javascript:void(0)" onclick="selectProduct(8); window.scrollTo({top: 200, behavior: 'smooth'});">9. <span data-i18n="prod_title_9">Kassetali gofra panellari</span></a></li>
+                    <li><a href="javascript:void(0)" onclick="selectProduct(9); window.scrollTo({top: 200, behavior: 'smooth'});">10. <span data-i18n="prod_title_10">Statsionar bio-sovutgichlar</span></a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -2143,6 +2152,41 @@
         let activeIndex = 0;
         let currentQty = 1;
 
+        // Language Helpers
+        function getProductLang() {
+            return (typeof getCurrentLanguage === 'function') ? getCurrentLanguage() : (localStorage.getItem('airfan_lang') || 'uz');
+        }
+
+        function getProductTitle(p, lang) {
+            if (!p) return '';
+            const key = 'prod_title_' + p.id;
+            if (typeof TRANSLATIONS !== 'undefined' && TRANSLATIONS[lang] && TRANSLATIONS[lang][key]) {
+                return TRANSLATIONS[lang][key];
+            }
+            if (typeof p.title === 'object') return p.title[lang] || p.title.uz || p.title.ru || '';
+            return p.title || '';
+        }
+
+        function getProductCategory(p, lang) {
+            if (!p) return '';
+            const key = 'prod_cat_' + p.id;
+            if (typeof TRANSLATIONS !== 'undefined' && TRANSLATIONS[lang] && TRANSLATIONS[lang][key]) {
+                return TRANSLATIONS[lang][key];
+            }
+            if (typeof p.category === 'object') return p.category[lang] || p.category.uz || p.category.ru || '';
+            return p.category || '';
+        }
+
+        function getProductDesc(p, lang) {
+            if (!p) return '';
+            const key = 'prod_desc_' + p.id;
+            if (typeof TRANSLATIONS !== 'undefined' && TRANSLATIONS[lang] && TRANSLATIONS[lang][key]) {
+                return TRANSLATIONS[lang][key];
+            }
+            if (typeof p.shortDesc === 'object') return p.shortDesc[lang] || p.shortDesc.uz || p.shortDesc.ru || '';
+            return p.shortDesc || '';
+        }
+
         // Sahifa yuklanganda
         document.addEventListener('DOMContentLoaded', () => {
             renderThumbnails();
@@ -2163,26 +2207,31 @@
             }
         });
 
+        // Til o'zgarganda barcha elementlarni sinxron yangilash
         window.addEventListener('airfanLanguageChanged', () => {
             selectProduct(activeIndex);
+            renderThumbnails();
             renderComparisonTable();
         });
 
-        // 6 ta miniatyuralarni hosil qilish
+        // 10 ta miniatyuralarni hosil qilish
         function renderThumbnails() {
             const grid = document.getElementById('thumbsGrid');
+            if (!grid) return;
             grid.innerHTML = '';
+            const lang = getProductLang();
 
             PRODUCTS.forEach((p, idx) => {
                 const thumb = document.createElement('div');
                 thumb.className = `thumb-item ${idx === activeIndex ? 'active' : ''}`;
                 thumb.onclick = () => selectProduct(idx);
-                thumb.title = `${idx + 1}. ${p.title}`;
+                const title = getProductTitle(p, lang);
+                thumb.title = `${idx + 1}. ${title}`;
 
                 thumb.innerHTML = `
                     <span class="thumb-index">${idx + 1}</span>
-                    <img src="${p.image}" alt="${p.title}">
-                    <span class="thumb-label">${p.shortTitle}</span>
+                    <img src="${p.image}" alt="${title}">
+                    <span class="thumb-label">${title}</span>
                 `;
                 grid.appendChild(thumb);
             });
@@ -2191,32 +2240,39 @@
         // Qiyosiy tahlil jadvalini hosil qilish
         function renderComparisonTable() {
             const tbody = document.getElementById('comparisonTableBody');
+            if (!tbody) return;
             tbody.innerHTML = '';
+            const lang = getProductLang();
+            const actionText = (lang === 'ru') ? 'Анализ' : ((lang === 'en') ? 'Analyze' : 'Tahlil');
 
             PRODUCTS.forEach((p, idx) => {
                 const tr = document.createElement('tr');
                 tr.id = `comp-row-${idx}`;
                 if (idx === activeIndex) tr.classList.add('active-row');
 
+                const title = getProductTitle(p, lang);
+                const category = getProductCategory(p, lang);
+                const advantage = (typeof p.compareAdvantage === 'object') ? (p.compareAdvantage[lang] || p.compareAdvantage.uz) : p.compareAdvantage;
+
                 tr.innerHTML = `
                     <td><strong>#${idx + 1}</strong></td>
                     <td>
                         <div class="comp-product-cell">
-                            <img src="${p.image}" alt="${p.title}">
+                            <img src="${p.image}" alt="${title}">
                             <div>
-                                <span class="comp-product-name">${p.title}</span>
+                                <span class="comp-product-name">${title}</span>
                                 <span class="comp-product-cat">${p.shortSpecs.warranty}</span>
                             </div>
                         </div>
                     </td>
-                    <td><span class="badge-cat ${p.categoryBadgeClass}">${p.category}</span></td>
+                    <td><span class="badge-cat ${p.categoryBadgeClass}">${category}</span></td>
                     <td><strong>${p.shortSpecs.power}</strong></td>
                     <td>${p.shortSpecs.airflow}</td>
                     <td><strong style="color: var(--accent); font-size: 15px;">${p.priceStr}</strong></td>
-                    <td style="font-size: 13px; color: var(--text-main);">${p.compareAdvantage}</td>
+                    <td style="font-size: 13px; color: var(--text-main);">${advantage}</td>
                     <td>
                         <button class="btn btn-outline" style="padding: 8px 14px; font-size: 12.5px;" onclick="selectProduct(${idx}); document.getElementById('productDetailSection').scrollIntoView({behavior: 'smooth'});">
-                            <i class="fa-solid fa-eye"></i> Tahlil
+                            <i class="fa-solid fa-eye"></i> ${actionText}
                         </button>
                     </td>
                 `;
@@ -2226,66 +2282,103 @@
 
         // Mahsulotni tanlash
         function selectProduct(index) {
-            if (index < 0 || index >= PRODUCTS.length) return;
+            if (index < 0) index = 0;
+            if (index >= PRODUCTS.length) index = PRODUCTS.length - 1;
             activeIndex = index;
             const p = PRODUCTS[index];
+            const lang = getProductLang();
+
+            const title = getProductTitle(p, lang);
+            const category = getProductCategory(p, lang);
+            const desc = getProductDesc(p, lang);
 
             // Breadcrumb va sarlavhalar
-            document.getElementById('breadcrumbTitle').innerText = p.title;
-            document.title = `${p.title} | Mahsulot Tahlili — AIRFAN`;
+            const breadcrumbEl = document.getElementById('breadcrumbTitle');
+            if (breadcrumbEl) breadcrumbEl.innerText = title;
+            document.title = `${title} | AIRFAN`;
 
             // Rasm va nishon
-            document.getElementById('currentMainImage').src = p.image;
-            document.getElementById('currentMainImage').alt = p.title;
-            document.getElementById('mainImageBadge').innerHTML = `<i class="fa-solid ${p.badgeIcon}"></i> #${index + 1} ${p.category}`;
+            const mainImg = document.getElementById('currentMainImage');
+            if (mainImg) {
+                mainImg.src = p.image;
+                mainImg.alt = title;
+            }
+            const mainBadge = document.getElementById('mainImageBadge');
+            if (mainBadge) mainBadge.innerHTML = `<i class="fa-solid ${p.badgeIcon}"></i> #${index + 1} ${category}`;
 
             // Tag va sarlavha
-            document.getElementById('productTag').innerHTML = `<i class="fa-solid ${p.badgeIcon}"></i> ${p.badgeText}`;
-            document.getElementById('productIndexPill').innerText = `Model ${index + 1} dan ${PRODUCTS.length}`;
-            document.getElementById('productTitle').innerText = p.title;
+            const tagEl = document.getElementById('productTag');
+            if (tagEl) {
+                const badgeLabel = (typeof p.badgeText === 'object') ? (p.badgeText[lang] || p.badgeText.uz) : p.badgeText;
+                tagEl.innerHTML = `<i class="fa-solid ${p.badgeIcon}"></i> ${badgeLabel}`;
+            }
+
+            const indexPill = document.getElementById('productIndexPill');
+            if (indexPill) {
+                const modelWord = (lang === 'ru') ? 'Модель' : ((lang === 'en') ? 'Model' : 'Model');
+                const ofWord = (lang === 'ru') ? 'из' : ((lang === 'en') ? 'of' : 'dan');
+                indexPill.innerText = `${modelWord} ${index + 1} ${ofWord} ${PRODUCTS.length}`;
+            }
+
+            const titleEl = document.getElementById('productTitle');
+            if (titleEl) titleEl.innerText = title;
 
             // Narx
             currentQty = 1;
-            document.getElementById('itemQty').value = 1;
-            document.getElementById('unitPrice').innerText = p.priceStr;
-            document.getElementById('oldPrice').innerText = p.oldPriceStr;
-            document.getElementById('discountBadge').innerText = p.discount;
+            const qtyInput = document.getElementById('itemQty');
+            if (qtyInput) qtyInput.value = 1;
+            const unitPriceEl = document.getElementById('unitPrice');
+            if (unitPriceEl) unitPriceEl.innerText = p.priceStr;
+            const oldPriceEl = document.getElementById('oldPrice');
+            if (oldPriceEl) oldPriceEl.innerText = p.oldPriceStr;
+            const discountEl = document.getElementById('discountBadge');
+            if (discountEl) discountEl.innerText = p.discount;
 
-            // Qisqa xarakteristikalar
-            document.getElementById('specLabel1').innerText = p.shortSpecs.powerLabel;
-            document.getElementById('specVal1').innerText = p.shortSpecs.power;
-            document.getElementById('specIcon1').className = `fa-solid ${p.shortSpecs.powerIcon}`;
+            // Qisqa xarakteristikalar label-lari
+            const powerLabelText = (lang === 'ru') ? 'Мощность' : ((lang === 'en') ? 'Power' : p.shortSpecs.powerLabel);
+            const airflowLabelText = (lang === 'ru') ? 'Воздухообмен' : ((lang === 'en') ? 'Airflow' : p.shortSpecs.airflowLabel);
+            const warrantyLabelText = (lang === 'ru') ? 'Гарантия' : ((lang === 'en') ? 'Warranty' : p.shortSpecs.warrantyLabel);
+            const noiseLabelText = (lang === 'ru') ? 'Уровень шума' : ((lang === 'en') ? 'Noise Level' : p.shortSpecs.noiseLabel);
 
-            document.getElementById('specLabel2').innerText = p.shortSpecs.airflowLabel;
-            document.getElementById('specVal2').innerText = p.shortSpecs.airflow;
-            document.getElementById('specIcon2').className = `fa-solid ${p.shortSpecs.airflowIcon}`;
+            if (document.getElementById('specLabel1')) document.getElementById('specLabel1').innerText = powerLabelText;
+            if (document.getElementById('specVal1')) document.getElementById('specVal1').innerText = p.shortSpecs.power;
+            if (document.getElementById('specIcon1')) document.getElementById('specIcon1').className = `fa-solid ${p.shortSpecs.powerIcon}`;
 
-            document.getElementById('specLabel3').innerText = p.shortSpecs.warrantyLabel;
-            document.getElementById('specVal3').innerText = p.shortSpecs.warranty;
-            document.getElementById('specIcon3').className = `fa-solid ${p.shortSpecs.warrantyIcon}`;
+            if (document.getElementById('specLabel2')) document.getElementById('specLabel2').innerText = airflowLabelText;
+            if (document.getElementById('specVal2')) document.getElementById('specVal2').innerText = p.shortSpecs.airflow;
+            if (document.getElementById('specIcon2')) document.getElementById('specIcon2').className = `fa-solid ${p.shortSpecs.airflowIcon}`;
 
-            document.getElementById('specLabel4').innerText = p.shortSpecs.noiseLabel;
-            document.getElementById('specVal4').innerText = p.shortSpecs.noise;
-            document.getElementById('specIcon4').className = `fa-solid ${p.shortSpecs.noiseIcon}`;
+            if (document.getElementById('specLabel3')) document.getElementById('specLabel3').innerText = warrantyLabelText;
+            if (document.getElementById('specVal3')) document.getElementById('specVal3').innerText = p.shortSpecs.warranty;
+            if (document.getElementById('specIcon3')) document.getElementById('specIcon3').className = `fa-solid ${p.shortSpecs.warrantyIcon}`;
+
+            if (document.getElementById('specLabel4')) document.getElementById('specLabel4').innerText = noiseLabelText;
+            if (document.getElementById('specVal4')) document.getElementById('specVal4').innerText = p.shortSpecs.noise;
+            if (document.getElementById('specIcon4')) document.getElementById('specIcon4').className = `fa-solid ${p.shortSpecs.noiseIcon}`;
 
             // Qisqa tavsif
-            document.getElementById('productShortDesc').innerText = p.shortDesc;
+            const descEl = document.getElementById('productShortDesc');
+            if (descEl) descEl.innerText = desc;
 
             // Texnik xarakteristikalar jadvali
             const table = document.getElementById('specsTable');
-            table.innerHTML = '';
-            p.specsTable.forEach(([icon, label, value]) => {
-                const tr = document.createElement('tr');
-                tr.innerHTML = `
-                    <td><i class="fa-solid ${icon}"></i> ${label}</td>
-                    <td><strong>${value}</strong></td>
-                `;
-                table.appendChild(tr);
-            });
+            if (table && p.specsTable) {
+                table.innerHTML = '';
+                p.specsTable.forEach(([icon, label, value]) => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td><i class="fa-solid ${icon}"></i> ${label}</td>
+                        <td><strong>${value}</strong></td>
+                    `;
+                    table.appendChild(tr);
+                });
+            }
 
             // Batafsil tavsif va montaj tablari
-            document.getElementById('descContent').innerHTML = p.descContent;
-            document.getElementById('installContent').innerHTML = p.installContent;
+            const descContentEl = document.getElementById('descContent');
+            if (descContentEl && p.descContent) descContentEl.innerHTML = p.descContent;
+            const installContentEl = document.getElementById('installContent');
+            if (installContentEl && p.installContent) installContentEl.innerHTML = p.installContent;
 
             // Yuqori selektor pill-lar holatini yangilash
             const pills = document.querySelectorAll('.selector-pill');
@@ -2310,10 +2403,17 @@
                 }
             });
 
-            // URL manzilini sahifani yangilamasdan sinxronlash
-            const newUrl = `${window.location.pathname}?product=${index + 1}`;
-            window.history.replaceState({ path: newUrl }, '', newUrl);
+            // URL manzilini xavfsiz sinxronlash (file:// xatolik bermaydi)
+            try {
+                if (window.history && window.history.replaceState && window.location.protocol !== 'file:') {
+                    const newUrl = `${window.location.pathname}?product=${index + 1}`;
+                    window.history.replaceState({ path: newUrl }, '', newUrl);
+                }
+            } catch (e) {
+                // file:// protokolida xatolik chiqmasligi uchun
+            }
         }
+
 
         // Miqdorni o'zgartirish
         function updateQty(change) {
@@ -2340,7 +2440,7 @@
             const totalSum = (currentQty * p.price).toLocaleString('uz-UZ');
 
             document.getElementById('modalProductImg').src = p.image;
-            document.getElementById('modalProductName').innerText = p.title;
+            document.getElementById('modalProductName').innerText = getProductTitle(p);
             document.getElementById('modalProductPriceSummary').innerText = `Miqdor: ${currentQty} ta | Jami: ${totalSum} so'm`;
 
             document.getElementById('orderModal').classList.add('active');
@@ -2364,8 +2464,8 @@
             const totalSum = (currentQty * p.price).toLocaleString('uz-UZ');
 
             const message = `📋 *Yangi Buyurtma — Mahsulot Tahlili (AIRFAN)*\n\n` +
-                            `📦 *Mahsulot:* #${p.id} ${p.title}\n` +
-                            `🏷️ *Kategoriya:* ${p.category}\n` +
+                            `📦 *Mahsulot:* #${p.id} ${getProductTitle(p)}\n` +
+                            `🏷️ *Kategoriya:* ${getProductCategory(p)}\n` +
                             `🔢 *Miqdori:* ${currentQty} ta\n` +
                             `💰 *Jami Summa:* ${totalSum} so'm\n\n` +
                             `👤 *Mijoz:* ${name}\n` +

@@ -48,11 +48,11 @@ const TRANSLATIONS = {
         // Categories & Sections (index.html)
         cat_section_title: "Asosiy Mahsulot Yo'nalishlari",
         cat_section_desc: "Sanoat korxonalari, omborxonalar, ferma va issiqxonalar uchun iqlim texnologiyalari",
-        cat_card_1_title: "Промышленные вентиляторы",
+        cat_card_1_title: "Sanoat ventilyatorlari",
         cat_card_1_desc: "Katta hajmdagi binolarda havo almashinuvini ta'minlovchi, avtomatik jalyuzili yuqori quvvatli devoriy ventilyatorlar.",
-        cat_card_2_title: "Отопительные агрегаты",
+        cat_card_2_title: "Isitish agregatlari",
         cat_card_2_desc: "Sanoat obyekti, issiqxona va omborxonalarni qishki mavsumda tezkor isitish uchun suvli va elektr kaloriferlar.",
-        cat_card_3_title: "Гофра охладительные панели",
+        cat_card_3_title: "Gofra sovutish panellari",
         cat_card_3_desc: "Yozgi issiq kunlarda sex va issiqxonalar haroratini 8-12°C gacha pasaytiruvchi sellyuloza cooling pad panellari.",
         link_view_catalog: "Katalogdan ko'rish",
 
@@ -64,6 +64,48 @@ const TRANSLATIONS = {
         btn_order_now: "Buyurtma",
         btn_buy: "Sotib olish",
         btn_analysis: "Tahlil",
+
+        // 10 Products Localized Names & Categories (UZ)
+        prod_title_1: "Isitish agregati - 800",
+        prod_cat_1: "Isitish agregatlari",
+        prod_desc_1: "Katta sex va omborxonalarni suvli va elektr usulda jadal isitish",
+
+        prod_title_2: "Tortish ventilyatori-1120",
+        prod_cat_2: "Tortish ventilyatorlari",
+        prod_desc_2: "32 500 m³/soat quvvat va avtomatik gravitatsion jalyuzi",
+
+        prod_title_3: "Tortish ventilyatori-600",
+        prod_cat_3: "Tortish ventilyatorlari",
+        prod_desc_3: "Kam elektr sarfi (0.37 kW) va o'ta sokin sanoat motori",
+
+        prod_title_4: "AURA SMART AIR havo filtri",
+        prod_cat_4: "Havo filtrlari",
+        prod_desc_4: "HEPA H13 tozalash, UV-C dezinfeksiya va aqlli Wi-Fi boshqaruv",
+
+        prod_title_5: "Gofra sovutish panellari",
+        prod_cat_5: "Gofra sovutish panellari",
+        prod_desc_5: "Bino haroratini 8-12°C ga pasaytiruvchi tabiiy evaporativ sovutish",
+
+        prod_title_6: "AIRFAN Bio-sovutgichlari (Mobil)",
+        prod_cat_6: "Bio-sovutgichlar",
+        prod_desc_6: "18 000 m³/soat havo oqimi, 100L suv baki va masofadan pult",
+
+        prod_title_7: "Sanoat ventilyatorlari-1380",
+        prod_cat_7: "Tortish ventilyatorlari",
+        prod_desc_7: "44 500 m³/soat rekord unumdorlik va santrifugal ochilish tizimi",
+
+        prod_title_8: "Isitish agregatlari-510",
+        prod_cat_8: "Isitish agregatlari",
+        prod_desc_8: "Ixcham gabarit (510 mm), 35 kW quvvat va yuqori issiqlik",
+
+        prod_title_9: "Kassetali gofra sovutish panellari",
+        prod_cat_9: "Gofra sovutish panellari",
+        prod_desc_9: "Alyuminiy karkas, suv taqsimlash va aylanma nav tizimi bilan",
+
+        prod_title_10: "AIRFAN Bio-sovutgichlari (Statsionar)",
+        prod_cat_10: "Bio-sovutgichlar",
+        prod_desc_10: "22 000 m³/soat tom/devoriy statsionar inverter sovutish tizimi",
+
 
         // Catalog (catalog.html)
         cat_banner_title: "AIRFAN Mahsulotlar Katalogi",
@@ -208,6 +250,47 @@ const TRANSLATIONS = {
         btn_buy: "Купить",
         btn_analysis: "Анализ",
 
+        // 10 Products Localized Names & Categories (RU)
+        prod_title_1: "Отопительный агрегат - 800",
+        prod_cat_1: "Отопительные агрегаты",
+        prod_desc_1: "Мощный водяной и электрический нагрев для цехов и складов",
+
+        prod_title_2: "Вытяжной вентилятор-1120",
+        prod_cat_2: "Вытяжные вентиляторы",
+        prod_desc_2: "Производительность 32 500 м³/ч и автоматические жалюзи",
+
+        prod_title_3: "Вытяжной вентилятор-600",
+        prod_cat_3: "Вытяжные вентиляторы",
+        prod_desc_3: "Низкое энергопотребление и бесшумный промышленный мотор",
+
+        prod_title_4: "Воздушный фильтр AURA SMART AIR",
+        prod_cat_4: "Воздушные фильтры",
+        prod_desc_4: "Очистка HEPA H13, UV-C дезинфекция и умное управление Wi-Fi",
+
+        prod_title_5: "Гофра охладительные панели",
+        prod_cat_5: "Гофра охладительные панели",
+        prod_desc_5: "Экологичное испарительное охлаждение со снижением на 8-12°C",
+
+        prod_title_6: "Био-охладители AIRFAN (Мобильный)",
+        prod_cat_6: "Био-охладители AIRFAN",
+        prod_desc_6: "Расход воздуха 18 000 м³/ч, бак 100 л и дистанционный пульт",
+
+        prod_title_7: "Промышленные вентиляторы-1380",
+        prod_cat_7: "Вытяжные вентиляторы",
+        prod_desc_7: "Рекордный воздухообмен 44 500 м³/ч и центробежная система",
+
+        prod_title_8: "Отопительные агрегаты-510",
+        prod_cat_8: "Отопительные агрегаты",
+        prod_desc_8: "Компактный размер (510 мм), мощность 35 кВт и быстрый прогрев",
+
+        prod_title_9: "Гофра охладительные панели с кассетой",
+        prod_cat_9: "Гофра охладительные панели",
+        prod_desc_9: "Алюминиевая кассета, система распределения воды и сливной желоб",
+
+        prod_title_10: "Био-охладители AIRFAN (Стационарный)",
+        prod_cat_10: "Био-охладители AIRFAN",
+        prod_desc_10: "Стационарный крышный/настенный инверторный охладитель 22 000 м³/ч",
+
         // Catalog (catalog.html)
         cat_banner_title: "Каталог Продукции AIRFAN",
         cat_banner_desc: "Выберите оборудование вентиляции, отопления, охлаждения и очистки воздуха для промышленных и коммерческих объектов.",
@@ -350,6 +433,47 @@ const TRANSLATIONS = {
         btn_order_now: "Order",
         btn_buy: "Buy Now",
         btn_analysis: "Analysis",
+
+        // 10 Products Localized Names & Categories (EN)
+        prod_title_1: "Unit Air Heater - 800",
+        prod_cat_1: "Heating Units",
+        prod_desc_1: "High-capacity hot water/electric air heating for factories and warehouses",
+
+        prod_title_2: "Exhaust Fan-1120",
+        prod_cat_2: "Exhaust Fans",
+        prod_desc_2: "Air capacity 32,500 m³/h with automatic gravitational louvers",
+
+        prod_title_3: "Exhaust Fan-600",
+        prod_cat_3: "Exhaust Fans",
+        prod_desc_3: "Ultra-quiet motor with minimal power consumption (0.37 kW)",
+
+        prod_title_4: "AURA SMART AIR Filter",
+        prod_cat_4: "Air Filters",
+        prod_desc_4: "HEPA H13 filtration, UV-C germicidal disinfection & Smart Wi-Fi",
+
+        prod_title_5: "Evaporative Cooling Pads",
+        prod_cat_5: "Cooling Pad Panels",
+        prod_desc_5: "Natural evaporative cooling reducing heat by 8-12°C with 85% energy savings",
+
+        prod_title_6: "AIRFAN Bio-Coolers (Mobile)",
+        prod_cat_6: "AIRFAN Bio-Coolers",
+        prod_desc_6: "18,000 m³/h airflow, 100L water tank, and wireless remote controller",
+
+        prod_title_7: "Industrial Exhaust Fan-1380",
+        prod_cat_7: "Exhaust Fans",
+        prod_desc_7: "Record 44,500 m³/h airflow with centrifugal opening mechanism",
+
+        prod_title_8: "Unit Air Heater-510",
+        prod_cat_8: "Heating Units",
+        prod_desc_8: "Compact 510mm chassis, 35 kW heating power & ultra-low noise",
+
+        prod_title_9: "Framed Cooling Pad System",
+        prod_cat_9: "Cooling Pad Panels",
+        prod_desc_9: "Complete anodized aluminum cassette with water distributor pipe and gutters",
+
+        prod_title_10: "AIRFAN Bio-Cooler (Stationary)",
+        prod_cat_10: "AIRFAN Bio-Coolers",
+        prod_desc_10: "22,000 m³/h roof/wall-mounted 12-speed inverter industrial cooler",
 
         // Catalog (catalog.html)
         cat_banner_title: "AIRFAN Products Catalog",

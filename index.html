@@ -7,6 +7,7 @@
     <!-- Google Fonts & FontAwesome -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="shared-theme.css">
     
     <script>
@@ -705,7 +706,7 @@
     <header>
         <div class="navbar">
             <a href="index.html" class="logo">
-                <span class="logo-icon-wrap"><i class="fa-solid fa-wind"></i></span>
+                <span class="logo-icon-wrap"><img src="favicon.svg" alt="AIRFAN Emblem" class="logo-emblem-img"></span>
                 <span class="logo-text">AIR<span class="logo-highlight">FAN</span></span>
             </a>
             <ul class="nav-links">
@@ -892,9 +893,9 @@
                     <img src="https://airfan.uz/thumb/2/ZsX6eufhlv02a_unulOW2g/1200r/d/26.jpg" alt="Промышленные вентиляторы AIRFAN">
                 </div>
                 <div class="category-content">
-                    <h3>Промышленные вентиляторы</h3>
-                    <p>Katta hajmdagi binolarda havo almashinuvini ta'minlovchi, avtomatik jalyuzili yuqori quvvatli devoriy ventilyatorlar[cite: 1].</p>
-                    <a href="catalog.html" class="link-arrow">Katalogdan ko'rish <i class="fa-solid fa-arrow-right"></i></a>
+                    <h3 data-i18n="cat_fan_label">Промышленные вентиляторы</h3>
+                    <p>Katta hajmdagi binolarda havo almashinuvini ta'minlovchi, avtomatik jalyuzili yuqori quvvatli devoriy ventilyatorlar.</p>
+                    <a href="catalog.html" class="link-arrow"><span data-i18n="hero_btn_view">Katalogdan ko'rish</span> <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
 
@@ -904,9 +905,9 @@
                     <img src="https://airfan.uz/thumb/2/rsVzMzKHSt2SvZZminxczw/1200r/d/6_3.jpg" alt="Отопительные агрегаты AIRFAN">
                 </div>
                 <div class="category-content">
-                    <h3>Отопительные агрегаты</h3>
-                    <p>Sanoat obyekti, issiqxona va omborxonalarni qishki mavsumda tezkor isitish uchun suvli va elektr kaloriferlar[cite: 1].</p>
-                    <a href="catalog.html" class="link-arrow">Katalogdan ko'rish <i class="fa-solid fa-arrow-right"></i></a>
+                    <h3 data-i18n="cat_heating_label">Отопительные агрегаты</h3>
+                    <p>Sanoat obyekti, issiqxona va omborxonalarni qishki mavsumda tezkor isitish uchun suvli va elektr kaloriferlar.</p>
+                    <a href="catalog.html" class="link-arrow"><span data-i18n="hero_btn_view">Katalogdan ko'rish</span> <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
 
@@ -916,9 +917,9 @@
                     <img src="https://airfan.uz/thumb/2/AAYMvPB7iBwS2VazG23t9Q/1200r/d/image1222.png" alt="Гофра охладительные панели">
                 </div>
                 <div class="category-content">
-                    <h3>Гофра охладительные панели</h3>
-                    <p>Yozgi issiq kunlarda sex va issiqxonalar haroratini 8-12°C gacha pasaytiruvchi sellyuloza cooling pad panellari[cite: 1].</p>
-                    <a href="catalog.html" class="link-arrow">Katalogdan ko'rish <i class="fa-solid fa-arrow-right"></i></a>
+                    <h3 data-i18n="cat_pad_label">Гофра охладительные панели</h3>
+                    <p>Yozgi issiq kunlarda sex va issiqxonalar haroratini 8-12°C gacha pasaytiruvchi sellyuloza cooling pad panellari.</p>
+                    <a href="catalog.html" class="link-arrow"><span data-i18n="hero_btn_view">Katalogdan ko'rish</span> <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
 
@@ -940,12 +941,12 @@
                 </div>
                 <div class="product-body">
                     <div>
-                        <h4 class="product-title">Промышленные вентиляторы</h4>
-                        <p class="product-desc">Sanoat uchun yuqori quvvatli devoriy ventilyator. Kam quvvat sarfi va kam shovqin.</p>
+                        <h4 class="product-title" data-i18n="prod_title_7">Промышленные вентиляторы</h4>
+                        <p class="product-desc" data-i18n="prod_desc_7">Sanoat uchun yuqori quvvatli devoriy ventilyator. Kam quvvat sarfi va kam shovqin.</p>
                     </div>
                     <div class="product-footer">
                         <span class="product-price">3,450,000 so'm</span>
-                        <button class="btn btn-primary" onclick="openModal('Промышленные вентиляторы', '3,450,000 so\'m')">Buyurtma</button>
+                        <button class="btn btn-primary" onclick="openModal(this.closest('.product-card').querySelector('.product-title').innerText, '3,450,000 so\'m')" data-i18n="btn_order">Buyurtma</button>
                     </div>
                 </div>
             </div>
@@ -957,12 +958,12 @@
                 </div>
                 <div class="product-body">
                     <div>
-                        <h4 class="product-title">Отопительные агрегаты</h4>
-                        <p class="product-desc">Katta maydonli obyektlarni samarali va tejamkor isitish kalorefer tizimi.</p>
+                        <h4 class="product-title" data-i18n="prod_title_8">Отопительные агрегаты</h4>
+                        <p class="product-desc" data-i18n="prod_desc_8">Katta maydonli obyektlarni samarali va tejamkor isitish kalorefer tizimi.</p>
                     </div>
                     <div class="product-footer">
                         <span class="product-price">4,800,000 so'm</span>
-                        <button class="btn btn-primary" onclick="openModal('Отопительные агрегаты', '4,800,000 so\'m')">Buyurtma</button>
+                        <button class="btn btn-primary" onclick="openModal(this.closest('.product-card').querySelector('.product-title').innerText, '4,800,000 so\'m')" data-i18n="btn_order">Buyurtma</button>
                     </div>
                 </div>
             </div>
@@ -974,12 +975,12 @@
                 </div>
                 <div class="product-body">
                     <div>
-                        <h4 class="product-title">Био-охладители AIRFAN</h4>
-                        <p class="product-desc">Suv bug'lantirish tamoyilida ishlovchi mobil va samarali sovutgich uskunasi.</p>
+                        <h4 class="product-title" data-i18n="prod_title_6">Био-охладители AIRFAN</h4>
+                        <p class="product-desc" data-i18n="prod_desc_6">Suv bug'lantirish tamoyilida ishlovchi mobil va samarali sovutgich uskunasi.</p>
                     </div>
                     <div class="product-footer">
                         <span class="product-price">5,200,000 so'm</span>
-                        <button class="btn btn-primary" onclick="openModal('Био-охладители AIRFAN', '5,200,000 so\'m')">Buyurtma</button>
+                        <button class="btn btn-primary" onclick="openModal(this.closest('.product-card').querySelector('.product-title').innerText, '5,200,000 so\'m')" data-i18n="btn_order">Buyurtma</button>
                     </div>
                 </div>
             </div>
@@ -1015,7 +1016,7 @@
         <div class="footer-grid">
             <div class="footer-col">
                 <div class="logo" style="color: white; margin-bottom: 20px;">
-                    <span class="logo-icon-wrap"><i class="fa-solid fa-wind"></i></span>
+                    <span class="logo-icon-wrap"><img src="favicon.svg" alt="AIRFAN Emblem" class="logo-emblem-img"></span>
                     <span class="logo-text">AIR<span class="logo-highlight">FAN</span></span>
                 </div>
                 <p data-i18n="footer_about">O'zbekistonda sanoat va maishiy iqlim texnologiyalari bo'yicha yetakchi internet-magazin. Barcha turdagi ventilyatsiya va sovutish tizimlari.</p>
