@@ -152,8 +152,8 @@
 
         /* Page Banner */
         .page-banner {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            color: var(--white);
+            background: #0f172a;
+            color: #ffffff;
             padding: 60px 5%;
             text-align: center;
         }
@@ -162,6 +162,15 @@
             font-size: 36px;
             font-weight: 800;
             margin-bottom: 12px;
+        }
+
+        .contact-title-blue,
+        .page-banner h1 .airfan-gradient-title {
+            background: none !important;
+            -webkit-background-clip: unset !important;
+            -webkit-text-fill-color: initial !important;
+            color: #0284c7 !important;
+            display: inline;
         }
 
         .page-banner p {
@@ -490,7 +499,7 @@
         <div class="airfan-brand-emblem">
             <img src="favicon.svg" alt="AIRFAN Emblem" class="logo-emblem-img" style="width:20px;height:20px;"> AIRFAN DIRECT CONTACT
         </div>
-        <h1><span class="airfan-gradient-title" data-i18n="contact_banner_title">Biz bilan Bog'laning</span></h1>
+        <h1><span class="contact-title-blue" data-i18n="contact_banner_title">Biz bilan Bog'laning</span></h1>
         <p data-i18n="contact_banner_desc">AIRFAN mutaxassislari loyihangiz uchun eng optimal ventilyatsiya, isitish va sovutish yechimlarini tanlab berishadi.</p>
     </section>
 

@@ -170,7 +170,7 @@
 
         /* Hero Section Animation Styles */
         .hero {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            background: #0f172a;
             color: var(--white);
             padding: 100px 5%;
             position: relative;
@@ -184,7 +184,7 @@
             width: 350px;
             height: 350px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(2, 132, 199, 0.25) 0%, rgba(2, 132, 199, 0) 70%);
+            background: rgba(2, 132, 199, 0.15);
             animation: pulseGlow 6s infinite alternate ease-in-out;
             pointer-events: none;
         }
@@ -213,17 +213,21 @@
             gap: 60px;
             align-items: center;
             position: relative;
-            z-index: 2;
+            z-index: 5;
         }
 
-        /* Fade-in-up animations for content */
+        .hero-content {
+            position: relative;
+            z-index: 20;
+            pointer-events: auto;
+        }
+
+        /* Hero content typography */
         .hero-content h1 {
             font-size: 48px;
             font-weight: 800;
             line-height: 1.2;
             margin-bottom: 24px;
-            animation: fadeInUp 1s ease-out forwards;
-            opacity: 0;
         }
 
         .hero-content h1 span {
@@ -235,15 +239,24 @@
             font-size: 18px;
             color: #94a3b8;
             margin-bottom: 36px;
-            animation: fadeInUp 1s ease-out 0.2s forwards;
-            opacity: 0;
         }
 
         .hero-buttons {
             display: flex;
-            gap: 16px;
-            animation: fadeInUp 1s ease-out 0.4s forwards;
-            opacity: 0;
+            gap: 14px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 25;
+            pointer-events: auto;
+        }
+
+        .hero-buttons a,
+        .hero-buttons button {
+            position: relative;
+            z-index: 25;
+            pointer-events: auto;
+            cursor: pointer;
+            text-decoration: none;
         }
 
         @keyframes fadeInUp {
@@ -742,8 +755,8 @@
             <div class="hero-slide active">
                 <div class="hero-container">
                     <div class="hero-content">
-                        <div class="airfan-brand-emblem" data-i18n="hero_badge_1">
-                            <i class="fa-solid fa-wind"></i> AIRFAN SANOAT VENTILYATSIYASI
+                        <div class="airfan-brand-emblem">
+                            <i class="fa-solid fa-wind"></i> <span data-i18n="hero_badge_1">AIRFAN SANOAT VENTILYATSIYASI</span>
                         </div>
                         <h1>
                             <span data-i18n="hero_title_1">Sanoat Ventilyatsiyasi va Shamollatish Tizimlari</span>
@@ -756,8 +769,11 @@
                             <a href="catalog.html" class="btn btn-primary">
                                 <span data-i18n="hero_btn_view">Mahsulotlarni ko'rish</span> <i class="fa-solid fa-arrow-right"></i>
                             </a>
-                            <a href="contact.html" class="btn btn-outline" style="color: white; border-color: rgba(255,255,255,0.35);" data-i18n="hero_btn_contact">
-                                Bog'lanish
+                            <button type="button" class="btn btn-primary" style="background: #10b981; border: none;" onclick="openModal('AIRFAN Sanoat Ventilyatsiyasi-1380', '44 500 m³/soat')">
+                                <i class="fa-solid fa-cart-shopping"></i> <span data-i18n="hero_btn_order">Buyurtma berish</span>
+                            </button>
+                            <a href="contact.html" class="btn btn-outline" style="color: white; border-color: rgba(255,255,255,0.4);">
+                                <i class="fa-solid fa-phone"></i> <span data-i18n="hero_btn_contact">Bog'lanish</span>
                             </a>
                         </div>
                     </div>
@@ -771,8 +787,8 @@
             <div class="hero-slide">
                 <div class="hero-container">
                     <div class="hero-content">
-                        <div class="airfan-brand-emblem" data-i18n="hero_badge_2">
-                            <i class="fa-solid fa-fire"></i> AIRFAN ISITISH TEXNOLOGIYALARI
+                        <div class="airfan-brand-emblem">
+                            <i class="fa-solid fa-fire"></i> <span data-i18n="hero_badge_2">AIRFAN ISITISH TEXNOLOGIYALARI</span>
                         </div>
                         <h1>
                             <span data-i18n="hero_title_2">Sanoat Isitish Agregatlari va Kaloriferlar</span>
@@ -785,8 +801,11 @@
                             <a href="catalog.html" class="btn btn-primary">
                                 <span data-i18n="hero_btn_view">Mahsulotlarni ko'rish</span> <i class="fa-solid fa-arrow-right"></i>
                             </a>
-                            <a href="product-detail.html?product=1" class="btn btn-outline" style="color: white; border-color: rgba(255,255,255,0.35);" data-i18n="btn_analysis">
-                                Tahlil
+                            <button type="button" class="btn btn-primary" style="background: #10b981; border: none;" onclick="openModal('Isitish agregati - 800 AIRFAN', '3 800 000 so\'m')">
+                                <i class="fa-solid fa-cart-shopping"></i> <span data-i18n="hero_btn_order">Buyurtma berish</span>
+                            </button>
+                            <a href="product-detail.html?product=1" class="btn btn-outline" style="color: white; border-color: rgba(255,255,255,0.4);">
+                                <i class="fa-solid fa-sliders"></i> <span data-i18n="btn_analysis">Tahlil</span>
                             </a>
                         </div>
                     </div>
@@ -800,8 +819,8 @@
             <div class="hero-slide">
                 <div class="hero-container">
                     <div class="hero-content">
-                        <div class="airfan-brand-emblem" data-i18n="hero_badge_3">
-                            <i class="fa-solid fa-droplet"></i> AIRFAN TABIIY SOVUTISH TIZIMLARI
+                        <div class="airfan-brand-emblem">
+                            <i class="fa-solid fa-droplet"></i> <span data-i18n="hero_badge_3">AIRFAN TABIIY SOVUTISH TIZIMLARI</span>
                         </div>
                         <h1>
                             <span data-i18n="hero_title_3">Evaporativ Sovutish va Bio-Kulerlar</span>
@@ -814,8 +833,11 @@
                             <a href="catalog.html" class="btn btn-primary">
                                 <span data-i18n="hero_btn_view">Mahsulotlarni ko'rish</span> <i class="fa-solid fa-arrow-right"></i>
                             </a>
-                            <a href="product-detail.html?product=6" class="btn btn-outline" style="color: white; border-color: rgba(255,255,255,0.35);" data-i18n="btn_analysis">
-                                Tahlil
+                            <button type="button" class="btn btn-primary" style="background: #10b981; border: none;" onclick="openModal('AIRFAN Bio-sovutgichlari (Mobil)', '5 200 000 so\'m')">
+                                <i class="fa-solid fa-cart-shopping"></i> <span data-i18n="hero_btn_order">Buyurtma berish</span>
+                            </button>
+                            <a href="product-detail.html?product=6" class="btn btn-outline" style="color: white; border-color: rgba(255,255,255,0.4);">
+                                <i class="fa-solid fa-sliders"></i> <span data-i18n="btn_analysis">Tahlil</span>
                             </a>
                         </div>
                     </div>
@@ -830,15 +852,15 @@
         <!-- Slider Navigation Controls -->
         <div class="slider-controls">
             <div class="slider-dots" id="sliderDots">
-                <button type="button" class="slider-dot active" onclick="goToSlide(0)" aria-label="Slide 1"></button>
-                <button type="button" class="slider-dot" onclick="goToSlide(1)" aria-label="Slide 2"></button>
-                <button type="button" class="slider-dot" onclick="goToSlide(2)" aria-label="Slide 3"></button>
+                <button type="button" class="slider-dot active" onclick="goToSlide(0)" aria-label="1-slayd: Sanoat Ventilyatsiyasi"></button>
+                <button type="button" class="slider-dot" onclick="goToSlide(1)" aria-label="2-slayd: Isitish Agregatlari"></button>
+                <button type="button" class="slider-dot" onclick="goToSlide(2)" aria-label="3-slayd: Bio-Sovutish"></button>
             </div>
             <div class="slider-arrows">
-                <button type="button" class="slider-arrow-btn" onclick="prevSlide()" aria-label="Oldingi slayd">
+                <button type="button" class="slider-arrow-btn" onclick="prevSlide()" aria-label="Oldingi slayd" title="Oldingi slayd (Left arrow)">
                     <i class="fa-solid fa-chevron-left"></i>
                 </button>
-                <button type="button" class="slider-arrow-btn" onclick="nextSlide()" aria-label="Keyingi slayd">
+                <button type="button" class="slider-arrow-btn" onclick="nextSlide()" aria-label="Keyingi slayd" title="Keyingi slayd (Right arrow)">
                     <i class="fa-solid fa-chevron-right"></i>
                 </button>
             </div>
@@ -1064,27 +1086,38 @@
         let slideInterval = null;
 
         function showSlide(index) {
+            if (!slides || !slides.length) return;
             if (index < 0) index = slides.length - 1;
             if (index >= slides.length) index = 0;
             currentSlide = index;
 
             slides.forEach((s, idx) => {
-                if (idx === currentSlide) s.classList.add('active');
-                else s.classList.remove('active');
+                if (idx === currentSlide) {
+                    s.classList.add('active');
+                } else {
+                    s.classList.remove('active');
+                }
             });
 
             dots.forEach((d, idx) => {
-                if (idx === currentSlide) d.classList.add('active');
-                else d.classList.remove('active');
+                if (idx === currentSlide) {
+                    d.classList.add('active');
+                    d.setAttribute('aria-current', 'true');
+                } else {
+                    d.classList.remove('active');
+                    d.removeAttribute('aria-current');
+                }
             });
         }
 
         function nextSlide() {
             showSlide(currentSlide + 1);
+            restartAutoSlide();
         }
 
         function prevSlide() {
             showSlide(currentSlide - 1);
+            restartAutoSlide();
         }
 
         function goToSlide(index) {
@@ -1093,7 +1126,10 @@
         }
 
         function startAutoSlide() {
-            slideInterval = setInterval(nextSlide, 5000);
+            clearInterval(slideInterval);
+            slideInterval = setInterval(() => {
+                showSlide(currentSlide + 1);
+            }, 6000);
         }
 
         function restartAutoSlide() {
@@ -1101,12 +1137,43 @@
             startAutoSlide();
         }
 
+        // Start auto slide
+        showSlide(0);
         startAutoSlide();
 
-        const sliderElem = document.getElementById('heroSlider');
-        if (sliderElem) {
-            sliderElem.addEventListener('mouseenter', () => clearInterval(slideInterval));
-            sliderElem.addEventListener('mouseleave', () => startAutoSlide());
+        // Pause auto-sliding on hover over hero section or slider controls
+        const heroSection = document.querySelector('.hero');
+        if (heroSection) {
+            heroSection.addEventListener('mouseenter', () => clearInterval(slideInterval));
+            heroSection.addEventListener('mouseleave', () => startAutoSlide());
+        }
+
+        // Keyboard arrow navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                prevSlide();
+            } else if (e.key === 'ArrowRight') {
+                nextSlide();
+            }
+        });
+
+        // Touch swipe support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+        const heroSliderElem = document.getElementById('heroSlider');
+        if (heroSliderElem) {
+            heroSliderElem.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            heroSliderElem.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                const swipeDist = touchEndX - touchStartX;
+                if (Math.abs(swipeDist) > 50) {
+                    if (swipeDist < 0) nextSlide();
+                    else prevSlide();
+                }
+            }, { passive: true });
         }
 
         // Order Modal & Telegram API
@@ -1122,6 +1189,13 @@
 
         function closeModal() {
             document.getElementById('orderModal').classList.remove('active');
+        }
+
+        const modalBackdropIndex = document.getElementById('orderModal');
+        if (modalBackdropIndex) {
+            modalBackdropIndex.addEventListener('click', (e) => {
+                if (e.target === modalBackdropIndex) closeModal();
+            });
         }
 
         const BOT_TOKEN = '8870087140:AAGhmm0WlIbp60iE2nBXagUrgWWs0n7otF0';

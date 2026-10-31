@@ -33,6 +33,7 @@ const TRANSLATIONS = {
         hero_desc_3: "Cooling Pad sellyuloza gofra panellari va mobil hamda statsionar bio-oxladitellar. Elektrni 85% tejab haroratni 8-12°C ga pasaytiradi.",
         
         hero_btn_view: "Mahsulotlarni ko'rish",
+        hero_btn_order: "Buyurtma berish",
         hero_btn_contact: "Bog'lanish",
 
         // Features (index.html)
@@ -218,6 +219,7 @@ const TRANSLATIONS = {
         hero_desc_3: "Целлюлозные гофра панели Cooling Pad, мобильные и стационарные био-охладители. Экономия электроэнергии 85% со снижением температуры на 8-12°C.",
         
         hero_btn_view: "Смотреть каталог",
+        hero_btn_order: "Заказать сейчас",
         hero_btn_contact: "Связаться с нами",
 
         // Features (index.html)
@@ -402,6 +404,7 @@ const TRANSLATIONS = {
         hero_desc_3: "Cellulose Cooling Pad panels, portable and stationary bio-coolers. Reduce temperatures by 8-12°C while saving up to 85% electricity.",
         
         hero_btn_view: "Browse Catalog",
+        hero_btn_order: "Order Now",
         hero_btn_contact: "Contact Us",
 
         // Features (index.html)
@@ -608,7 +611,16 @@ function setLanguage(lang) {
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (dict[key]) {
-            el.innerText = dict[key];
+            const icon = el.querySelector('i');
+            if (icon) {
+                // Keep the icon and update text
+                const iconClone = icon.cloneNode(true);
+                el.innerHTML = '';
+                el.appendChild(iconClone);
+                el.appendChild(document.createTextNode(' ' + dict[key]));
+            } else {
+                el.innerText = dict[key];
+            }
         }
     });
 

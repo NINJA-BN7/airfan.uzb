@@ -43,6 +43,11 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
+        html, body {
+            max-width: 100vw;
+            overflow-x: hidden;
+        }
+
         body {
             background-color: var(--bg-light);
             color: var(--text-main);
@@ -168,7 +173,7 @@
 
         /* Page Banner */
         .page-banner {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            background: #0f172a;
             color: var(--white);
             padding: 40px 5%;
             text-align: center;
@@ -177,14 +182,7 @@
         }
 
         .page-banner::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -20%;
-            width: 140%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(2, 132, 199, 0.15) 0%, transparent 60%);
-            pointer-events: none;
+            display: none;
         }
 
         .page-banner h1 {
@@ -310,35 +308,44 @@
         /* Product Detail Layout */
         .product-detail-container {
             max-width: 1400px;
-            margin: 25px auto 60px;
-            padding: 0 5%;
+            margin: 20px auto 60px;
+            padding: 0 4%;
             display: grid;
-            grid-template-columns: 1.05fr 1fr;
-            gap: 50px;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            gap: 32px;
             align-items: start;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         /* Gallery */
         .gallery-wrapper {
             display: flex;
             flex-direction: column;
-            gap: 18px;
+            gap: 14px;
             position: sticky;
-            top: 90px;
+            top: 80px;
+            min-width: 0;
+            max-width: 100%;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .main-image {
             background: var(--white);
             border: 1px solid var(--border);
             border-radius: 18px;
-            height: 480px;
+            height: 420px;
+            max-height: 52vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 30px;
+            padding: 24px;
             box-shadow: var(--shadow);
             position: relative;
             overflow: hidden;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .main-image-badge {
@@ -385,16 +392,19 @@
         /* 10 Thumbnails Grid */
         .thumbs-grid {
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 12px;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 8px;
+            width: 100%;
+            min-width: 0;
+            box-sizing: border-box;
         }
 
         .thumb-item {
             background: var(--white);
             border: 2px solid var(--border);
-            border-radius: 12px;
-            height: 95px;
-            padding: 8px;
+            border-radius: 10px;
+            height: 80px;
+            padding: 6px 4px;
             cursor: pointer;
             display: flex;
             flex-direction: column;
@@ -402,6 +412,9 @@
             justify-content: center;
             position: relative;
             transition: var(--transition);
+            min-width: 0;
+            overflow: hidden;
+            box-sizing: border-box;
         }
 
         .thumb-item:hover {
@@ -458,12 +471,16 @@
         .product-info {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 18px;
             background: var(--white);
-            padding: 36px;
+            padding: 28px 28px;
             border-radius: 18px;
             border: 1px solid var(--border);
             box-shadow: var(--shadow);
+            min-width: 0;
+            max-width: 100%;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .product-tag-row {
@@ -506,7 +523,7 @@
             display: flex;
             align-items: baseline;
             gap: 16px;
-            background: linear-gradient(to right, #f8fafc, #f1f5f9);
+            background: #f8fafc;
             padding: 18px 24px;
             border-radius: 14px;
             border: 1px solid var(--border);
@@ -593,9 +610,11 @@
 
         .order-action-box {
             display: flex;
-            gap: 16px;
+            gap: 12px;
             align-items: stretch;
-            padding-top: 10px;
+            flex-wrap: wrap;
+            padding-top: 6px;
+            width: 100%;
         }
 
         .qty-selector {
@@ -605,14 +624,17 @@
             border-radius: 10px;
             background: var(--white);
             overflow: hidden;
+            height: 48px;
+            flex-shrink: 0;
         }
 
         .qty-btn {
-            width: 46px;
-            height: 48px;
+            width: 44px;
+            height: 100%;
             border: none;
             background: transparent;
             font-size: 18px;
+            font-weight: 700;
             cursor: pointer;
             color: var(--primary);
             transition: var(--transition);
@@ -624,13 +646,43 @@
         }
 
         .qty-input {
-            width: 52px;
+            width: 48px;
             text-align: center;
             border: none;
             font-size: 16px;
             font-weight: 700;
             outline: none;
             color: var(--primary);
+            background: transparent;
+        }
+
+        .order-main-btn {
+            flex: 1 1 200px;
+            min-width: 190px;
+            height: 48px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: var(--accent);
+            color: #ffffff;
+            font-size: 15px;
+            font-weight: 700;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(2, 132, 199, 0.35);
+        }
+
+        .order-main-btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(2, 132, 199, 0.5);
+        }
+
+        .order-main-btn:active {
+            transform: translateY(0);
         }
 
         .jump-matrix-btn {
@@ -1034,19 +1086,10 @@
         }
 
         /* Responsive */
-        @media (max-width: 1200px) {
-            .selector-strip {
-                grid-template-columns: repeat(5, 1fr);
-            }
-            .thumbs-grid {
-                grid-template-columns: repeat(5, 1fr);
-            }
-        }
-
-        @media (max-width: 1024px) {
+        @media (max-width: 1150px) {
             .product-detail-container {
                 grid-template-columns: 1fr;
-                gap: 40px;
+                gap: 28px;
             }
             .gallery-wrapper {
                 position: static;
@@ -1054,8 +1097,18 @@
             .main-image {
                 height: 400px;
             }
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
+            .selector-strip {
+                display: flex;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                padding-bottom: 10px;
+                -webkit-overflow-scrolling: touch;
+                gap: 8px;
+            }
+            .selector-pill {
+                flex: 0 0 auto;
+                min-width: 170px;
+                scroll-snap-align: start;
             }
         }
 
@@ -1311,11 +1364,11 @@
             <div>
                 <div class="order-action-box">
                     <div class="qty-selector">
-                        <button class="qty-btn" onclick="updateQty(-1)" aria-label="Kamaytirish">-</button>
+                        <button class="qty-btn" type="button" onclick="updateQty(-1)" aria-label="Kamaytirish">-</button>
                         <input type="number" id="itemQty" class="qty-input" value="1" readonly>
-                        <button class="qty-btn" onclick="updateQty(1)" aria-label="Oshirish">+</button>
+                        <button class="qty-btn" type="button" onclick="updateQty(1)" aria-label="Oshirish">+</button>
                     </div>
-                    <button class="btn btn-primary" style="flex-grow: 1; justify-content: center; font-size: 15px;" onclick="openDetailModal()">
+                    <button class="btn btn-primary order-main-btn" type="button" onclick="openDetailModal()">
                         <i class="fa-solid fa-cart-shopping"></i> <span data-i18n="btn_order_detail">Hoziroq Buyurtma Berish</span>
                     </button>
                 </div>
@@ -2282,8 +2335,8 @@
 
         // Mahsulotni tanlash
         function selectProduct(index) {
-            if (index < 0) index = 0;
-            if (index >= PRODUCTS.length) index = PRODUCTS.length - 1;
+            if (index < 0) index = PRODUCTS.length - 1;
+            if (index >= PRODUCTS.length) index = 0;
             activeIndex = index;
             const p = PRODUCTS[index];
             const lang = getProductLang();
@@ -2437,17 +2490,29 @@
         // Modalni ochish
         function openDetailModal() {
             const p = PRODUCTS[activeIndex];
+            const lang = getProductLang();
             const totalSum = (currentQty * p.price).toLocaleString('uz-UZ');
 
             document.getElementById('modalProductImg').src = p.image;
-            document.getElementById('modalProductName').innerText = getProductTitle(p);
-            document.getElementById('modalProductPriceSummary').innerText = `Miqdor: ${currentQty} ta | Jami: ${totalSum} so'm`;
+            document.getElementById('modalProductName').innerText = getProductTitle(p, lang);
+            const qtyWord = (lang === 'ru') ? 'Кол-во' : ((lang === 'en') ? 'Qty' : 'Miqdor');
+            const totalWord = (lang === 'ru') ? 'Итого' : ((lang === 'en') ? 'Total' : 'Jami');
+            const pcsWord = (lang === 'ru') ? 'шт' : ((lang === 'en') ? 'pcs' : 'ta');
+            const currencyWord = (lang === 'ru') ? 'сум' : ((lang === 'en') ? 'UZS' : "so'm");
+            document.getElementById('modalProductPriceSummary').innerText = `${qtyWord}: ${currentQty} ${pcsWord} | ${totalWord}: ${totalSum} ${currencyWord}`;
 
             document.getElementById('orderModal').classList.add('active');
         }
 
         function closeModal() {
             document.getElementById('orderModal').classList.remove('active');
+        }
+
+        const modalOverlayElem = document.getElementById('orderModal');
+        if (modalOverlayElem) {
+            modalOverlayElem.addEventListener('click', (e) => {
+                if (e.target === modalOverlayElem) closeModal();
+            });
         }
 
         // Telegram Bot API Integratsiyasi (Token va Chat ID saqlangan)
@@ -2492,7 +2557,7 @@
                     closeModal();
                     document.getElementById('telegramForm').reset();
                 } else {
-                    alert('Xatolik yuz berdi. Iltimos qaytadan urinib ko\'ring yoki to\'g\'ridan-to\'g\'ri qo\'ng'iroq qiling.');
+                    alert('Xatolik yuz berdi. Iltimos qaytadan urinib ko\'ring yoki to\'g\'ridan-to\'g\'ri qo\'ng\'iroq qiling.');
                 }
             } catch (error) {
                 console.error('Telegram Error:', error);

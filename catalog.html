@@ -1,15 +1,25 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
+    <!-- ========================================================================= -->
+    <!-- AIRFAN CLIMATE — КАТАЛОГ ПРОДУКЦИИ (catalog.html)                         -->
+    <!-- Заметка: Главная страница каталога климатического и промышленного         -->
+    <!-- оборудования. Включает боковые фильтры, живой поиск, сортировку цен,     -->
+    <!-- модальное окно заказа в Telegram и мультиязычность (UZ, RU, EN).         -->
+    <!-- ========================================================================= -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AIRFAN — Mahsulotlar Katalogi | Sanoat va Maishiy Iqlim Tizimlari</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <!-- Google Fonts & FontAwesome -->
+
+    <!-- Подключение шрифтов Google Fonts (Plus Jakarta Sans) и иконок FontAwesome -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Общие стили темы (светлая/темная тема, переключатели, общий дизайн-код) -->
     <link rel="stylesheet" href="shared-theme.css">
     
+    <!-- Скрипт мгновенной инициализации сохранённой темы (предотвращает мерцание белого экрана) -->
     <script>
         (function() {
             const theme = localStorage.getItem('airfan_theme') || 'light';
@@ -18,21 +28,29 @@
     </script>
     
     <style>
+        /* ==========================================================================
+           1. ПЕРЕМЕННЫЕ ДИЗАЙН-СИСТЕМЫ И ПАЛИТРА (:root)
+           Заметка: основные фирменные цвета AIRFAN, скругления, тени и переходы
+           ========================================================================== */
         :root {
-            --primary: #0f172a;
-            --primary-light: #1e293b;
-            --accent: #0284c7;
-            --accent-hover: #0369a1;
-            --success: #10b981;
-            --text-main: #334155;
-            --text-light: #64748b;
-            --bg-light: #f8fafc;
-            --white: #ffffff;
-            --border: #e2e8f0;
-            --shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08);
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --primary: #0f172a;           /* Основной темно-синий цвет для текста и заголовков */
+            --primary-light: #1e293b;     /* Вторичный темный оттенок */
+            --accent: #0284c7;            /* Фирменный синий акцентный цвет AIRFAN */
+            --accent-hover: #0369a1;      /* Оттенок синего при наведении на кнопки */
+            --success: #10b981;           /* Изумрудный цвет для успешных действий и бейджей */
+            --text-main: #334155;         /* Основной цвет текста описаний и характеристик */
+            --text-light: #64748b;        /* Приглушенный серый для вторичных подписей */
+            --bg-light: #f8fafc;          /* Фоновый цвет страницы в светлой теме */
+            --white: #ffffff;             /* Чистый белый цвет карточек и фонов */
+            --border: #e2e8f0;            /* Цвет рамок и разделителей */
+            --shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08); /* Мягкая объемная тень */
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Плавная анимация */
         }
 
+        /* ==========================================================================
+           2. БАЗОВЫЙ СБРОС СТИЛЕЙ И ТИПОГРАФИКА
+           Заметка: обнуление отступов, единая модель box-sizing и глобальный шрифт
+           ========================================================================== */
         * {
             margin: 0;
             padding: 0;
@@ -55,7 +73,10 @@
             list-style: none;
         }
 
-        /* Top Bar */
+        /* ==========================================================================
+           3. ВЕРХНЯЯ ИНФОРМАЦИОННАЯ ПОЛОСА (.top-bar)
+           Заметка: адрес офиса, график работы и контактный телефон в верхней строке
+           ========================================================================== */
         .top-bar {
             background: var(--primary);
             color: var(--white);
@@ -77,7 +98,10 @@
             margin-right: 6px;
         }
 
-        /* Header & Navigation */
+        /* ==========================================================================
+           4. ГЛАВНАЯ ШАПКА И НАВИГАЦИЯ (header, .navbar)
+           Заметка: прилипающая шапка (sticky), логотип AIRFAN и ссылки на разделы
+           ========================================================================== */
         header {
             background: var(--white);
             box-shadow: 0 4px 20px rgba(0,0,0,0.03);
@@ -126,6 +150,10 @@
             color: var(--accent);
         }
 
+        /* ==========================================================================
+           5. КНОПКИ ДЕЙСТВИЙ (.btn, .btn-primary)
+           Заметка: интерактивные кнопки с микроанимацией подъема и тенями
+           ========================================================================== */
         .btn {
             padding: 12px 24px;
             border-radius: 8px;
@@ -150,10 +178,13 @@
             box-shadow: 0 6px 20px rgba(2, 132, 199, 0.3);
         }
 
-        /* Page Banner */
+        /* ==========================================================================
+           6. БАННЕР СТРАНИЦЫ КАТАЛОГА (.page-banner)
+           Заметка: однотонный глубокий фон #0f172a без градиентов с главным заголовком
+           ========================================================================== */
         .page-banner {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            color: var(--white);
+            background: #0f172a;
+            color: #ffffff;
             padding: 60px 5%;
             text-align: center;
         }
@@ -171,7 +202,10 @@
             margin: 0 auto;
         }
 
-        /* Catalog Layout */
+        /* ==========================================================================
+           7. РАЗМЕТКА ОСНОВНОГО КАТАЛОГА (.catalog-container)
+           Заметка: двухколоночная сетка: 280px фильтры слева и адаптивная витрина справа
+           ========================================================================== */
         .catalog-container {
             max-width: 1400px;
             margin: 40px auto 80px;
@@ -181,7 +215,10 @@
             gap: 40px;
         }
 
-        /* Filters Sidebar */
+        /* ==========================================================================
+           8. БОКОВАЯ ПАНЕЛЬ ФИЛЬТРАЦИИ (.sidebar)
+           Заметка: блок с категориями и ценовым фильтром. Автоматически адаптируется под темную тему
+           ========================================================================== */
         .sidebar {
             background: var(--white);
             border-radius: 16px;
@@ -256,7 +293,10 @@
             font-size: 13px;
         }
 
-        /* Main Catalog Content */
+        /* ==========================================================================
+           9. ПАНЕЛЬ ИНСТРУМЕНТОВ (.toolbar)
+           Заметка: верхняя плашка над товарами со строкой поиска и сортировкой цен
+           ========================================================================== */
         .catalog-content {
             display: flex;
             flex-direction: column;
@@ -306,7 +346,10 @@
             cursor: pointer;
         }
 
-        /* Products Grid */
+        /* ==========================================================================
+           10. СЕТКА И КАРТОЧКИ ТОВАРОВ (.products-grid, .product-card)
+           Заметка: карточки оборудования с бейджами категории, фото, ТТХ и кнопками
+           ========================================================================== */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -408,7 +451,10 @@
             color: var(--primary);
         }
 
-        /* Order Modal */
+        /* ==========================================================================
+           11. МОДАЛЬНОЕ ОКНО ОФОРМЛЕНИЯ ЗАКАЗА (.modal-overlay, .modal)
+           Заметка: всплывающее окно с формой быстрой отправки заявки в Telegram
+           ========================================================================== */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -502,7 +548,10 @@
             border-color: var(--accent);
         }
 
-        /* Footer */
+        /* ==========================================================================
+           12. ПОДВАЛ САЙТА (footer, .footer-grid, .footer-bottom)
+           Заметка: многоколоночный футер с контактами компании, навигацией и копирайтом
+           ========================================================================== */
         footer {
             background: var(--primary);
             color: var(--white);
@@ -556,6 +605,10 @@
             font-size: 14px;
         }
 
+        /* ==========================================================================
+           13. АДАПТИВНОСТЬ ДЛЯ ПЛАНШЕТОВ И МОБИЛЬНЫХ УСТРОЙСТВ (@media)
+           Заметка: перестроение сетки в 2 колонки на планшетах и в 1 колонку на смартфонах
+           ========================================================================== */
         @media (max-width: 1024px) {
             .catalog-container {
                 grid-template-columns: 1fr;
@@ -581,7 +634,10 @@
 </head>
 <body>
 
-    <!-- Top Bar -->
+    <!-- ========================================================================= -->
+    <!-- 1. ВЕРХНЯЯ ИНФОРМАЦИОННАЯ СТРОКА (Top Bar)                                -->
+    <!-- Заметка: Служебные контакты, точный адрес офиса и часы работы склада      -->
+    <!-- ========================================================================= -->
     <div class="top-bar">
         <div class="top-bar-left">
             <span><i class="fa-solid fa-location-dot"></i> <span data-i18n="top_address">Toshkent shahri, Sergeli industrial zonasi</span></span>
@@ -592,7 +648,11 @@
         </div>
     </div>
 
-    <!-- Header -->
+    <!-- ========================================================================= -->
+    <!-- 2. ОСНОВНАЯ НАВИГАЦИОННАЯ ШАПКА (Header & Navigation)                     -->
+    <!-- Заметка: Логотип бренда, ссылки между разделами, мультиязычный             -->
+    <!-- селектор (UZ/RU/EN) и переключатель светлой/темной темы                   -->
+    <!-- ========================================================================= -->
     <header>
         <div class="navbar">
             <a href="index.html" class="logo">
@@ -606,13 +666,13 @@
                 <li><a href="contact.html" data-i18n="nav_contact">Aloqa & Buyurtma</a></li>
             </ul>
             <div class="header-controls">
-                <!-- 3 Languages Switcher: UZ | RU | EN -->
+                <!-- Мультиязычный переключатель (сохраняется в localStorage) -->
                 <div class="lang-switcher">
                     <button type="button" class="lang-btn active" data-lang="uz" onclick="setLanguage('uz')">UZ</button>
                     <button type="button" class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
                     <button type="button" class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
                 </div>
-                <!-- Dark / Light Theme Toggle -->
+                <!-- Переключатель светлой/темной темы с сохранением состояния -->
                 <button type="button" class="theme-toggle-btn" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle theme">
                     <i class="fa-solid fa-moon"></i>
                     <span class="theme-label" data-i18n="theme_dark">Tungi</span>
@@ -621,7 +681,11 @@
         </div>
     </header>
 
-    <!-- Page Banner -->
+    <!-- ========================================================================= -->
+    <!-- 3. ГЛАВНЫЙ БАННЕР КАТАЛОГА (Page Banner)                                  -->
+    <!-- Заметка: Верхний презентационный блок с фирменным бейджем, однотонным     -->
+    <!-- темно-синим фоном #0f172a и однотонным заголовком без градиентов          -->
+    <!-- ========================================================================= -->
     <section class="page-banner">
         <div class="airfan-brand-emblem">
             <img src="favicon.svg" alt="AIRFAN" style="width: 18px; height: 18px; vertical-align: middle;"> AIRFAN PRODUCTS CATALOG
@@ -630,17 +694,20 @@
         <p data-i18n="cat_banner_desc">Sanoat va maishiy obyektlar uchun barcha turdagi ventilyatsiya, isitish, sovutish va havo tozalash uskunalarini tanlang.</p>
     </section>
 
-    <!-- Main Catalog Container -->
+    <!-- ========================================================================= -->
+    <!-- 4. ОСНОВНОЙ РАЗДЕЛ КАТАЛОГА (Catalog Container)                           -->
+    <!-- Заметка: Включает боковую колонку фильтров (aside) и витрину товаров      -->
+    <!-- ========================================================================= -->
     <div class="catalog-container">
         
-        <!-- Sidebar Filters -->
+        <!-- 4.1. Боковая панель фильтрации (Sidebar Filters) -->
         <aside class="sidebar">
             <div class="filter-title">
                 <span data-i18n="filter_title">Filtrlar</span>
                 <i class="fa-solid fa-sliders" style="color: var(--accent);"></i>
             </div>
 
-            <!-- Category Filter -->
+            <!-- Фильтр по категориям оборудования (радиокнопки для быстрой выборки) -->
             <div class="filter-group">
                 <h4 data-i18n="filter_categories">Kategoriyalar</h4>
                 <div class="category-list">
@@ -653,7 +720,7 @@
                 </div>
             </div>
 
-            <!-- Price Filter -->
+            <!-- Фильтр по ценовому диапазону (поля "От" и "До" с живым пересчетом) -->
             <div class="filter-group">
                 <h4 data-i18n="filter_price_title">Narx oralig'i (so'm)</h4>
                 <div class="price-inputs">
@@ -663,7 +730,7 @@
                 </div>
             </div>
 
-            <!-- Availability -->
+            <!-- Фильтр по наличию на складе -->
             <div class="filter-group">
                 <h4 data-i18n="filter_avail_title">Mavjudligi</h4>
                 <div class="category-list">
@@ -673,10 +740,10 @@
             </div>
         </aside>
 
-        <!-- Catalog Main Area -->
+        <!-- 4.2. Основная рабочая область витрины (Catalog Content) -->
         <main class="catalog-content">
             
-            <!-- Toolbar -->
+            <!-- Панель инструментов: поиск по названию модели и сортировка цен -->
             <div class="toolbar">
                 <div class="search-box">
                     <i class="fa-solid fa-magnifying-glass"></i>
@@ -948,12 +1015,22 @@
         </main>
     </div>
 
-    <!-- Order Modal -->
+    <!-- ========================================================================= -->
+    <!-- 5. МОДАЛЬНОЕ ОКНО ОФОРМЛЕНИЯ ЗАКАЗА (Order Modal)                         -->
+    <!-- Заметка: Всплывающее окно для быстрого заказа выбранного товара.           -->
+    <!-- При клике на кнопку «Sotib olish» передается название и цена товара.     -->
+    <!-- Данные заявки напрямую отправляются в Telegram-бот через Telegram Bot API -->
+    <!-- ========================================================================= -->
     <div class="modal-overlay" id="orderModal">
         <div class="modal">
+            <!-- Кнопка закрытия окна (крестик) -->
             <button class="modal-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+            
             <h3>Buyurtma Rasmiylashtirish</h3>
+            <!-- Информационная плашка с выбранным товаром -->
             <p id="modalProductInfo">Mahsulot tanlandi</p>
+            
+            <!-- Форма заказа: имя, телефон, адрес доставки и комментарий -->
             <form id="telegramForm" onsubmit="sendToTelegram(event)">
                 <div class="form-group">
                     <label>Ismingiz va Familiyangiz</label>
@@ -972,10 +1049,13 @@
         </div>
     </div>
 
-    <!-- Footer -->
-    <!-- Footer -->
+    <!-- ========================================================================= -->
+    <!-- 6. ПОДВАЛ САЙТА (Footer)                                                  -->
+    <!-- Заметка: 4 колонки: о компании, навигация, список категорий и контакты    -->
+    <!-- ========================================================================= -->
     <footer>
         <div class="footer-grid">
+            <!-- Колонка 1: Логотип AIRFAN и краткое описание интернет-магазина -->
             <div class="footer-col">
                 <div class="logo" style="color: white; margin-bottom: 20px;">
                     <span class="logo-icon-wrap" style="width: 32px; height: 32px; display: inline-flex;"><img src="favicon.svg" alt="AIRFAN" class="logo-emblem-img"></span>
@@ -983,6 +1063,7 @@
                 </div>
                 <p data-i18n="footer_about">Sanoat va maishiy obyektlar uchun shamollatish va sovutish uskunalarining eng keng tanlovi.</p>
             </div>
+            <!-- Колонка 2: Быстрые ссылки по разделам сайта -->
             <div class="footer-col">
                 <h4 data-i18n="footer_pages">Sahifalar</h4>
                 <ul>
@@ -992,6 +1073,7 @@
                     <li><a href="contact.html" data-i18n="nav_contact">Aloqa</a></li>
                 </ul>
             </div>
+            <!-- Колонка 3: Прямые ссылки на фильтрацию по типам оборудования -->
             <div class="footer-col">
                 <h4 data-i18n="filter_categories">Kategoriyalar</h4>
                 <ul>
@@ -1002,22 +1084,32 @@
                     <li><a href="catalog.html" data-i18n="cat_cooler_label">Био-охладители AIRFAN</a></li>
                 </ul>
             </div>
+            <!-- Колонка 4: Прямые контакты отдела продаж и e-mail -->
             <div class="footer-col">
                 <h4 data-i18n="footer_contact">Bog'lanish</h4>
                 <p><i class="fa-solid fa-phone"></i> +998 (71) 200-00-00</p>
                 <p><i class="fa-solid fa-envelope"></i> info@air-climate.uz</p>
             </div>
         </div>
+        <!-- Нижняя строка футера: копирайт и защита авторских прав -->
         <div class="footer-bottom">
             <p>&copy; 2026 AIRFAN Climate. <span data-i18n="footer_rights">Barcha huquqlar himoyalangan.</span></p>
         </div>
     </footer>
 
-    <!-- JavaScript Filtering & Telegram API -->
+    <!-- ========================================================================= -->
+    <!-- 7. КЛИЕНТСКИЕ СКРИПТЫ: ФИЛЬТРАЦИЯ, СОРТИРОВКА И TELEGRAM API              -->
+    <!-- ========================================================================= -->
     <script>
+        // Глобальные переменные для хранения выбранного товара в модалке
         let selectedProduct = '';
         let selectedPrice = '';
 
+        /**
+         * Заметка: Функция открытия модального окна оформления заказа
+         * @param {string} productName - Название оборудования
+         * @param {string} productPrice - Форматированная цена с валютой
+         */
         function openModal(productName, productPrice) {
             selectedProduct = productName;
             selectedPrice = productPrice;
@@ -1025,12 +1117,27 @@
             document.getElementById('orderModal').classList.add('active');
         }
 
+        /**
+         * Заметка: Функция закрытия модального окна заказа
+         */
         function closeModal() {
             document.getElementById('orderModal').classList.remove('active');
         }
 
-        // Filtering and sorting logic
+        // Заметка: Закрытие модального окна при клике на затемнённый оверлей вокруг формы
+        const modalBackdropCatalog = document.getElementById('orderModal');
+        if (modalBackdropCatalog) {
+            modalBackdropCatalog.addEventListener('click', (e) => {
+                if (e.target === modalBackdropCatalog) closeModal();
+            });
+        }
+
+        /**
+         * Заметка: Основная функция фильтрации и сортировки товаров в каталоге
+         * Срабатывает на ввод в строке поиска, смену категории, диапазон цен и селект сортировки
+         */
         function filterProducts() {
+            // Считываем значения всех управляющих элементов
             const searchVal = document.getElementById('searchInput').value.toLowerCase();
             const minPrice = parseFloat(document.getElementById('minPrice').value) || 0;
             const maxPrice = parseFloat(document.getElementById('maxPrice').value) || Infinity;
@@ -1040,12 +1147,14 @@
             const grid = document.getElementById('productsGrid');
             const cards = Array.from(document.querySelectorAll('.product-card'));
 
+            // Сортировка массива карточек по цене (от дешевых к дорогим / от дорогих к дешевым)
             if (sortVal === 'low-high') {
                 cards.sort((a, b) => parseFloat(a.getAttribute('data-price')) - parseFloat(b.getAttribute('data-price')));
             } else if (sortVal === 'high-low') {
                 cards.sort((a, b) => parseFloat(b.getAttribute('data-price')) - parseFloat(a.getAttribute('data-price')));
             }
 
+            // Перестановка отсортированных карточек в DOM и проверка условий видимости
             cards.forEach(card => {
                 grid.appendChild(card);
                 const name = card.getAttribute('data-name').toLowerCase();
@@ -1056,6 +1165,7 @@
                 const matchesCategory = (categoryRadio === 'all' || category === categoryRadio);
                 const matchesPrice = (price >= minPrice && price <= maxPrice);
 
+                // Если карточка удовлетворяет всем условиям — отображаем её, иначе скрываем
                 if (matchesSearch && matchesCategory && matchesPrice) {
                     card.style.display = 'flex';
                 } else {
@@ -1064,17 +1174,26 @@
             });
         }
 
-        // Telegram Integration (User ID: 5973007672)
+        /* =========================================================================
+           ИНТЕГРАЦИЯ С TELEGRAM BOT API
+           Заметка: Токен бота и ID чата администратора для мгновенных уведомлений
+           ========================================================================= */
         const BOT_TOKEN = '8870087140:AAGhmm0WlIbp60iE2nBXagUrgWWs0n7otF0';
         const CHAT_ID = '5973007672';
 
+        /**
+         * Заметка: Асинхронная отправка формы заказа в Telegram бот
+         * @param {Event} event - Событие отправки формы submit
+         */
         async function sendToTelegram(event) {
             event.preventDefault();
 
+            // Сбор значений из полей формы
             const name = document.getElementById('clientName').value;
             const phone = document.getElementById('clientPhone').value;
             const address = document.getElementById('clientAddress').value;
 
+            // Формирование форматированного текста в Markdown для читаемого вида в Telegram
             const message = `🛍 *Katalogdan Yangi Buyurtma - AIRFAN*\n\n` +
                             `📦 *Mahsulot:* ${selectedProduct}\n` +
                             `💰 *Narxi:* ${selectedPrice}\n` +
@@ -1110,7 +1229,8 @@
             }
         }
     </script>
-    <!-- Shared Theme & Language Controller -->
+    
+    <!-- Подключение контроллера мультиязычности и переключения тем (shared) -->
     <script src="theme-lang.js"></script>
 </body>
 </html>

@@ -7,7 +7,7 @@
    -------------------------------------------------------------------------- */
 :root {
     --brand-glow: rgba(2, 132, 199, 0.4);
-    --brand-gradient: linear-gradient(135deg, #38bdf8 0%, #0284c7 50%, #2563eb 100%);
+    --brand-gradient: #0284c7;
     --card-surface: #ffffff;
     --input-bg: #ffffff;
     --table-stripe: #f8fafc;
@@ -159,7 +159,7 @@
     width: 38px;
     height: 38px;
     border-radius: 10px;
-    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+    background: #0284c7;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -205,9 +205,23 @@
 }
 
 .airfan-gradient-title {
-    background: linear-gradient(135deg, #ffffff 30%, #38bdf8 80%, #60a5fa 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    -webkit-text-fill-color: initial !important;
+    color: #0284c7 !important;
+    display: inline;
+}
+
+.page-banner {
+    background: #0f172a !important;
+    color: #ffffff !important;
+}
+
+.contact-title-blue {
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    -webkit-text-fill-color: initial !important;
+    color: #0284c7 !important;
     display: inline;
 }
 
@@ -303,21 +317,26 @@
     position: relative;
     width: 100%;
     overflow: hidden;
+    z-index: 5;
 }
 
 .hero-slide {
     display: none;
-    animation: slideFadeIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: slideFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    position: relative;
+    z-index: 10;
 }
 
 .hero-slide.active {
-    display: grid;
+    display: block;
+    position: relative;
+    z-index: 12;
 }
 
 @keyframes slideFadeIn {
     from {
         opacity: 0;
-        transform: translateY(20px) scale(0.98);
+        transform: translateY(16px) scale(0.99);
     }
     to {
         opacity: 1;
@@ -330,67 +349,114 @@
     align-items: center;
     justify-content: space-between;
     max-width: 1400px;
-    margin: 25px auto 0;
+    margin: 30px auto 0;
     padding: 0 5%;
     position: relative;
-    z-index: 5;
+    z-index: 35;
+    pointer-events: auto;
 }
 
 .slider-dots {
     display: flex;
-    gap: 10px;
+    gap: 12px;
     align-items: center;
+    position: relative;
+    z-index: 35;
 }
 
 .slider-dot {
-    width: 32px;
-    height: 8px;
-    border-radius: 4px;
-    background: rgba(255, 255, 255, 0.25);
+    width: 36px;
+    height: 10px;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.3);
     cursor: pointer;
-    transition: var(--transition);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border: none;
+    position: relative;
+    z-index: 35;
+    outline: none;
+    padding: 0;
+}
+
+.slider-dot:hover {
+    background: rgba(255, 255, 255, 0.7);
+    transform: scaleY(1.3);
 }
 
 .slider-dot.active {
-    width: 50px;
+    width: 56px;
     background: var(--accent);
-    box-shadow: 0 0 12px var(--accent);
+    box-shadow: 0 0 16px var(--accent);
 }
 
 .slider-arrows {
     display: flex;
-    gap: 10px;
+    gap: 12px;
+    position: relative;
+    z-index: 35;
 }
 
 .slider-arrow-btn {
-    width: 44px;
-    height: 44px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     color: #ffffff;
-    font-size: 16px;
+    font-size: 18px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: var(--transition);
-    backdrop-filter: blur(8px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+    position: relative;
+    z-index: 35;
+    outline: none;
 }
 
 .slider-arrow-btn:hover {
     background: var(--accent);
     border-color: var(--accent);
-    transform: scale(1.08);
-    box-shadow: 0 0 16px var(--accent);
+    transform: scale(1.1);
+    box-shadow: 0 0 18px var(--accent);
 }
 
-/* Ensure slide content is always visible when active */
+.slider-arrow-btn:active {
+    transform: scale(0.95);
+}
+
+/* Ensure slide content is always visible when active and buttons are clickable */
 .hero-slide.active .hero-content h1,
 .hero-slide.active .hero-content p,
 .hero-slide.active .hero-buttons {
     opacity: 1 !important;
+}
+
+.hero-slide .hero-content {
+    position: relative;
+    z-index: 20;
+    pointer-events: auto;
+}
+
+.hero-slide .hero-buttons {
+    position: relative;
+    z-index: 25;
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    pointer-events: auto;
+    margin-top: 10px;
+}
+
+.hero-slide .hero-buttons .btn,
+.hero-slide .hero-buttons a,
+.hero-slide .hero-buttons button {
+    position: relative;
+    z-index: 25;
+    pointer-events: auto;
+    cursor: pointer;
+    text-decoration: none;
 }
 
 /* Logo Custom Emblem Icon & SVG */
@@ -398,7 +464,7 @@
     width: 42px;
     height: 42px;
     border-radius: 12px;
-    background: linear-gradient(135deg, rgba(2, 132, 199, 0.2) 0%, rgba(56, 189, 248, 0.1) 100%);
+    background: rgba(2, 132, 199, 0.15);
     border: 1px solid rgba(56, 189, 248, 0.4);
     display: flex;
     align-items: center;
@@ -433,23 +499,13 @@
         display: flex !important;
         overflow-x: auto !important;
         scroll-snap-type: x mandatory;
-        padding-bottom: 12px !important;
+        padding-bottom: 10px !important;
         -webkit-overflow-scrolling: touch;
+        gap: 8px !important;
     }
     .selector-pill {
         flex: 0 0 auto;
-        min-width: 220px;
-        scroll-snap-align: start;
-    }
-    .thumbs-grid {
-        display: flex !important;
-        overflow-x: auto !important;
-        scroll-snap-type: x mandatory;
-        padding-bottom: 10px !important;
-        -webkit-overflow-scrolling: touch;
-    }
-    .thumb-item {
-        flex: 0 0 120px;
+        min-width: 180px;
         scroll-snap-align: start;
     }
 }
